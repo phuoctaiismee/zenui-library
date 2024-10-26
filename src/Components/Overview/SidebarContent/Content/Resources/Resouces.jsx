@@ -88,9 +88,11 @@ const Resources = () => {
                 Resources
             </h1>
             <p className="w-full text-text text-[1rem] mb-5">
-                The Resources tab in ZenUI Library offers over 100+ (more coming) carefully curated resources that developers truly
+                {
+                    `The Resources tab in ZenUI Library offers over ${resourcesData?.length}+ (more coming) carefully curated resources that developers truly
                 need. From code snippets to design tools and development guides, everything is readily available to
-                enhance your projects and boost your productivity. Explore and make the most of these essential tools!
+                enhance your projects and boost your productivity. Explore and make the most of these essential tools!`
+                }
             </p>
 
             <div data-ea-publisher="zenuinet" data-ea-manual="true" className="horizontal w-full"

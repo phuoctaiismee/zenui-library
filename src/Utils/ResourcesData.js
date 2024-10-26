@@ -1238,4 +1238,219 @@ export const resourcesData = [
         languages: [],
         isNPM: false,
     },
+    {
+        id: 102,
+        logo: 'https://i.ibb.co.com/MhDx4jx/images.png',
+        name: 'Github Topics',
+        description: 'GitHub Topics allows developers to tag repositories, making it easy to discover and explore projects by theme, language, or framework, helping users find relevant projects quickly.',
+        websiteUrl: 'https://github.com/topics',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 103,
+        logo: 'https://i.ibb.co.com/Z2pF0D6/images-1.png',
+        name: 'devpost - Hackathon Projects',
+        description: 'Devpost is a platform for showcasing hackathon projects, where developers can share, discover, and collaborate on innovative ideas. It connects participants, provides exposure, and allows companies to host hackathons for creative solutions.',
+        websiteUrl: 'https://devpost.com/software',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 104,
+        logo: 'https://i.ibb.co.com/MhDx4jx/images.png',
+        name: 'Awesome Lists',
+        description: 'Awesome Lists is a GitHub repository collection featuring curated lists of resources, tools, libraries, and guides across various topics and technologies. It\'s a go-to resource for developers looking for the best content in any tech area.',
+        websiteUrl: 'https://github.com/sindresorhus/awesome',
+        isBookmarked: false,
+        languages: [],
+        isNPM: false,
+    },
+
+    {
+        id: 117,
+        logo: 'https://rapidapi-prod-fe-static.s3.amazonaws.com/theming/light.png',
+        name: 'RapidAPI',
+        description: 'The RapidAPI Free APIs List provides a variety of APIs across categories like sports, entertainment, finance, and AI, available at no cost. Ideal for developers needing easy integration options, RapidAPI offers extensive API documentation and testing tools to streamline development.',
+        websiteUrl: 'https://rapidapi.com/collection/list-of-free-apis',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 118,
+        logo: 'https://avatars.githubusercontent.com/u/6692364?s=48&v=4',
+        name: 'app ideas',
+        description: 'The App Ideas Collection on GitHub provides a categorized list of app project ideas for developers. Each idea includes a brief description and difficulty level, offering inspiration for creating applications to improve skills or add to portfolios.',
+        websiteUrl: 'https://github.com/florinpop17/app-ideas',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 119,
+        logo: 'https://i.ibb.co.com/MCm8BXW/images.jpg',
+        name: 'javascript 30 days',
+        description: 'JavaScript30 is a free 30-day coding challenge by Wes Bos, focusing on building 30 vanilla JavaScript projects in 30 days. It’s designed to strengthen JavaScript skills without relying on frameworks or libraries, making it ideal for beginners and intermediates.',
+        websiteUrl: 'https://javascript30.com/',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 105,
+        logo: 'https://i.ibb.co.com/MhDx4jx/images.png',
+        name: 'project based learning',
+        description: 'Project-Based Learning (PBL) on GitHub is a curated collection of repositories that guide learners through real-world projects to build hands-on skills in various tech fields. It’s a practical approach, ideal for self-directed learning and building portfolios.',
+        websiteUrl: 'https://github.com/practical-tutorials/project-based-learning',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 106,
+        logo: 'https://i.ibb.co.com/CKZbg00/images-2.png',
+        name: 'Web Design and UI Inspiration',
+        description: 'Behance is a creative platform showcasing top web design and UI projects, providing inspiration for designers through a vast array of professional portfolios. It’s a hub for discovering design trends and connecting with other creatives.',
+        websiteUrl: 'https://www.behance.net/search/projects?search=web%20design',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 107,
+        logo: 'https://i.ibb.co.com/RyR0dJT/images-3.png',
+        name: 'Project Ideas Threads',
+        description: 'The freeCodeCamp Forum’s Project Ideas Threads provide a space for developers to discover project ideas, share concepts, and collaborate. It’s a valuable resource for gaining inspiration and feedback on coding projects at all skill levels.',
+        websiteUrl: 'https://forum.freecodecamp.org/c/project-feedback/409',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 108,
+        logo: 'https://i.ibb.co.com/X7d7btx/images-4.png',
+        name: 'Ideas for SaaS and Web Projects',
+        description: 'Indie Hackers is a community for entrepreneurs, offering ideas for SaaS and web projects. It provides inspiration, real-world advice, and stories from founders, helping users brainstorm and validate project ideas.',
+        websiteUrl: 'https://www.indiehackers.com/ideas',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 109,
+        logo: 'https://i.ibb.co.com/BnhDVSw/cloudlogo.webp',
+        name: 'Game Idea Generator',
+        description: 'The Game Idea Generator is a tool that helps game developers and enthusiasts brainstorm unique game concepts. By combining various themes, mechanics, and styles, it inspires creativity and aids in the development of original games.',
+        websiteUrl: 'https://www.springhole.net/writing_roleplaying_randomators/',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 110,
+        logo: 'https://i.ibb.co.com/ZJCktVz/images-5.png',
+        name: 'CodeSignal – Arcade Challenges',
+        description: 'CodeSignal Arcade Challenges are interactive coding exercises designed to improve programming skills through fun, gamified tasks. They offer a range of problems across various difficulty levels, helping users learn and practice coding in an engaging way.',
+        websiteUrl: 'https://app.codesignal.com/arcade',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 111,
+        logo: 'https://i.ibb.co.com/TYvxbgj/images-6.png',
+        name: 'Dev.to – Project Ideas',
+        description: 'The Dev.to Project Ideas is a community-driven section where developers share and explore project ideas. It’s a great resource for inspiration, collaboration, and finding unique concepts to work on in coding and development.',
+        websiteUrl: 'https://dev.to/t/projectideas',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 112,
+        logo: 'https://i.ibb.co.com/GvRzpRL/images-7.png',
+        name: 'Datasets for Data Science Projects',
+        description: 'Kaggle is a platform that provides a vast collection of datasets for data science projects. Users can explore, analyze, and build models using real-world data, making it an invaluable resource for learning and experimentation in data analysis and machine learning.',
+        websiteUrl: 'https://www.kaggle.com/datasets',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 113,
+        logo: 'https://i.ibb.co.com/1nPSY8w/images-8.png',
+        name: 'Awwwards',
+        description: 'Awwwards is a platform showcasing award-winning websites for design inspiration. It highlights the best in web design, UX, and innovation, featuring examples from top designers and agencies worldwide. Ideal for finding fresh ideas and trends.',
+        websiteUrl: 'https://www.awwwards.com/websites/',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 114,
+        logo: 'https://avatars.githubusercontent.com/u/58904235?s=48&v=4',
+        name: 'build your own x',
+        description: 'The Build Your Own X GitHub repository is a curated collection of tutorials guiding developers in creating software projects from scratch, like databases, games, programming languages, and more. It\'s ideal for hands-on learning and deepening technical understanding.',
+        websiteUrl: 'https://github.com/codecrafters-io/build-your-own-x',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 115,
+        logo: 'https://avatars.githubusercontent.com/u/3261985?s=48&v=4',
+        name: 'Mega Project List',
+        description: 'The Mega Project List on GitHub is a compilation of project ideas across various programming topics, including algorithms, games, web applications, and data structures. It’s a useful resource for developers seeking practical projects to enhance skills and build portfolios.',
+        websiteUrl: 'https://github.com/karan/Projects',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
+    {
+        id: 116,
+        logo: 'https://avatars.githubusercontent.com/u/51121562?s=48&v=4',
+        name: 'Public APIs',
+        description: 'The Public APIs GitHub repository is a curated list of free APIs for various purposes, including weather, music, finance, and more. It\'s an excellent resource for developers looking to integrate data and functionality into their projects without building backend services from scratch.',
+        websiteUrl: 'https://github.com/public-apis/public-apis',
+        isBookmarked: false,
+        languages: [
+            'project ideas'
+        ],
+        isNPM: false,
+    },
 ]

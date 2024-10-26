@@ -23,6 +23,10 @@ const FilterByPackage = ({setSelectedPackage}) => {
             slug: 'state management'
         },
         {
+            name: 'Project Ideas',
+            slug: 'project ideas'
+        },
+        {
             name: 'Data Structure & Algorithm',
             slug: 'dsa'
         },
