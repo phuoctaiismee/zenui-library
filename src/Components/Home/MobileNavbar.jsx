@@ -2,17 +2,19 @@ import React, {useState} from "react";
 
 // icons
 import {CiMenuFries} from "react-icons/ci";
-import {IoIosSearch} from "react-icons/io";
+import {IoIosArrowDown, IoIosSearch} from "react-icons/io";
 import {RxCross2, RxDiscordLogo} from "react-icons/rx";
 import {FiGithub} from "react-icons/fi";
 
 // react router dom
 import {Link, useNavigate} from "react-router-dom";
 import Search from "./Search";
+import {motion} from "framer-motion";
 
 const MobileNavbar = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const navigate = useNavigate();
 
@@ -76,7 +78,7 @@ const MobileNavbar = () => {
 
             {/*  sidebar  */}
             <aside
-                className={`${sidebarOpen ? 'translate-x-0 opacity-100 z-[999]' : 'translate-x-[200px] opacity-0 z-[-1]'} fixed top-0 mobileSidebar right-0 py-5 px-[1.3rem] w-[80%] block 1024px:hidden 640px:w-[50%] h-screen transition-all duration-500 bg-white toastshadow`}>
+                className={`${sidebarOpen ? 'translate-x-0 opacity-100 z-[999]' : 'translate-x-[200px] opacity-0 z-[-1]'} fixed top-0 mobileSidebar right-0 py-5 px-[1.3rem] w-[90%] block 1024px:hidden 640px:w-[50%] h-screen transition-all duration-500 bg-white toastshadow overflow-y-auto`}>
 
                 <RxCross2 className='text-[1.3rem] text-gray-700 mb-[20px] absolute left-[15px]' onClick={()=> setSidebarOpen(false)}/>
 
@@ -96,48 +98,83 @@ const MobileNavbar = () => {
               Ctrl + S
             </span>
                 </div>
-                <ul className="text-gray-600 navUl flex flex-col mt-5 items-start gap-8 font-[500] capitalize text-[1.2rem]">
-                    <li className=''>
-                        <p className={getTheRouteName() === '/about-us' && '!text-[#0FABCA]'}><Link to='/about-us'>About
-                            us</Link>
-                        </p>
-                        <span><Link to='/about-us'>About us</Link> </span>
-                    </li>
-                    <li className=''>
-                        <p className={getTheRouteName() === '/getting-started/templates' && '!text-[#0FABCA]'}><a
-                            href='/getting-started/templates'>Templates</a></p>
-                        <span><a href='/getting-started/templates'>Templates</a></span>
-                    </li>
-                    <li className='relative'>
-                        <p className={getTheRouteName() === '/components/all-blocks' && '!text-[#0FABCA]'}><a
-                            href='/blocks/all-blocks'>Blocks</a></p>
-                        <span><a href='/blocks/all-blocks'>Blocks</a></span>
+                <ul className='text-gray-600 flex flex-col mt-5 items-start gap-4 font-[500] capitalize text-[1rem]'>
+                    <li>About Us</li>
+                    <li onClick={() => setDropdownOpen(!dropdownOpen)}
+                        className='cursor-pointer flex items-center gap-[8px]'>
+                        Developer Kit
+                        <IoIosArrowDown className={`${dropdownOpen ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
                     </li>
 
-                    <li className='relative'>
-                        <p className={getTheRouteName() === '/icons' && '!text-[#0FABCA]'}><a
-                            href='/icons'>Icons</a></p>
-                        <span><a href='/icons'>Icons</a></span>
-                    </li>
+                    {
+                        dropdownOpen && (
+                            <motion.div
+                                initial={{opacity: 0, y: -20}}
+                                animate={{opacity: 1, y: 0}}
+                                exit={{opacity: 0, y: -20}}
+                                className="grid grid-cols-1 gap-[20px] ml-4"
+                            >
+                                <div className='flex flex-col gap-[20px] text-[1rem]'>
+                                    <Link to='/getting-started/templates'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                            Templates
+                                        </p>
+                                        <span className='text-[0.8rem] font-[300] text-gray-500'>Ready-made layouts to start fast.</span>
+                                    </Link>
 
-                    <li className='relative'>
-                        <p className={getTheRouteName() === '/opacity-palette' && '!text-[#0FABCA]'}><a
-                            href='/color-palette'>Color Palette</a></p>
-                        <span><a href='/color-palette'>Color Palette</a></span>
-                    </li>
+                                    <Link to='/blocks/all-blocks'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                            Blocks
+                                        </p>
+                                        <span className='text-[0.8rem] font-[300] text-gray-500'>Modular components for easy design.</span>
+                                    </Link>
 
-                    <li className='relative pr-[45px]'>
-                        <div
-                            className='bg-[#0FABCA] rounded-[2px] text-white animate-pulse text-[0.5rem] px-2 py-0.5 w-max absolute top-[6px] z-50 right-0'>
-                            NEW
+                                    <Link to='/icons'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                            Icons
+                                        </p>
+                                        <span className='text-[0.8rem] font-[300] text-gray-500'>Scalable icons for clear visuals.</span>
+                                    </Link>
+                                </div>
 
-                            <div
-                                className='w-[8px] h-[8px] bg-[#0FABCA] rotate-[45deg] absolute left-[-4px] top-[0.229rem]'></div>
-                        </div>
-                        <p className={getTheRouteName() === '/getting-started/resources' && '!text-[#0FABCA]'}><a
-                            href='/getting-started/resources'>Resources</a></p>
-                        <span><a href='/getting-started/resources'>Resources</a></span>
-                    </li>
+                                <div className='flex flex-col gap-[20px] text-[1rem]'>
+                                    <Link to='/getting-started/custom-hooks'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200 flex items-center gap-[10px]'>
+                                            Custom Hooks
+
+                                            <span
+                                                className="px-3 w-max py-[0.02rem] uppercase border border-[#0ea8c7] bg-[#0ea8c7] text-[#fff] rounded-full text-[0.5rem] font-[500]">
+                                                        New
+                                                    </span>
+                                        </p>
+                                        <span
+                                            className='text-[0.8rem] font-[300] text-gray-500'>Reusable React logic helpers.</span>
+                                    </Link>
+
+                                    <Link to='/getting-started/resources'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                            Resources
+                                        </p>
+                                        <span className='text-[0.8rem] font-[300] text-gray-500'>Tools and guides for developers.</span>
+                                    </Link>
+
+                                    <Link to='/color-palette'
+                                          className='!p-0'>
+                                        <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                            Color Palettes
+                                        </p>
+                                        <span
+                                            className='text-[0.8rem] font-[300] text-gray-500'>Harmonized color sets.</span>
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        )
+                    }
                 </ul>
             </aside>
 

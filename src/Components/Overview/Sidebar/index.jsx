@@ -11,6 +11,7 @@ import OverviewIcon from "../../../SvgIcons/OverviewIcon.jsx";
 import InstallationIcon from "../../../SvgIcons/InstallationIcon.jsx";
 import ResourceIcon from "../../../SvgIcons/ResourceIcon.jsx";
 import TemplatesIcon from "../../../SvgIcons/TemplatesIcon.jsx";
+import HookIcon from "../../../SvgIcons/HookIcon.jsx";
 
 const index = ({ startContent, setStartContent }) => {
   const [start, setStart] = useState(true);
@@ -44,6 +45,15 @@ const index = ({ startContent, setStartContent }) => {
               <ResourceIcon className={`${startContent === 85 && 'text-white'} shrink-0 size-4 text-purple-600 group-hover:text-white transition-all duration-200`}/>
             </span>
                 Resources
+            </div>
+          </Link>
+
+          <Link onClick={() => setStartContent(88)} to='/getting-started/custom-hooks' className='w-full flex items-center gap-[10px]'>
+            <div className={`${startContent === 88 && '!text-[#DB06F9]'} flex items-center gap-[8px] hover:text-[#DB06F9] group cursor-pointer text-[0.950rem] font-[500] capitalize text-gray-600`}>
+                <span className={`${startContent === 88 && 'bg-[#DB06F9] border-[#DB06F9]'} border p-[6px] rounded-md border-[#deb7f7] group-hover:bg-[#DB06F9] group-hover:border-[#DB06F9] transition-all duration-200`}>
+              <HookIcon className={`${startContent === 88 && 'text-white'} shrink-0 size-4 text-[#DB06F9] group-hover:text-white transition-all duration-200`}/>
+            </span>
+                Custom Hooks
             </div>
 
               <NewBadge/>

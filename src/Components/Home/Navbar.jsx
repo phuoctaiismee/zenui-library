@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 // icons
-import {IoIosSearch} from "react-icons/io";
+import {IoIosArrowDown, IoIosSearch} from "react-icons/io";
 
 // react router dom
 import {Link, useNavigate} from "react-router-dom";
@@ -9,10 +9,14 @@ import Search from "./Search";
 import {FiGithub} from "react-icons/fi";
 import {RxDiscordLogo} from "react-icons/rx";
 
+import {motion} from "framer-motion";
+import NewBadge from "../../Shared/NewBadge.jsx";
+
 const Navbar = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [hasShadow, setHasShadow] = useState(false);
     const navigate = useNavigate();
+    const [isHovered, setIsHovered] = useState(false);
 
     const handleSearchClick = () => {
         setIsSearchOpen(true);
@@ -75,7 +79,7 @@ const Navbar = () => {
     return (
         <>
             <nav
-                className={`border-b border-gray-100 1024px:flex w-full px-10 backdrop-blur-lg sticky top-0 left-0 z-[999] hidden py-3`}>
+                className={`border-b border-gray-100 1024px:flex w-full px-10 backdrop-blur-lg sticky top-0 left-0 z-[999] hidden`}>
                 <div className='max-w-[1615px] mx-auto w-full flex items-center justify-between'>
                     <div className="flex items-center gap-8">
                         {
@@ -97,49 +101,77 @@ const Navbar = () => {
                                 onClick={() => navigate("/")}
                             />
                         </div>
-                        <ul className={`text-gray-600 navUl flex items-center gap-8 font-[500] capitalize text-[1.2rem]`}>
-                            <li className=''>
-                                <p className={getTheRouteName() === '/about-us' && '!text-[#0FABCA]'}><Link
-                                    to='/about-us'>About
-                                    us</Link>
-                                </p>
-                                <span><Link to='/about-us'>About us</Link> </span>
-                            </li>
-                            <li className=''>
-                                <p className={getTheRouteName() === '/getting-started/templates' && '!text-[#0FABCA]'}>
-                                    <a
-                                        href='/getting-started/templates'>Templates</a></p>
-                                <span><a href='/getting-started/templates'>Templates</a></span>
-                            </li>
-                            <li className='relative'>
-                                <p className={getTheRouteName() === '/blocks/all-blocks' && '!text-[#0FABCA]'}><a
-                                    href='/blocks/all-blocks'>Blocks</a></p>
-                                <span><a href='/blocks/all-blocks'>Blocks</a></span>
-                            </li>
+                        <ul className={`text-gray-600 flex items-center gap-8 font-[500] capitalize text-[1.2rem]`}>
+                            <li className='cursor-pointer hover:text-[#0FABCA] transition-all duration-200'>About Us</li>
+                            <li
+                                onMouseEnter={() => setIsHovered(true)}
+                                onMouseLeave={() => setIsHovered(false)}
+                                className='cursor-pointer relative py-[23px] hover:text-[#0FABCA] transition-all duration-200 flex items-center gap-[8px]'
+                            >
+                                Developer Kit
+                                <IoIosArrowDown className={`${isHovered ? 'rotate-[180deg]': 'rotate-0'} transition-all duration-300`}/>
 
-                            <li className='relative'>
-                                <p className={getTheRouteName() === '/icons' && '!text-[#0FABCA]'}><a
-                                    href='/icons'>Icons</a></p>
-                                <span><a href='/icons'>Icons</a></span>
-                            </li>
+                                {isHovered && (
+                                    <motion.div
+                                        initial={{opacity: 0, scale: 0.8}}
+                                        animate={{opacity: 1, scale: 1}}
+                                        exit={{opacity: 0, scale: 0.8}}
+                                        className="absolute top-[68px] left-0 gap-[30px] w-[600px] grid grid-cols-2 bg-white border border-gray-200 shadow-sm rounded-md p-6 mt-2"
+                                        onMouseEnter={() => setIsHovered(true)}
+                                        onMouseLeave={() => setIsHovered(false)}
+                                    >
+                                        <div className='flex flex-col text-[1rem]'>
+                                            <Link to='/getting-started/templates' className='p-[10px] transition-all duration-200 hover:bg-gray-50 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Templates
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Ready-made layouts to start fast.</span>
+                                            </Link>
 
-                            <li className='relative'>
-                                <p className={getTheRouteName() === '/opacity-palette' && '!text-[#0FABCA]'}><a
-                                    href='/color-palette'>Color Palette</a></p>
-                                <span><a href='/color-palette'>Color Palette</a></span>
-                            </li>
+                                            <Link to='/blocks/all-blocks' className='p-[10px] transition-all duration-200 hover:bg-gray-50 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Blocks
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Modular components for easy design.</span>
+                                            </Link>
 
-                            <li className='relative pr-[45px]'>
-                                <div
-                                    className='bg-[#0FABCA] rounded-[2px] text-white animate-pulse text-[0.5rem] px-2 py-0.5 w-max absolute top-[6px] z-50 right-0'>
-                                    NEW
+                                            <Link to='/icons' className='p-[10px] transition-all duration-200 hover:bg-gray-50 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Icons
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Scalable icons for clear visuals.</span>
+                                            </Link>
+                                        </div>
 
-                                    <div
-                                        className='w-[8px] h-[8px] bg-[#0FABCA] rotate-[45deg] absolute left-[-4px] top-[0.229rem]'></div>
-                                </div>
-                                <p className={getTheRouteName() === '/getting-started/resources' && '!text-[#0FABCA]'}><a
-                                    href='/getting-started/resources'>Resources</a></p>
-                                <span><a href='/getting-started/resources'>Resources</a></span>
+                                        <div className='flex flex-col text-[1rem]'>
+                                            <Link to='/getting-started/custom-hooks' className='p-[10px] transition-all duration-200 hover:bg-gray-50 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200 flex items-center gap-[10px]'>
+                                                    Custom Hooks
+
+                                                    <span
+                                                        className="px-3 w-max py-[0.02rem] uppercase border border-[#0ea8c7] bg-[#0ea8c7] text-[#fff] rounded-full text-[0.5rem] font-[500]">
+                                                        New
+                                                    </span>
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Reusable React logic helpers.</span>
+                                            </Link>
+
+                                            <Link to='/getting-started/resources' className='p-[10px] transition-all duration-200 hover:bg-gray-50 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Resources
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Tools and guides for developers.</span>
+                                            </Link>
+
+                                            <Link to='/color-palette' className='p-[10px] transition-all duration-200 hover:bg-gray-50 rounded-md'>
+                                                <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
+                                                    Color Palettes
+                                                </p>
+                                                <span className='text-[0.8rem] font-[300] text-gray-500'>Harmonized color sets.</span>
+                                            </Link>
+                                        </div>
+                                    </motion.div>
+                                )}
                             </li>
                         </ul>
                     </div>
@@ -172,17 +204,6 @@ const Navbar = () => {
                                     className={`text-[2.7rem] text-gray-400 rounded-md p-[6px] border border-gray-200 cursor-pointer`}/>
                             </a>
                         </div>
-                        {/*{toggle ? (*/}
-                        {/*  <BsSunFill*/}
-                        {/*    className="text-[1.6rem] text-primary cursor-pointer"*/}
-                        {/*    onClick={() => setToggle(false)}*/}
-                        {/*  />*/}
-                        {/*) : (*/}
-                        {/*  <BsFillMoonStarsFill*/}
-                        {/*    className="text-[1.6rem] text-primary cursor-pointer"*/}
-                        {/*    onClick={() => setToggle(true)}*/}
-                        {/*  />*/}
-                        {/*)}*/}
                     </div>
                 </div>
             </nav>
