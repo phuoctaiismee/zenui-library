@@ -44,7 +44,7 @@ const ReactCustomHooks = () => {
                 }
             </p>
 
-            <div data-ea-publisher="zenuinet" data-ea-manual="true" className="horizontal w-full"
+            <div data-ea-publisher="zenuinet" className="horizontal w-full"
                  data-ea-type="image"></div>
 
             {/*  search area  */}

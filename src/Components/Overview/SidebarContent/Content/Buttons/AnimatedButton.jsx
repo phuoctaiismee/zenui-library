@@ -848,7 +848,7 @@ after:-z-40 bg-secondary relative "> Animate 2
         >
           2 part marge animation
         </a>
-        <div data-ea-publisher="zenuinet" data-ea-manual="true" className='w-full' data-ea-type="image"></div>
+        <div data-ea-publisher="zenuinet" className='w-full' data-ea-type="image"></div>
       </div>
       <Helmet>
         <title>Buttons - Animated Button</title>

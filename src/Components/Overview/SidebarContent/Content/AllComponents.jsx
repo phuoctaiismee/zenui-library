@@ -64,7 +64,7 @@ const AllComponents = () => {
           confidence.
         </p>
 
-        <div data-ea-publisher="zenuinet" className="horizontal w-full" data-ea-manual="true" data-ea-type="image"></div>
+        <div data-ea-publisher="zenuinet" className="horizontal w-full" data-ea-type="image"></div>
 
         <h2 className="mt-12 font-[600] text-[1.5rem] text-[#0471d6]">input</h2>
         <div className="grid grid-cols-2 425px:grid-cols-3 mt-4 gap-8">

@@ -23,7 +23,7 @@ const Installation = () => {
                 </p>
             </div>
 
-            <div data-ea-publisher="zenuinet" data-ea-manual="true" className="horizontal w-full" data-ea-type="image"></div>
+            <div data-ea-publisher="zenuinet" className="horizontal w-full" data-ea-type="image"></div>
 
             <div className='w-full 1024px:w-[80%] mt-6'>
                 <h3 className='text-[1.5rem] font-[600]'>Why Doesn’t ZenUI Require Installation?</h3>
