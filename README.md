@@ -11,16 +11,6 @@ ZenUI Library
 Open-Source UI Component Library<br>
 Elevate your projects with ZenUI, a free, lightweight, customizable UI component library built with React and Tailwind CSS. ZenUI provides various components, icons, website templates, and color palette options to accelerate development.
 
-<p>
-
-<p align="center">
-<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="Release Date" src="https://img.shields.io/github/release-date/asfak00/zenui-library"></a>
-<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="Commit History" src="https://img.shields.io/github/commit-activity/w/asfak00/zenui-library
-"></a>
-<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="Contributors" src="https://img.shields.io/github/contributors/asfak00/zenui-library
-"></a>
-</p>
-
 ![cover](https://i.ibb.co.com/CWtdR19/post.png)
 
 ## Features
