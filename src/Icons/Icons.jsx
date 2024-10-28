@@ -73,10 +73,10 @@ const Icons = () => {
                 }
 
                 {/*  icons area  */}
-                <div className='flex gap-[10px] mt-12 flex-wrap mb-[7rem]'>
+                <div className='grid grid-cols-2 400px:flex gap-[10px] mt-12 400px:flex-wrap mb-[7rem]'>
                     {
                         filteredIcons?.map((icon, index) => (
-                            <div onClick={()=> handleIconClick(icon)} key={index} className={`${selectedIcon.id === icon.id ? 'border-b-primary border-primary shadow-md': ''} px-5 py-4 cursor-pointer bg-white border border-border border-b-[5px] hover:border-b-primary hover:shadow-md transition-all duration-200 rounded-md hover:border-primary icon w-[150px] text-center flex items-center justify-center flex-col`}>
+                            <div onClick={()=> handleIconClick(icon)} key={index} className={`${selectedIcon.id === icon.id ? 'border-b-primary border-primary shadow-md': ''} px-5 py-4 cursor-pointer bg-white border border-border border-b-[5px] hover:border-b-primary hover:shadow-md transition-all duration-200 rounded-md hover:border-primary icon 400px:w-[150px] text-center flex items-center justify-center flex-col`}>
                                 <div className='iconContainer' dangerouslySetInnerHTML={{ __html: icon.iconCode }}></div>
                                 <h4 className='text-[0.7rem] mt-5 text-[#2d2d2d]'>{icon.name}</h4>
                             </div>

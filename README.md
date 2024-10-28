@@ -1,8 +1,27 @@
+<br />
+<p align="center">
+  <a href="https://github.com/Asfak00/zenui-library">
+    <img src="https://i.ibb.co.com/0BZfPq6/darklogo.png" alt="ZenUI Library" width="150" />
+  </a>
 
-# ZENUI LIBRARY
+<h1 align="center">
+ZenUI Library
+</h1>
+<p align="center">
+Open-Source UI Component Library<br>
 Elevate your projects with ZenUI, a free, lightweight, customizable UI component library built with React and Tailwind CSS. ZenUI provides various components, icons, website templates, and color palette options to accelerate development.
 
-![Facebook cover - 2](https://github.com/user-attachments/assets/ffdb04e0-677d-4759-b3ce-e2e439c04b96)
+<p>
+
+<p align="center">
+<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/release-date/asfak00/zenui-library"></a>
+<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/commit-activity/w/asfak00/zenui-library
+"></a>
+<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/contributors/asfak00/zenui-library
+"></a>
+</p>
+
+![cover](https://i.ibb.co.com/WxG40zT/OG-image.png)
 
 ## Features
 
