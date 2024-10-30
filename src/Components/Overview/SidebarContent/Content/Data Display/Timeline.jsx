@@ -383,7 +383,6 @@ export default Timeline;
                     >
                         work progress timeline
                     </a>
-                    <div data-ea-publisher="zenuinet" className='w-full' data-ea-type="image"></div>
                 </div>
             </aside>
             <Helmet>

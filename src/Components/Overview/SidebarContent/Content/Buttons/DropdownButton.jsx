@@ -485,7 +485,6 @@ export default DropdownButton;
                 >
                     Send Button With Arrow
                 </a>
-                <div data-ea-publisher="zenuinet" className='w-full' data-ea-type="image"></div>
             </div>
             <Helmet>
                 <title>Buttons - Dropdown Button</title>

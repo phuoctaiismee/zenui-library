@@ -95,9 +95,6 @@ const Resources = () => {
                 }
             </p>
 
-            <div data-ea-publisher="zenuinet" className="horizontal w-full"
-                 data-ea-type="image"></div>
-
             {/* filters */}
             <div className='flex items-end flex-wrap gap-[10px]'>
                 <input
@@ -163,8 +160,8 @@ const Resources = () => {
                 )
             }
 
-            <BlocksFooter backUrl='/getting-started/installation' backName='installation' forwardName='templates'
-                          forwardUrl='/getting-started/templates'/>
+            <BlocksFooter backUrl='/getting-started/installation' backName='installation' forwardName='Custom hooks'
+                          forwardUrl='/getting-started/custom-hooks'/>
 
             <Helmet>
                 <title>Get-Started - Resources</title>

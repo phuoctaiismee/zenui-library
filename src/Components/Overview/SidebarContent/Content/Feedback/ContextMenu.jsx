@@ -701,8 +701,6 @@ export default ContextMenu;
                     >
                         Context Menu With Dropdown
                     </a>
-                    <div data-ea-publisher="zenuinet" className='w-full'
-                         data-ea-type="image"></div>
                 </div>
             </aside>
             <Helmet>

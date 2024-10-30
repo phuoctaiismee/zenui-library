@@ -99,7 +99,7 @@ const MobileNavbar = () => {
             </span>
                 </div>
                 <ul className='text-gray-600 flex flex-col mt-5 items-start gap-4 font-[500] capitalize text-[1rem]'>
-                    <li>About Us</li>
+                    <Link to='/about-us'>About Us</Link>
                     <li onClick={() => setDropdownOpen(!dropdownOpen)}
                         className='cursor-pointer flex items-center gap-[8px]'>
                         Developer Kit

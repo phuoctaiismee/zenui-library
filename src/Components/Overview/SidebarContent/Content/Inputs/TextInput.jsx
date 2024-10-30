@@ -1022,8 +1022,6 @@ export default SearchInput;
             >
               Join Us Input
             </a>
-
-            <div data-ea-publisher="zenuinet" className='w-full' data-ea-type="image"></div>
           </div>
 
         </div>

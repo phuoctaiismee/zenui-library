@@ -591,7 +591,6 @@ export default SwitchInput;
           >
             Animated Switch
           </a>
-          <div data-ea-publisher="zenuinet" className='w-full' data-ea-type="image"></div>
         </div>
       </aside>
       <Helmet>

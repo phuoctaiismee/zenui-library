@@ -547,7 +547,6 @@ const AuthButton = () => {
                 >
                     Social Login Bordered
                 </a>
-                <div data-ea-publisher="zenuinet" className='w-full' data-ea-type="image"></div>
             </div>
             <Helmet>
                 <title>Buttons - Auth Button</title>

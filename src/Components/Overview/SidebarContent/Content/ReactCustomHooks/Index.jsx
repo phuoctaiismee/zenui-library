@@ -44,9 +44,6 @@ const ReactCustomHooks = () => {
                 }
             </p>
 
-            <div data-ea-publisher="zenuinet" className="horizontal w-full"
-                 data-ea-type="image"></div>
-
             {/*  search area  */}
             <div>
                 <input type='text' placeholder='Search hook...' onChange={handleOnChange}
@@ -106,7 +103,7 @@ const ReactCustomHooks = () => {
                 )
             }
 
-            <BlocksFooter backUrl='/getting-started/installation' backName='installation' forwardName='templates'
+            <BlocksFooter backUrl='/getting-started/resources' backName='resources' forwardName='templates'
                           forwardUrl='/getting-started/templates'/>
 
             <Helmet>

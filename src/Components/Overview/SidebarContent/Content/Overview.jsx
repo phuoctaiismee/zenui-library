@@ -36,8 +36,6 @@ const Overview = () => {
               </p>
           </div>
 
-          <div data-ea-publisher="zenuinet" className="horizontal w-full" data-ea-type="image"></div>
-
           <div className="mt-8 w-full text-text">
               <ContentHeader text={"What's New in ZenUI Library?"}/>
               <ul className="flex flex-col gap-3 list-disc ml-8 mt-3">

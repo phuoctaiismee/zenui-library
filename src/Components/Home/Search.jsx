@@ -7,7 +7,6 @@ import {CiSearch} from "react-icons/ci";
 import {blocksSearchData, componentSearchData} from "../../Utils/SearchData.js";
 import {LuLayoutTemplate} from "react-icons/lu";
 import {RxSection} from "react-icons/rx";
-import {CgTemplate} from "react-icons/cg";
 import {Link} from "react-router-dom";
 
 const Search = ({isSearchOpen}) => {

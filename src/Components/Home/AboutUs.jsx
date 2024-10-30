@@ -67,9 +67,6 @@ const Hero = () => {
                     </p>
 
                     <div className="flex items-center gap-4 mt-5">
-                        {/*<a href="">*/}
-                        {/*  <FaGithub className="text-[#9caebc] text-[1.5rem]" />*/}
-                        {/*</a>*/}
 
                         <a href="https://web.facebook.com/asfak00" target='_blank'>
                             <FaFacebook

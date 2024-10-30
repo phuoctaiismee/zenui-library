@@ -1217,7 +1217,6 @@ export default AnimatedHoverCard;
                         >
                             Hover Animated Card 11
                         </a>
-                        <div data-ea-publisher="zenuinet" className='w-full' data-ea-type="image"></div>
                     </div>
                 </div>
             </aside>

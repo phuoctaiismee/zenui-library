@@ -99,6 +99,10 @@ const Footer = () => {
                 <span><a href='/icons'>Icons</a></span>
               </li>
               <li>
+                <p><a href='/getting-started/custom-hooks'>Custom Hooks</a></p>
+                <span><a href='/getting-started/custom-hooks'>Custom Hooks</a></span>
+              </li>
+              <li>
                 <p><a href='/getting-started/resources'>Resources</a></p>
                 <span><a href='/getting-started/resources'>Resources</a></span>
               </li>
