@@ -8,14 +8,10 @@
 ZenUI Library
 </h1>
 <p align="center">
-<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/release-date/asfak00/zenui-library"></a>
-<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/commit-activity/w/asfak00/zenui-library
-<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="Release Date" src="https://img.shields.io/github/release-date/asfak00/zenui-library"></a>
-<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="Commit History" src="https://img.shields.io/github/commit-activity/w/asfak00/zenui-library
-"></a>
-<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/contributors/asfak00/zenui-library
-<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="Contributors" src="https://img.shields.io/github/contributors/asfak00/zenui-library
-"></a>
+<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="release date" src="https://img.shields.io/github/release-date/asfak00/zenui-library"></a>
+<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="commits" src="https://img.shields.io/github/commit-activity/w/asfak00/zenui-library"></a>
+<a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="Contributors" src="https://img.shields.io/github/contributors/asfak00/zenui-library"></a>
+  <a href="https://github.com/Asfak00/zenui-library" target="__blank"><img alt="stars" src="https://img.shields.io/github/stars/asfak00/zenui-library"></a>
 </p>
 <p align="center">
 Open-Source UI Component Library<br>
