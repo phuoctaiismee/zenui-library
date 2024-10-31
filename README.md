@@ -142,7 +142,7 @@ Feel free to add any Tailwind CSS class to further style components, for example
 
 We're excited to offer the opportunity for creators to sell their templates on the ZenUI Library! Contribute and earn by sharing your React, Next.js, or Tailwind CSS templates with our community.
 
-For more details on how to submit and sell your templates, including guidelines, submission steps, and earnings information, please read the [TEMPLATE_SUBMISSION_GUIDE.md]() file.
+For more details on how to submit and sell your templates, including guidelines, submission steps, and earnings information, please read the [TEMPLATE_SUBMISSION_GUIDE.md](https://github.com/Asfak00/zenui-library/blob/production/TEMPLATE_SUBMISSION_GUIDE.md) file.
 
 Earn 80% commission on each sale, and help empower other developers with your creative solutions! 🚀
 
