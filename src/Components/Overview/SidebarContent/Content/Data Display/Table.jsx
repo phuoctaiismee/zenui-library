@@ -102,6 +102,8 @@ const Table = () => {
     const [sortConfig2, setSortConfig2] = useState({key: null, direction: 'asc'});
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
+    const [isOpen, setIsOpen] = useState(false);
+    const selectRef = useRef(null);
 
     // Handle search
     const filteredData2 = useMemo(() => {
@@ -147,9 +149,6 @@ const Table = () => {
         setCurrentPage(Math.min(Math.max(1, page), totalPages));
     };
 
-    const [isOpen, setIsOpen] = useState(false);
-    const selectRef = useRef(null);
-
     const handleOptionClick = (value) => {
         setPageSize(Number(value));
         setCurrentPage(1);
@@ -167,7 +166,6 @@ const Table = () => {
     useEffect(() => {
         document.addEventListener('mousedown', handleOutsideClick);
         return () => document.removeEventListener('mousedown', ()=> {
-            handleOutsideClick()
             handleOutsideClick3()
         });
     }, []);
@@ -1233,7 +1231,7 @@ export default Table;
                                                 Showing {((currentPage3 - 1) * pageSize3) + 1} to {Math.min(currentPage3 * pageSize3, sortedData3.length)} of {sortedData3.length} results
                                             </div>
 
-                                            <div ref={selectRef} className="relative w-44">
+                                            <div ref={selectRef3} className="relative w-44">
                                             <button
                                                     onClick={handleToggle3}
                                                     className="w-max px-2 py-0.5 text-left bg-white border border-gray-300 rounded shadow-sm flex items-center justify-between gap-[10px] hover:border-gray-400 focus:outline-none"
