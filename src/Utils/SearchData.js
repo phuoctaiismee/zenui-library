@@ -72,6 +72,10 @@ export const componentSearchData = [
         url: '/components/appbar'
     },
     {
+        title: 'Table',
+        url: '/components/table'
+    },
+    {
         title: 'Image Gallery',
         url: '/components/image-gallery'
     },

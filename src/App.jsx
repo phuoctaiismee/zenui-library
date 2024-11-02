@@ -102,6 +102,7 @@ import DragAndDropPage from "./Pages/Components/Surfaces/DragAndDropPage.jsx";
 import ResourcesPage from "./Pages/ResourcesPage.jsx";
 import ContextMenuPage from "./Pages/Components/Feedback/ContextMenuPage.jsx";
 import ReactCustomHooksPage from "./Pages/ReactCustomHooksPage.jsx";
+import TablePage from "./Pages/Components/Data Display/TablePage.jsx";
 
 
 const App = () => {
@@ -253,6 +254,7 @@ const App = () => {
 
                 {/* data display */}
                 <Route path="/components/badge" element={<BadgePage/>}/>
+                <Route path="/components/table" element={<TablePage/>}/>
                 <Route path="/components/tooltip" element={<TooltipPage/>}/>
                 <Route path="/components/timeline" element={<TimelinePage/>}/>
 

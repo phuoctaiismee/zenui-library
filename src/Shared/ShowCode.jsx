@@ -31,7 +31,7 @@ const ShowCode = ({ code }) => {
           />
         )}
       </div>
-      <SyntaxHighlighter language="jsx" className='text-[14px] max-h-[400px] 400px:max-w-[380px] 425px:max-w-[610px] max-w-[320px]' style={dracula} showLineNumbers>
+      <SyntaxHighlighter language="jsx" className='text-[14px] max-h-[400px] 400px:max-w-[380px] 425px:max-w-[638px] max-w-[320px]' style={dracula} showLineNumbers>
         {code}
       </SyntaxHighlighter>
     </div>

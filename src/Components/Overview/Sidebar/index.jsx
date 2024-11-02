@@ -584,6 +584,18 @@ const index = ({ startContent, setStartContent }) => {
 
               </Link>
               <Link
+                  to={"/components/table"}
+                  className={`${
+                      startContent === 100 &&
+                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                  }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                  onClick={() => setStartContent(100)}
+              >
+                Table
+
+                  <NewBadge/>
+              </Link>
+              <Link
                   to={"/components/tooltip"}
                   className={`${
                       startContent === 37 &&

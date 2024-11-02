@@ -144,6 +144,12 @@ export const allComponents = [
     groupName: "data_display",
   },
   {
+    title: "Table",
+    image: "https://i.ibb.co.com/LR10Wn3/table.png",
+    url: "/components/table",
+    groupName: "data_display",
+  },
+  {
     title: "Timeline",
     image: "https://i.ibb.co.com/mFX1jXf/timeline.png",
     url: "/components/timeline",
@@ -183,6 +189,12 @@ export const allComponents = [
     title: "card",
     image: "https://i.ibb.co/ChStSmV/Name-12.png",
     url: "/components/cards",
+    groupName: "surface",
+  },
+  {
+    title: "Drag & Drop",
+    image: "https://i.ibb.co.com/RCnzWb4/drag-drop.png",
+    url: "/components/drag-and-drop",
     groupName: "surface",
   },
   {

@@ -385,3 +385,17 @@ input[type="number"] {
   right: 80px !important;
   bottom: 87px !important;
 }
+
+.customTable::-webkit-scrollbar{
+  height: 5px;
+}
+
+.customTable::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.customTable::-webkit-scrollbar-thumb {
+  background: #a2a2a2;
+  border-radius: 10px;
+}
