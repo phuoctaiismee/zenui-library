@@ -75,6 +75,25 @@ const OtpInput = () => {
         }
     };
 
+    // for custom navigation
+    const handleCustomNavigationInputChange = (e, index) => {
+        const { value } = e.target;
+        const newOtp = [...autoNavigationInputs.current.map(input => input.value)];
+
+        // Ensure only a single digit is entered per box
+        if (/^[0-9]$/.test(value) && value.length === 1) {
+            newOtp[index] = value; // Update the OTP array with the new digit
+            onChange(newOtp.join('')); // Update the OTP state with the new value
+        } else if (value === '') {
+            // Clear the value if the input is empty
+            newOtp[index] = '';
+            onChange(newOtp.join(''));
+        } else {
+            // If the input has more than one character, reset it to the first character only
+            e.target.value = value.slice(0, 1);
+        }
+    };
+
 
 
     const handleAutoNavigationKeydown = (e, index) => {
@@ -116,39 +135,77 @@ const OtpInput = () => {
                         {customNavigatePreview && (
                             <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                                 <div className='grid grid-cols-4 gap-[10px] w-full 1024px:w-[50%]'>
-                                    <input
-                                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
-                                        placeholder='0' type='number' />
-                                    <input
-                                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
-                                        placeholder='0' type='number' />
-                                    <input
-                                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
-                                        placeholder='0' type='number' />
-                                    <input
-                                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
-                                        placeholder='0' type='number' />
+                                    {
+                                        Array.from({ length }).map((_, index) => (
+                                            <input
+                                                key={index}
+                                                ref={(el) => (autoNavigationInputs.current[index] = el)}
+                                                className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
+                                                placeholder='0'
+                                                max="1"
+                                                onChange={(e) => handleCustomNavigationInputChange(e, index)}
+                                                type='number'
+                                            />
+                                        ))
+                                    }
                                 </div>
                             </div>
                         )}
 
                         {customNavigationCode && (
                             <Showcode
-                                code='
-<div className="grid grid-cols-4 gap-[10px] w-full lg:w-[50%]">
-    <input className="p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary"
-                placeholder="0" type="number"/>
+                                code={`import React, { useState, useRef } from "react";
 
-    <input className="p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary"
-                placeholder="0" type="number"/>
+const OtpInput = () => {
+    const length = 4
+    const [customNavigatePreview, setCustomNavigationPreview] = useState(true);
+    const [customNavigationCode, setCustomNavigationCode] = useState(false);
 
-    <input className="p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary"
-                placeholder="0" type="number"/>
+    const handleCustomNavigationPreview = () => {
+        setCustomNavigationPreview(true);
+        setCustomNavigationCode(false);
+    };
 
-    <input className="p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary"
-                placeholder="0" type="number"/>
-</div>
-                '
+    const handleCustomNavigationCode = () => {
+        setCustomNavigationCode(true);
+        setCustomNavigationPreview(false);
+    };
+    const handleCustomNavigationInputChange = (e, index) => {
+        const { value } = e.target;
+        const newOtp = [...autoNavigationInputs.current.map(input => input.value)];
+    
+        if (/^[0-9]$/.test(value) && value.length === 1) {
+            newOtp[index] = value; 
+            onChange(newOtp.join('')); 
+        } else if (value === '') {
+            newOtp[index] = '';
+            onChange(newOtp.join(''));
+        } else {
+            e.target.value = value.slice(0, 1);
+        }
+    };
+
+    return (
+        <div className='grid grid-cols-4 gap-[10px] w-full 1024px:w-[50%]'>
+            {
+                Array.from({ length }).map((_, index) => (
+                    <input
+                        key={index}
+                        ref={(el) => (autoNavigationInputs.current[index] = el)}
+                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
+                        placeholder='0'
+                        max="1"
+                        onChange={(e) => handleCustomNavigationInputChange(e, index)}
+                        type='number'
+                    />                         
+                ))
+            }
+        </div>
+    );
+};
+
+export default OtpInput;
+`}
                             />
                         )}
                     </div>
