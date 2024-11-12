@@ -6,6 +6,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 
 const Footer = () => {
+  const date = new Date();
   const [inputValue, setInputValue] = useState("");
 
   const [result, setResult] = React.useState("");
@@ -174,7 +175,7 @@ const Footer = () => {
         <div
             className="w-full border-t border-gray-100 flex items-center 425px:flex-row flex-col 425px:gap-0 gap-5 justify-center mt-12 pt-6">
           <p className="text-gray-400 text-center text-[0.9rem]">
-            Copyright &copy; 2024 by ZenUI Library.
+            Copyright &copy; {date.getFullYear()} by ZenUI Library.
           </p>
         </div>
       </div>
