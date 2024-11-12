@@ -1,4 +1,4 @@
-import React, { useState , useRef} from "react";
+import React, { useState, useRef } from "react";
 
 // components
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
@@ -47,34 +47,57 @@ const OtpInput = () => {
 
     const length = 4
 
-    const onChange = (value)=> {
+    const onChange = (value) => {
         setAutoOtp(value)
     }
-        const autoNavigationInputs = useRef([])
+    const autoNavigationInputs = useRef([])
 
-        const handleAutoNavigationInputChange = (e, index) => {
-            const {value} = e.target
+    const handleAutoNavigationInputChange = (e, index) => {
+        const { value } = e.target;
+        const newOtp = [...autoNavigationInputs.current.map(input => input.value)];
 
-            const newOtp = [...autoNavigationInputs.current.map(input => input.value)]
+        // Ensure only a single digit is entered per box
+        if (/^[0-9]$/.test(value) && value.length === 1) {
+            newOtp[index] = value; // Update the OTP array with the new digit
+            onChange(newOtp.join('')); // Update the OTP state with the new value
 
-            if(/^[0-9]$/.test(value)){
-                newOtp[index] = value
-
-                onChange(newOtp.join(''))
-
-                if(index < length - 1){
-                    autoNavigationInputs.current[index + 1].focus()
-                }
-            }else if(value === ''){
-                newOtp[index] = ''
-
-                onChange(newOtp.join(''))
+            // Move focus to the next input if it's not the last box
+            if (index < length - 1) {
+                autoNavigationInputs.current[index + 1].focus();
             }
+        } else if (value === '') {
+            // Clear the value if the input is empty
+            newOtp[index] = '';
+            onChange(newOtp.join(''));
+        } else {
+            // If the input has more than one character, reset it to the first character only
+            e.target.value = value.slice(0, 1);
         }
+    };
+
+    // for custom navigation
+    const handleCustomNavigationInputChange = (e, index) => {
+        const { value } = e.target;
+        const newOtp = [...autoNavigationInputs.current.map(input => input.value)];
+
+        // Ensure only a single digit is entered per box
+        if (/^[0-9]$/.test(value) && value.length === 1) {
+            newOtp[index] = value; // Update the OTP array with the new digit
+            onChange(newOtp.join('')); // Update the OTP state with the new value
+        } else if (value === '') {
+            // Clear the value if the input is empty
+            newOtp[index] = '';
+            onChange(newOtp.join(''));
+        } else {
+            // If the input has more than one character, reset it to the first character only
+            e.target.value = value.slice(0, 1);
+        }
+    };
 
 
-    const handleAutoNavigationKeydown = (e,index) => {
-        if(e.key === 'Backspace' && !autoNavigationInputs.current[index].value && index > 0){
+
+    const handleAutoNavigationKeydown = (e, index) => {
+        if (e.key === 'Backspace' && !autoNavigationInputs.current[index].value && index > 0) {
             autoNavigationInputs.current[index - 1].focus()
         }
     }
@@ -95,17 +118,15 @@ const OtpInput = () => {
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${customNavigatePreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[105px] rounded-br'}`}></div>
                             <button
-                                className={`${
-                                    customNavigatePreview && "text-tabTextColor"
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                                className={`${customNavigatePreview && "text-tabTextColor"
+                                    } px-6 py-2 border-b z-[2] relative text-text border-border`}
                                 onClick={handleCustomNavigationPreview}
                             >
                                 Preview
                             </button>
                             <button
-                                className={`${
-                                    customNavigationCode && "text-tabTextColor"
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                                className={`${customNavigationCode && "text-tabTextColor"
+                                    } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
                                 onClick={handleCustomNavigationCode}
                             >
                                 Code
@@ -114,45 +135,83 @@ const OtpInput = () => {
                         {customNavigatePreview && (
                             <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                                 <div className='grid grid-cols-4 gap-[10px] w-full 1024px:w-[50%]'>
-                                    <input
-                                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
-                                        placeholder='0' type='number'/>
-                                    <input
-                                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
-                                        placeholder='0' type='number'/>
-                                    <input
-                                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
-                                        placeholder='0' type='number'/>
-                                    <input
-                                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
-                                        placeholder='0' type='number'/>
+                                    {
+                                        Array.from({ length }).map((_, index) => (
+                                            <input
+                                                key={index}
+                                                ref={(el) => (autoNavigationInputs.current[index] = el)}
+                                                className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
+                                                placeholder='0'
+                                                max="1"
+                                                onChange={(e) => handleCustomNavigationInputChange(e, index)}
+                                                type='number'
+                                            />
+                                        ))
+                                    }
                                 </div>
                             </div>
                         )}
 
                         {customNavigationCode && (
                             <Showcode
-                                code='
-<div className="grid grid-cols-4 gap-[10px] w-full lg:w-[50%]">
-    <input className="p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary"
-                placeholder="0" type="number"/>
+                                code={`import React, { useState, useRef } from "react";
 
-    <input className="p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary"
-                placeholder="0" type="number"/>
+const OtpInput = () => {
+    const length = 4
+    const [customNavigatePreview, setCustomNavigationPreview] = useState(true);
+    const [customNavigationCode, setCustomNavigationCode] = useState(false);
 
-    <input className="p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary"
-                placeholder="0" type="number"/>
+    const handleCustomNavigationPreview = () => {
+        setCustomNavigationPreview(true);
+        setCustomNavigationCode(false);
+    };
 
-    <input className="p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary"
-                placeholder="0" type="number"/>
-</div>
-                '
+    const handleCustomNavigationCode = () => {
+        setCustomNavigationCode(true);
+        setCustomNavigationPreview(false);
+    };
+    const handleCustomNavigationInputChange = (e, index) => {
+        const { value } = e.target;
+        const newOtp = [...autoNavigationInputs.current.map(input => input.value)];
+    
+        if (/^[0-9]$/.test(value) && value.length === 1) {
+            newOtp[index] = value; 
+            onChange(newOtp.join('')); 
+        } else if (value === '') {
+            newOtp[index] = '';
+            onChange(newOtp.join(''));
+        } else {
+            e.target.value = value.slice(0, 1);
+        }
+    };
+
+    return (
+        <div className='grid grid-cols-4 gap-[10px] w-full 1024px:w-[50%]'>
+            {
+                Array.from({ length }).map((_, index) => (
+                    <input
+                        key={index}
+                        ref={(el) => (autoNavigationInputs.current[index] = el)}
+                        className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
+                        placeholder='0'
+                        max="1"
+                        onChange={(e) => handleCustomNavigationInputChange(e, index)}
+                        type='number'
+                    />                         
+                ))
+            }
+        </div>
+    );
+};
+
+export default OtpInput;
+`}
                             />
                         )}
                     </div>
 
                     <div className="mt-8">
-                        <ContentHeader text={"Keyboard navigation"} id={"keyboard_navigation"}/>
+                        <ContentHeader text={"Keyboard navigation"} id={"keyboard_navigation"} />
                     </div>
 
                     <p className="w-full 425px:w-[80%] text-text text-[1rem]">
@@ -164,17 +223,15 @@ const OtpInput = () => {
                             <div
                                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${autoNavigationPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[105px] rounded-br'}`}></div>
                             <button
-                                className={`${
-                                    autoNavigationPreview && "text-tabTextColor"
-                                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                                className={`${autoNavigationPreview && "text-tabTextColor"
+                                    } px-6 py-2 border-b z-[2] relative text-text border-border`}
                                 onClick={handleAutoNavigationPreview}
                             >
                                 Preview
                             </button>
                             <button
-                                className={`${
-                                    autoNavigationCode && "text-tabTextColor"
-                                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                                className={`${autoNavigationCode && "text-tabTextColor"
+                                    } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
                                 onClick={handleAutoNavigationCode}
                             >
                                 Code
@@ -184,16 +241,16 @@ const OtpInput = () => {
                             <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
                                 <div className='grid grid-cols-4 gap-[10px] w-full 1024px:w-[50%]'>
                                     {
-                                        Array.from({length}).map((_, index) => (
+                                        Array.from({ length }).map((_, index) => (
                                             <input
                                                 key={index}
-                                            ref={(el) => (autoNavigationInputs.current[index] = el)}
-                                            className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
-                                            placeholder='0'
+                                                ref={(el) => (autoNavigationInputs.current[index] = el)}
+                                                className='p-3 text-center border border-[#bcbcbc] rounded-md outline-none focus:border-primary'
+                                                placeholder='0'
                                                 max="1"
-                                            onChange={(e)=> handleAutoNavigationInputChange(e, index)}
-                                            onKeyDown={(e)=> handleAutoNavigationKeydown(e, index)}
-                                            type='number'
+                                                onChange={(e) => handleAutoNavigationInputChange(e, index)}
+                                                onKeyDown={(e) => handleAutoNavigationKeydown(e, index)}
+                                                type='number'
                                             />
                                         ))
                                     }
@@ -235,6 +292,9 @@ const OtpInput = () => {
 
             onChange(newOtp.join(""))
         }
+            else{
+                e.target.value = value.slice(0, 1);
+            }
     }
 
 
@@ -270,7 +330,7 @@ export default OtpInput;
                         )}
                     </div>
 
-                    <OverviewFooter backUrl='/components/input-file' backName='file' forwardName='normal button' forwardUrl='/components/normal-button'/>
+                    <OverviewFooter backUrl='/components/input-file' backName='file' forwardName='normal button' forwardUrl='/components/normal-button' />
                 </div>
 
                 <div className="1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]">
@@ -279,18 +339,16 @@ export default OtpInput;
                     </h2>
                     <a
                         href="#custom_navigation"
-                        className={`${
-                            contentActiveTab === 1 && "!text-primary !border-primary"
-                        } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
+                        className={`${contentActiveTab === 1 && "!text-primary !border-primary"
+                            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
                         onClick={() => setContentActiveTab(1)}
                     >
                         Custom Navigation
                     </a>
                     <a
                         href="#keyboard_navigation"
-                        className={`${
-                            contentActiveTab === 2 && "!text-primary !border-primary"
-                        } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
+                        className={`${contentActiveTab === 2 && "!text-primary !border-primary"
+                            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
                         onClick={() => setContentActiveTab(2)}
                     >
                         Keyboard Navigation
