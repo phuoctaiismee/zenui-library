@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // components
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
 import ContentHeader from "../../../../../Shared/ContentHeader";
+
+// contents for scrollspy
+import { fileInputContents } from '../../../../../Utils/ContentsConfig/InputContents';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 
 // react helmet
 import { Helmet } from "react-helmet";
@@ -19,6 +23,8 @@ import Showcode from "../../../../../Shared/ShowCode";
 
 const FileInput = () => {
   const [contentActiveTab, setContentActiveTab] = useState(0);
+  const sectionIds = fileInputContents.map(item => item.href.slice(1));
+  const activeSection = useScrollSpy(sectionIds);
 
   // upload with icon
   const [iconUploadPreview, setIconUploadPreview] = useState(true);
@@ -670,42 +676,19 @@ export default Inputs;
           <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
             CONTENTS
           </h2>
-          <a
-              href="#upload_with_icon"
-              className={`${
-                  contentActiveTab === 1 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(1)}
-          >
-            Upload With Icon
-          </a>
-          <a
-              href="#upload_with_button"
-              className={`${
-                  contentActiveTab === 2 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(2)}
-          >
-            Upload With Button
-          </a>
-          <a
-              href="#upload_with_heading"
-              className={`${
-                  contentActiveTab === 3 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(3)}
-          >
-            Upload With Heading
-          </a>
-          <a
-              href="#profile_upload"
-              className={`${
-                  contentActiveTab === 4 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(4)}
-          >
-            Profile Upload
-          </a>
+          {
+            fileInputContents.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className={`${
+                  activeSection === item.href.slice(1) && "!text-primary !border-primary"
+                } text-[0.9rem] text-text border-l border-transparent pl-4`}
+              >
+                {item.title}
+              </a>
+            ))
+          }
         </div>
       </aside>
       <Helmet>
