@@ -79,8 +79,8 @@ const Footer = () => {
             </h3>
             <ul className="footer font-[400] text-[#9caebc] text-[0.9rem] flex flex-col gap-2">
               <li>
-                <p><a href='/getting-started/templates'>Free templates</a></p>
-                <span><a href='/getting-started/templates'>Free templates</a></span>
+                <p><a href='/templates'>Free templates</a></p>
+                <span><a href='/templates'>Free templates</a></span>
               </li>
               <li>
                 <p><a href='/components/all-components'>Components</a></p>
@@ -99,12 +99,12 @@ const Footer = () => {
                 <span><a href='/icons'>Icons</a></span>
               </li>
               <li>
-                <p><a href='/getting-started/custom-hooks'>Custom Hooks</a></p>
-                <span><a href='/getting-started/custom-hooks'>Custom Hooks</a></span>
+                <p><a href='/custom-hooks'>Custom Hooks</a></p>
+                <span><a href='/custom-hooks'>Custom Hooks</a></span>
               </li>
               <li>
-                <p><a href='/getting-started/resources'>Resources</a></p>
-                <span><a href='/getting-started/resources'>Resources</a></span>
+                <p><a href='/docs/resources'>Resources</a></p>
+                <span><a href='/docs/resources'>Resources</a></span>
               </li>
             </ul>
           </div>

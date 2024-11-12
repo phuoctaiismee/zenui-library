@@ -47,6 +47,13 @@ const FeedbackCard = ({ feedback }) => {
                         className='w-[20px] h-[20px] rounded-full'
                     />
                 )}
+                {feedback?.source === 'daily_dev' && (
+                    <img
+                        src='https://i.ibb.co.com/hLZFKK2/unnamed.png'
+                        alt='platform/logo'
+                        className='w-[20px] h-[20px] rounded-full'
+                    />
+                )}
             </div>
 
             <p className='text-[1rem] text-gray-600 mt-4'>{feedback?.review}</p>

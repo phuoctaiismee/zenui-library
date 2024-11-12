@@ -18,10 +18,12 @@ export const feedbackData = [
         source: 'product_hunt',
     },
     {
-        name: 'Mohammad Mojahidul Islam',
-        avatar: 'https://ph-avatars.imgix.net/7621913/original.jpeg?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=40&h=40&fit=crop&dpr=1',
-        review: "It's an awesome component library. Its components are easy to use in any project, and I use ZenUI most of the time.",
-        source: 'product_hunt',
+        name: 'Peter Cruckshank',
+        avatar: 'https://i.ibb.co.com/Wzv77DV/avatar-A9xh33q0-Qoxtk-Go-JRCosp.webp',
+        review: "Nice there’s a ton of great UI components in this collection! 🥳\n" +
+            "\n" +
+            "I love you can just copy/paste the code and adjust it for your project 👍🏻 Great job!",
+        source: 'daily_dev',
 
     },
     {
@@ -50,10 +52,10 @@ export const feedbackData = [
         source: 'product_hunt',
     },
     {
-        name: 'Manik Mia',
-        avatar: 'https://pbs.twimg.com/profile_images/1678361696178675712/Nn0sYx6v_400x400.jpg',
-        review: 'I’ve been using ZenUI for my React projects, and it’s been a game-changer! The pre-built components are beautiful and customizable, making it easy to create responsive web applicationa quickly. The integration with Tailwind CSS allows for a cohesive design throughout my applications. I highly recommend ZenUI to any developer looking to streamline their workflow!',
-        source: 'linkedin',
+        name: 'Shahriar Sajeeb',
+        avatar: 'https://ph-avatars.imgix.net/7657612/4a79f130-82df-4689-8a2f-e15dc85243a2.jpeg?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=40&h=40&fit=crop&dpr=1',
+        review: 'ZenUI is a great tool for fast website development. The templates are modern and easy to use, making it simple to build impressive designs quickly. It’s a solid resource for any developer looking to create sleek, responsive websites.',
+        source: 'product_hunt',
     },
     {
         name: 'Miftaul Islam',
@@ -77,10 +79,10 @@ export const feedbackData = [
         source: 'product_hunt',
     },
     {
-        name: 'Shahriar Sajeeb',
-        avatar: 'https://ph-avatars.imgix.net/7657612/4a79f130-82df-4689-8a2f-e15dc85243a2.jpeg?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=40&h=40&fit=crop&dpr=1',
-        review: 'ZenUI is a great tool for fast website development. The templates are modern and easy to use, making it simple to build impressive designs quickly. It’s a solid resource for any developer looking to create sleek, responsive websites.',
-        source: 'product_hunt',
+        name: 'Franklin De Jesús Durán',
+        avatar: 'https://i.ibb.co.com/8jwGzmQ/unnamed-1.png',
+        review: 'It’s perfect, clean, simple, beautiful and with tailwind',
+        source: 'daily_dev',
     },
     {
         name: 'Bablu Mia',

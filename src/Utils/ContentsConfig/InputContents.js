@@ -1,3 +1,4 @@
+// inputs
 export const textInputContents = [
   {
     id: 1,
@@ -224,5 +225,58 @@ export const otpInputContents = [
     id: 2,
     title: 'Keyboard Navigation',
     href: '#keyboard_navigation',
+  },
+];
+
+// buttons
+export const normalButtonContents = [
+  {
+    id: 1,
+    title: 'Normal Button',
+    href: '#normal_button',
+  },
+  {
+    id: 2,
+    title: 'Appstore button',
+    href: '#appstore_button',
+  },
+  {
+    id: 3,
+    title: 'playstore button',
+    href: '#playstore_button',
+  },
+  {
+    id: 4,
+    title: 'download button',
+    href: '#download_button',
+  },
+  {
+    id: 5,
+    title: 'add to cart button',
+    href: '#add_to_cart_button',
+  },
+  {
+    id: 6,
+    title: 'variants button',
+    href: '#variants_button',
+  },
+  {
+    id: 7,
+    title: 'buttons shape',
+    href: '#buttons_shape',
+  },
+]
+
+// data display
+export const pieChartContents = [
+  {
+    id: 1,
+    title: 'fill pie chart',
+    href: '#fill_pie_chart',
+  },
+  {
+    id: 2,
+    title: 'bordered pie chart',
+    href: '#bordered_pie_chart',
   },
 ];

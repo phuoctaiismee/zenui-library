@@ -20,7 +20,7 @@ export const TeamData = [
     {
         name: 'Pritue Mondal',
         title: 'UI/UX Designer',
-        image: 'https://media.licdn.com/dms/image/v2/D5603AQEGdO8n5csNFw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1723785840603?e=1730332800&v=beta&t=z_Lq_jdvNb1JF8ZRlSP-5cjCV5exWd9m0xYmF4QHr-s',
+        image: 'https://i.ibb.co.com/S70Mkfm/1723785840603.jpg',
         behanceLink: '',
         figmaLink: '',
         linkedinLink: 'linkedin.com/in/prituemondal',

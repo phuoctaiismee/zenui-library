@@ -8,4 +8,22 @@ export const DevContributorsData = [
         githubLink: 'https://github.com/Tuhin35',
         website: 'https://portfolio-final-gamma-six.vercel.app/'
     },
+    {
+        name: 'Rahamtullah sheikh',
+        title: 'Software Engineer',
+        image: 'https://avatars.githubusercontent.com/u/76489436?v=4',
+        linkedinLink: '',
+        twitterLink: 'https://x.com/Rahamtullah123',
+        githubLink: 'https://github.com/rhm856591',
+        website: 'https://rahamtullah-sheikh.netlify.app/'
+    },
+    {
+        name: 'Danish Kamal',
+        title: 'Frontend Developer',
+        image: 'https://avatars.githubusercontent.com/u/46997504?v=4',
+        linkedinLink: 'https://www.linkedin.com/in/danishzayan/',
+        twitterLink: '',
+        githubLink: 'https://github.com/danishzayan',
+        website: ''
+    },
 ]

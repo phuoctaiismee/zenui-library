@@ -129,7 +129,7 @@ const Hero = () => {
                         className="flex items-center gap-3 425px:gap-6 mt-8">
                         <button
                             className='py-3 px-6 640px:px-8 bg-[#0FABCA] text-white rounded-md hover:bg-[#1cbedb] transition-all duration-300'
-                            onClick={() => navigate("/getting-started/overview")}
+                            onClick={() => navigate("/docs/overview")}
                         >
                             Get Started
                         </button>

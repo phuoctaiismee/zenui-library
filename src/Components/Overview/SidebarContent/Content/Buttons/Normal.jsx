@@ -11,9 +11,13 @@ import {RxCross2} from "react-icons/rx";
 import {BiMessageDetail} from "react-icons/bi";
 import {AiOutlineDelete} from "react-icons/ai";
 import {IoCodeSlashOutline} from "react-icons/io5";
+import {normalButtonContents} from "../../../../../Utils/ContentsConfig/InputContents.js";
+import {useScrollSpy} from "../../../../../CustomHooks/useScrollSpy.js";
 
 const Normal = () => {
-  const [contentActiveTab, setContentActiveTab] = useState(0);
+
+  const sectionIds = normalButtonContents.map(item => item.href.slice(1));
+  const activeSection = useScrollSpy(sectionIds);
 
   // normal button
   const [normalButtonPreview, setNormalButtonPreview] = useState(true);
@@ -804,69 +808,20 @@ hover:text-[#ffffff]  transition duration-300 rounded "> Button
           <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
             CONTENTS
           </h2>
-          <a
-              href="#normal_button"
-              className={`${
-                  contentActiveTab === 1 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(1)}
-          >
-            Normal Button
-          </a>
-          <a
-              href="#appstore_button"
-              className={`${
-                  contentActiveTab === 2 && "!text-primary !border-primary"
-              } text-[0.9rem] capitalize text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(2)}
-          >
-            Appstore button
-          </a>
-          <a
-              href="#playstore_button"
-              className={`${
-                  contentActiveTab === 3 && "!text-primary !border-primary"
-              } text-[0.9rem] capitalize text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(3)}
-          >
-            playstore button
-          </a>
-          <a
-              href="#download_button"
-              className={`${
-                  contentActiveTab === 4 && "!text-primary !border-primary"
-              } text-[0.9rem] capitalize text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(4)}
-          >
-            download button
-          </a>
-          <a
-              href="#add_to_cart_button"
-              className={`${
-                  contentActiveTab === 5 && "!text-primary !border-primary"
-              } text-[0.9rem] capitalize text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(5)}
-          >
-            add to cart button
-          </a>
-          <a
-              href="#variants_button"
-              className={`${
-                  contentActiveTab === 6 && "!text-primary !border-primary"
-              } text-[0.9rem] capitalize text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(6)}
-          >
-            variants button
-          </a>
-          <a
-              href="#buttons_shape"
-              className={`${
-                  contentActiveTab === 7 && "!text-primary !border-primary"
-              } text-[0.9rem] capitalize text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(7)}
-          >
-            buttons shape
-          </a>
+
+          {
+            normalButtonContents.map((item) => (
+                <a
+                    key={item.id}
+                    href={item.href}
+                    className={`${
+                        activeSection === item.href.slice(1) && "!text-primary !border-primary"
+                    } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
+                >
+                  {item.title}
+                </a>
+            ))
+          }
         </div>
       </aside>
       <Helmet>

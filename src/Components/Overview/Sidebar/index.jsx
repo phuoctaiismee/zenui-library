@@ -25,21 +25,21 @@ const index = ({ startContent, setStartContent }) => {
         {/*  get starts  */}
         <ul className='getStarted flex flex-col gap-[12px]'>
 
-          <Link onClick={() => setStartContent(0)} to='/getting-started/overview' className={`${startContent === 0 && '!text-blue-600'} flex items-center group gap-[8px] hover:text-blue-600 text-[0.950rem] font-[500] cursor-pointer capitalize text-gray-600`}>
+          <Link onClick={() => setStartContent(0)} to='/docs/overview' className={`${startContent === 0 && '!text-blue-600'} flex items-center group gap-[8px] hover:text-blue-600 text-[0.950rem] font-[500] cursor-pointer capitalize text-gray-600`}>
             <span className={`${startContent === 0 && 'bg-blue-600 border-blue-600'} border p-[6px] rounded-md border-blue-200 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-200`}>
               <OverviewIcon className={`${startContent === 0 && 'text-white'} shrink-0 size-4 text-blue-600 group-hover:text-white transition-all duration-200`}/>
             </span>
             Overview
           </Link>
 
-          <Link onClick={() => setStartContent(70)} to='/getting-started/installation' className={`${startContent === 70 && 'text-green-600'} flex items-center gap-[8px] hover:text-green-600 text-[0.950rem] cursor-pointer group font-[500] capitalize text-gray-600`}>
+          <Link onClick={() => setStartContent(70)} to='/docs/installation' className={`${startContent === 70 && 'text-green-600'} flex items-center gap-[8px] hover:text-green-600 text-[0.950rem] cursor-pointer group font-[500] capitalize text-gray-600`}>
             <span className={`${startContent === 70 && 'bg-green-600 border-green-600'} border p-[6px] rounded-md border-green-200 group-hover:bg-green-600 group-hover:border-green-600 transition-all duration-200`}>
               <InstallationIcon className={`${startContent === 70 && 'text-white'} shrink-0 size-4 text-green-600 group-hover:text-white transition-all duration-200`}/>
             </span>
             Installation
           </Link>
 
-          <Link onClick={() => setStartContent(85)} to='/getting-started/resources' className='w-full flex items-center gap-[10px]'>
+          <Link onClick={() => setStartContent(85)} to='/docs/resources' className='w-full flex items-center gap-[10px]'>
             <div className={`${startContent === 85 && 'text-purple-600'} flex items-center gap-[8px] hover:text-purple-600 group cursor-pointer text-[0.950rem] font-[500] capitalize text-gray-600`}>
                 <span className={`${startContent === 85 && 'bg-purple-600 border-purple-600'} border p-[6px] rounded-md border-purple-200 group-hover:bg-purple-600 group-hover:border-purple-600 transition-all duration-200`}>
               <ResourceIcon className={`${startContent === 85 && 'text-white'} shrink-0 size-4 text-purple-600 group-hover:text-white transition-all duration-200`}/>
@@ -48,18 +48,16 @@ const index = ({ startContent, setStartContent }) => {
             </div>
           </Link>
 
-          <Link onClick={() => setStartContent(88)} to='/getting-started/custom-hooks' className='w-full flex items-center gap-[10px]'>
+          <Link onClick={() => setStartContent(88)} to='/custom-hooks' className='w-full flex items-center gap-[10px]'>
             <div className={`${startContent === 88 && '!text-[#DB06F9]'} flex items-center gap-[8px] hover:text-[#DB06F9] group cursor-pointer text-[0.950rem] font-[500] capitalize text-gray-600`}>
                 <span className={`${startContent === 88 && 'bg-[#DB06F9] border-[#DB06F9]'} border p-[6px] rounded-md border-[#deb7f7] group-hover:bg-[#DB06F9] group-hover:border-[#DB06F9] transition-all duration-200`}>
               <HookIcon className={`${startContent === 88 && 'text-white'} shrink-0 size-4 text-[#DB06F9] group-hover:text-white transition-all duration-200`}/>
             </span>
                 Custom Hooks
             </div>
-
-              <NewBadge/>
           </Link>
 
-          <Link onClick={() => setStartContent(1)} to='/getting-started/templates' className={`${startContent === 1 && '!text-indigo-600'} flex items-center gap-[8px] hover:text-indigo-600 group cursor-pointer text-[0.950rem] font-[500] capitalize text-gray-600`}>
+          <Link onClick={() => setStartContent(1)} to='/templates' className={`${startContent === 1 && '!text-indigo-600'} flex items-center gap-[8px] hover:text-indigo-600 group cursor-pointer text-[0.950rem] font-[500] capitalize text-gray-600`}>
             <span className={`${startContent === 1 && 'bg-indigo-600 border-indigo-600'} border p-[6px] rounded-md border-indigo-200 group-hover:border-indigo-600 group-hover:bg-indigo-600 transition-all duration-200`}>
               <TemplatesIcon className={`${startContent === 1 && 'text-white'} shrink-0 size-4 text-indigo-500 group-hover:text-white transition-all duration-200`}/>
             </span>
@@ -309,8 +307,6 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(80)}
               >
                 Drag & Drop
-
-                <NewBadge/>
               </Link>
               <Link
                   to={"/components/cards"}
@@ -332,8 +328,6 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(53)}
               >
                 Animated Cards
-
-                <NewBadge/>
               </Link>
               <Link
                   to={"/components/according"}
@@ -488,8 +482,6 @@ const index = ({ startContent, setStartContent }) => {
                     onClick={() => setStartContent(90)}
                 >
                     Context Menu
-
-                    <NewBadge/>
                 </Link>
               <Link
                   to={"/components/skeleton"}
@@ -511,7 +503,7 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(60)}
               >
                 Tree Dropdown
-                <NewBadge/>
+
               </Link>
               <Link
                   to={"/components/alert-message"}
@@ -592,8 +584,6 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(100)}
               >
                 Table
-
-                  <NewBadge/>
               </Link>
               <Link
                   to={"/components/tooltip"}
@@ -604,21 +594,19 @@ const index = ({ startContent, setStartContent }) => {
                   onClick={() => setStartContent(37)}
               >
                 tooltip
-
-                <UpdateBadge/>
               </Link>
-              {/*<Link*/}
-              {/*  to={"/components/chart"}*/}
-              {/*  className={`${*/}
-              {/*    startContent === 38 &&*/}
-              {/*    "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"*/}
-              {/*  }   border-l border-[#9caebc] flex items-center gap-[10px]`}*/}
-              {/*  onClick={() => setStartContent(38)}*/}
-              {/*>*/}
-              {/*  Pie Chart*/}
+              <Link
+                to={"/components/pie-chart"}
+                className={`${
+                  startContent === 140 &&
+                  "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                }   border-l border-[#9caebc] flex items-center gap-[10px]`}
+                onClick={() => setStartContent(140)}
+              >
+                Pie Chart
 
-              {/*  <NewBadge/>*/}
-              {/*</Link>*/}
+                <NewBadge/>
+              </Link>
               <Link
                   to={"/components/timeline"}
                   className={`${
@@ -671,7 +659,6 @@ const index = ({ startContent, setStartContent }) => {
           >
             <div className='flex items-center gap-[10px]'>
               Blocks
-              <NewBadge/>
             </div>
 
             <MdKeyboardArrowRight

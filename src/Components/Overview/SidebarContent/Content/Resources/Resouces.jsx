@@ -97,15 +97,19 @@ const Resources = () => {
 
             {/* filters */}
             <div className='flex items-end flex-wrap gap-[10px]'>
-                <input
-                    value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
-                    placeholder='Search resource'
-                    className='border-border border w-full 640px:w-[250px] rounded-md outline-none px-4 py-2.5 focus:border-primary transition-colors duration-300'
-                />
+                <div>
+                    <p className='text-[0.9rem] font-[600] text-gray-500 mb-1'>Search:</p>
+                    <input
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
+                        placeholder='Search resource'
+                        className='border-border border w-full 640px:w-[250px] rounded-md outline-none px-4 py-2.5 focus:border-primary transition-colors duration-300'
+                    />
+                </div>
                 <div className='w-full 1024px:w-fit'>
                     <p className='text-[0.9rem] font-[600] text-gray-500 mb-1'>Language:</p>
-                    <FilterByLanguages selectedLanguage={selectedLanguage} setSelectedLanguage={handleSetSelectedLanguage}/>
+                    <FilterByLanguages selectedLanguage={selectedLanguage}
+                                       setSelectedLanguage={handleSetSelectedLanguage}/>
                 </div>
                 <div className='w-full 1024px:w-fit'>
                     <p className='text-[0.9rem] font-[600] text-gray-500 mb-1'>Tool:</p>

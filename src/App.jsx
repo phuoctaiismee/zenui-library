@@ -103,6 +103,7 @@ import ResourcesPage from "./Pages/ResourcesPage.jsx";
 import ContextMenuPage from "./Pages/Components/Feedback/ContextMenuPage.jsx";
 import ReactCustomHooksPage from "./Pages/ReactCustomHooksPage.jsx";
 import TablePage from "./Pages/Components/Data Display/TablePage.jsx";
+import PieChartPage from "./Pages/Components/Data Display/PieChartPage.jsx";
 
 
 const App = () => {
@@ -178,12 +179,11 @@ const App = () => {
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage/>}/>
 
                 {/* documentation */}
-                <Route path="/getting-started" element={<ComponentsPage/>}/>
-                <Route path="/getting-started/overview" element={<OverviewPage/>}/>
-                <Route path="/getting-started/resources" element={<ResourcesPage/>}/>
-                <Route path="/getting-started/custom-hooks" element={<ReactCustomHooksPage/>}/>
-                <Route path="/getting-started/installation" element={<InstallationPage/>}/>
-                <Route path="/getting-started/templates" element={<TempletePage/>}/>
+                <Route path="/docs/overview" element={<OverviewPage/>}/>
+                <Route path="/docs/resources" element={<ResourcesPage/>}/>
+                <Route path="/custom-hooks" element={<ReactCustomHooksPage/>}/>
+                <Route path="/docs/installation" element={<InstallationPage/>}/>
+                <Route path="/templates" element={<TempletePage/>}/>
 
                 {/* components */}
 
@@ -255,6 +255,7 @@ const App = () => {
                 {/* data display */}
                 <Route path="/components/badge" element={<BadgePage/>}/>
                 <Route path="/components/table" element={<TablePage/>}/>
+                <Route path="/components/pie-chart" element={<PieChartPage/>}/>
                 <Route path="/components/tooltip" element={<TooltipPage/>}/>
                 <Route path="/components/timeline" element={<TimelinePage/>}/>
 

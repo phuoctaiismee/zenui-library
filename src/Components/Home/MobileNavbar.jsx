@@ -115,7 +115,7 @@ const MobileNavbar = () => {
                                 className="grid grid-cols-1 gap-[20px] ml-4"
                             >
                                 <div className='flex flex-col gap-[20px] text-[1rem]'>
-                                    <Link to='/getting-started/templates'
+                                    <Link to='/templates'
                                           className='!p-0'>
                                         <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
                                             Templates
@@ -141,21 +141,16 @@ const MobileNavbar = () => {
                                 </div>
 
                                 <div className='flex flex-col gap-[20px] text-[1rem]'>
-                                    <Link to='/getting-started/custom-hooks'
+                                    <Link to='/custom-hooks'
                                           className='!p-0'>
                                         <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200 flex items-center gap-[10px]'>
                                             Custom Hooks
-
-                                            <span
-                                                className="px-3 w-max py-[0.02rem] uppercase border border-[#0ea8c7] bg-[#0ea8c7] text-[#fff] rounded-full text-[0.5rem] font-[500]">
-                                                        New
-                                                    </span>
                                         </p>
                                         <span
                                             className='text-[0.8rem] font-[300] text-gray-500'>Reusable React logic helpers.</span>
                                     </Link>
 
-                                    <Link to='/getting-started/resources'
+                                    <Link to='/docs/resources'
                                           className='!p-0'>
                                         <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
                                             Resources

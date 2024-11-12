@@ -1544,7 +1544,7 @@ export default SearchSelect;
               className={`${
                 activeSection === item.href.slice(1) &&
                 '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
+              } text-[0.9rem] capitalize transition-all duration-300 text-text border-l border-transparent pl-4`}
             >
               {item.title}
             </a>

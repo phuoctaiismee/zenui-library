@@ -39,10 +39,10 @@ const Overview = () => {
           <div className="mt-8 w-full text-text">
               <ContentHeader text={"What's New in ZenUI Library?"}/>
               <ul className="flex flex-col gap-3 list-disc ml-8 mt-3">
-                  <li className="p-0 hover:bg-transparent border-none hover:border-none hover:font-[400] hover:bg-secondary">
-                      <b>Portfolio Website Templates:</b> Launch your portfolio with our new, sleek, and fully
-                      customizable templates. Showcase your work in style without the need to code from the ground up.
-                  </li>
+                  {/*<li className="p-0 hover:bg-transparent border-none hover:border-none hover:font-[400] hover:bg-secondary">*/}
+                  {/*    <b>Portfolio Website Templates:</b> Launch your portfolio with our new, sleek, and fully*/}
+                  {/*    customizable templates. Showcase your work in style without the need to code from the ground up.*/}
+                  {/*</li>*/}
                   <li className="p-0 hover:bg-transparent border-none hover:border-none hover:font-[400] hover:bg-secondary">
                       <b>Multi-Page Website Templates:</b> Choose from a variety of pre-built multi-page templates,
                       perfect for businesses, blogs, and more. These templates are crafted to help you quickly establish

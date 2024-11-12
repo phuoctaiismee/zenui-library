@@ -121,7 +121,7 @@ const Navbar = () => {
                                         onMouseLeave={() => setIsHovered(false)}
                                     >
                                         <div className='flex flex-col text-[1rem]'>
-                                            <Link to='/getting-started/templates' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                            <Link to='/templates' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
                                                 <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
                                                     Templates
                                                 </p>
@@ -144,19 +144,14 @@ const Navbar = () => {
                                         </div>
 
                                         <div className='flex flex-col text-[1rem]'>
-                                            <Link to='/getting-started/custom-hooks' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                            <Link to='/custom-hooks' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
                                                 <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200 flex items-center gap-[10px]'>
                                                     Custom Hooks
-
-                                                    <span
-                                                        className="px-3 w-max py-[0.02rem] uppercase border border-[#0ea8c7] bg-[#0ea8c7] text-[#fff] rounded-full text-[0.5rem] font-[500]">
-                                                        New
-                                                    </span>
                                                 </p>
                                                 <span className='text-[0.8rem] font-[300] text-gray-500'>Reusable React logic helpers.</span>
                                             </Link>
 
-                                            <Link to='/getting-started/resources' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
+                                            <Link to='/docs/resources' className='p-[10px] transition-all duration-200 hover:bg-gray-100 rounded-md'>
                                                 <p className='cursor-pointer leading-[20px] text-gray-600 transition-all duration-200'>
                                                     Resources
                                                 </p>

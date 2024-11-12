@@ -1,390 +1,150 @@
-import React, {useEffect, useMemo, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 
-// react icons
-import {HiOutlineArrowsUpDown} from "react-icons/hi2";
-import {BsChevronLeft, BsChevronRight, BsThreeDotsVertical} from "react-icons/bs";
-import {MdDeleteOutline, MdOutlineEdit} from "react-icons/md";
-import {IoEyeOutline} from "react-icons/io5";
-import {IoIosArrowDown} from "react-icons/io";
-import {BiSolidTrash} from "react-icons/bi";
 
-const Table = () => {
+const PieChart = () => {
 
-    const initialData = Array.from({length: 35}, (_, index) => ({
-        id: index + 1,
-        name: `User ${index + 1}`,
-        email: `user${index + 1}@example.com`,
-        role: index % 3 === 0 ? "Admin" : index % 2 === 0 ? "Editor" : "User",
-        status: index % 2 === 0 ? "Active" : "Inactive"
-    }));
-
-    const [data, setData] = useState(initialData);
-    const [search, setSearch] = useState("");
-    const [sortConfig, setSortConfig] = useState({key: null, direction: "asc"});
-    const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize, setPageSize] = useState(10);
-    const [selectedRows, setSelectedRows] = useState(new Set());
-    const [isOpen, setIsOpen] = useState(false);
-    const selectRef = useRef(null);
-    const [openActionMenuId, setOpenActionMenuId] = useState(null);
-
-    // Handle search
-    const filteredData = useMemo(() => {
-        return data.filter(item =>
-            Object.values(item).some(
-                value => value.toString().toLowerCase().includes(search.toLowerCase())
-            )
-        );
-    }, [data, search]);
-
-    // Handle sort
-    const handleSort = (key) => {
-        let direction = "asc";
-        if (sortConfig.key === key && sortConfig.direction === "asc") {
-            direction = "desc";
-        }
-        setSortConfig({key, direction});
-    };
-
-    const sortedData = useMemo(() => {
-        if (!sortConfig.key) return filteredData;
-
-        return [...filteredData].sort((a, b) => {
-            if (a[sortConfig.key] < b[sortConfig.key]) {
-                return sortConfig.direction === "asc" ? -1 : 1;
-            }
-            if (a[sortConfig.key] > b[sortConfig.key]) {
-                return sortConfig.direction === "asc" ? 1 : -1;
-            }
-            return 0;
-        });
-    }, [filteredData, sortConfig]);
-
-    // Pagination calculations
-    const totalPages = Math.ceil(sortedData.length / pageSize);
-
-    const paginatedData = sortedData.slice(
-        (currentPage - 1) * pageSize,
-        currentPage * pageSize
-    );
-
-    const toggleActionMenu = (id) => {
-        setOpenActionMenuId(openActionMenuId === id ? null : id);
-    };
-
-    const handlePageChange = (page) => {
-        setCurrentPage(Math.min(Math.max(1, page), totalPages));
-    };
-
-    // Selection handlers
-    const toggleAllInPage = (event) => {
-        const newSelected = new Set(selectedRows);
-        paginatedData.forEach(item => {
-            if (event.target.checked) {
-                newSelected.add(item.id);
-            } else {
-                newSelected.delete(item.id);
-            }
-        });
-        setSelectedRows(newSelected);
-    };
-
-    const toggleRow = (id) => {
-        const newSelected = new Set(selectedRows);
-        if (newSelected.has(id)) {
-            newSelected.delete(id);
-        } else {
-            newSelected.add(id);
-        }
-        setSelectedRows(newSelected);
-    };
-
-    const isAllInPageSelected = paginatedData.every(item => selectedRows.has(item.id));
-
-    const handleBulkDelete = () => {
-        console.log("Deleting selected rows:", Array.from(selectedRows));
-    };
-
-    const handleOptionClick = (value) => {
-        setPageSize(Number(value));
-        setCurrentPage(1);
-        setIsOpen(false);
-    };
-
-    const handleToggle = () => setIsOpen((prev) => !prev);
-
-    const handleOutsideClick = (event) => {
-        if (selectRef.current && !selectRef.current.contains(event.target)) {
-            setIsOpen(false);
-        }
-    };
+    const [windowSize, setWindowSize] = useState({
+        width: undefined,
+    });
 
     useEffect(() => {
-        document.addEventListener("mousedown", handleOutsideClick);
-        return () => document.removeEventListener("mousedown", ()=> {
-            handleOutsideClick()
-        });
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+            });
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize();
+
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
+
+    const data = [
+        {name: "Marketing", value: 15.2},
+        {name: "Sales", value: 18.2},
+        {name: "Finance", value: 12.1},
+        {name: "Human Resources", value: 9.1},
+        {name: "IT", value: 24.2},
+        {name: "Operations", value: 21.2}
+    ]
+
+    const width = windowSize.width < 376 ? 250 : 400
+    const height = windowSize.width < 376 ? 250 : 400
+    const colors = [
+        "#4b77be",
+        "#f5ab35",
+        "#e74c3c",
+        "#96c0ce",
+        "#2ecc71",
+        "#c39bd3"
+    ]
+
+    if (!Array.isArray(data) || data.length === 0) {
+        return (
+            <div className="flex items-center justify-center w-full h-full border rounded-lg p-4">
+                <p className="text-gray-500">No data available</p>
+            </div>
+        );
+    }
+
+    const total = data.reduce((sum, item) => sum + (Number(item.value) || 0), 0);
+
+    if (total === 0) {
+        return (
+            <div className="flex items-center justify-center w-full h-full border rounded-lg p-4">
+                <p className="text-gray-500">Invalid data values</p>
+            </div>
+        );
+    }
+
+    const innerRadius = 0.5
+    const radius = Math.min(width, height) / 3;
+    const centerX = width / 2;
+    const centerY = height / 2;
+
+    // Calculate donut slices
+    let startAngle = 0;
+    const slices = data.map((item, index) => {
+        const value = Number(item.value) || 0;
+        const percentage = (value / total) * 100;
+        const angle = (percentage / 100) * 2 * Math.PI;
+
+        // Calculate SVG arc path
+        const endAngle = startAngle + angle;
+        const outerX1 = centerX + radius * Math.cos(startAngle);
+        const outerY1 = centerY + radius * Math.sin(startAngle);
+        const outerX2 = centerX + radius * Math.cos(endAngle);
+        const outerY2 = centerY + radius * Math.sin(endAngle);
+        const innerX1 = centerX + radius * innerRadius * Math.cos(startAngle);
+        const innerY1 = centerY + radius * innerRadius * Math.sin(startAngle);
+        const innerX2 = centerX + radius * innerRadius * Math.cos(endAngle);
+        const innerY2 = centerY + radius * innerRadius * Math.sin(endAngle);
+
+        // Calculate label position (middle of the slice)
+        const labelAngle = startAngle + angle / 2;
+        const labelRadius = radius * (1 - innerRadius) / 2 + radius * innerRadius;
+        const labelX = centerX + labelRadius * Math.cos(labelAngle);
+        const labelY = centerY + labelRadius * Math.sin(labelAngle);
+
+        const slice = {
+            path: `M ${centerX},${centerY} L ${outerX1},${outerY1} A ${radius},${radius} 0 ${angle > Math.PI ? 1 : 0},1 ${outerX2},${outerY2} L ${innerX2},${innerY2} A ${radius * innerRadius},${radius * innerRadius} 0 ${angle > Math.PI ? 1 : 0},0 ${innerX1},${innerY1} Z`,
+            percentage,
+            color: colors[index % colors.length],
+            labelX,
+            labelY,
+            name: item.name || `Slice ${index + 1}`
+        };
+
+        startAngle = endAngle;
+        return slice;
+    });
     
     return (
-        <div className="w-max mx-auto p-4">
-            <div className="mb-4 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4 flex-1">
-                    <input
-                        placeholder="Search..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="max-w-sm py-2.5 px-4 border border-gray-200 rounded-md outline-none focus:border-blue-300"
+        <div className="relative">
+            <svg width={width} height={height - 30}
+                 className="overflow-visible mx-auto cursor-pointer">
+                {/* Donut Slices */}
+                {slices.map((slice, index) => (
+                    <path
+                        key={index}
+                        d={slice.path}
+                        fill={slice.color}
+                        className="transition-opacity duration-200 hover:opacity-80"
                     />
-                    {selectedRows.size > 0 && (
-                        <button
-                            onClick={handleBulkDelete}
-                            className="flex items-center gap-2 text-red-500"
-                        >
-                            <BiSolidTrash className="h-4 w-4"/>
-                            Delete Selected ({selectedRows.size})
-                        </button>
-                    )}
-                </div>
-            </div>
+                ))}
 
-            <div className="rounded-md border border-gray-200 w-full">
-                <table className="w-full text-sm">
-                    <thead className="bg-gray-100">
-                    <tr>
-                        <th className="p-3 w-14">
-                            <label className="flex items-center gap-[10px] cursor-pointer">
-                                <input type="checkbox" checked={isAllInPageSelected} className="hidden"
-                                       onChange={toggleAllInPage}/>
-                                <div className="relative">
-                                                            <span
-                                                                className={`${isAllInPageSelected ? "opacity-100 z-20 scale-[1]" : "opacity-0 scale-[0.4] z-[-1]"} transition-all duration-200 absolute top-0 left-0`}>
-                                                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <g id="Group 335">
-                                                                <rect id="Rectangle 331" x="-0.00012207" y="6.10352e-05"
-                                                                      width="20"
-                                                                      height="20" rx="4" className="fill-[#3B9DF8]"
-                                                                      stroke="#3B9DF8"></rect>
-                                                                <path id="Vector"
-                                                                      d="M8.19594 15.4948C8.0646 15.4949 7.93453 15.4681 7.81319 15.4157C7.69186 15.3633 7.58167 15.2865 7.48894 15.1896L4.28874 11.8566C4.10298 11.6609 3.99914 11.3965 3.99988 11.1213C4.00063 10.8461 4.10591 10.5824 4.29272 10.3878C4.47953 10.1932 4.73269 10.0835 4.99689 10.0827C5.26109 10.0819 5.51485 10.1901 5.70274 10.3836L8.19591 12.9801L14.2887 6.6335C14.4767 6.4402 14.7304 6.3322 14.9945 6.33307C15.2586 6.33395 15.5116 6.44362 15.6983 6.63815C15.8851 6.83268 15.9903 7.09627 15.9912 7.37137C15.992 7.64647 15.8883 7.91073 15.7027 8.10648L8.90294 15.1896C8.8102 15.2865 8.7 15.3633 8.57867 15.4157C8.45734 15.4681 8.32727 15.4949 8.19594 15.4948Z"
-                                                                      fill="white"></path>
-                                                            </g>
-                                                        </svg>
-                                                    </span>
-
-                                    <span
-                                        className={`${!isAllInPageSelected ? "opacity-100 z-20 scale-[1]" : "opacity-0 scale-[0.4] z-[-1]"} transition-all duration-200`}>
-                                                    <svg width="18" height="18" viewBox="0 0 21 21" fill="none"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                            <g id="Group 335">
-                                                                <rect id="Rectangle 331" x="-0.00012207" y="6.10352e-05"
-                                                                      width="20"
-                                                                      height="20" rx="4" className="fill-transparent"
-                                                                      stroke="#ccc"></rect>
-                                                            </g>
-                                                        </svg>
-                                                </span>
-                                </div>
-                            </label>
-                        </th>
-                        {Object.keys(initialData[0]).map(key => (
-                            key !== "id" && (
-                                <th
-                                    key={key}
-                                    className="p-3 text-left font-medium text-gray-700 cursor-pointer"
-                                    onClick={() => handleSort(key)}
-                                >
-                                    <div className="flex items-center gap-[5px]">
-                                        {key.charAt(0).toUpperCase() + key.slice(1)}
-                                        <HiOutlineArrowsUpDown
-                                            className="hover:bg-gray-200 p-[5px] rounded-md text-[1.6rem]"/>
-                                    </div>
-                                </th>
-                            )
-                        ))}
-                        <th className="p-3 text-left font-medium text-gray-700">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {paginatedData.map((item) => (
-                        <tr
-                            key={item.id}
-                            className={`border-t border-gray-200 cursor-pointer ${
-                                selectedRows.has(item.id) ? "bg-blue-50 hover:bg-blue-50" : "hover:bg-gray-50"
-                            }`}
-                        >
-                            <td className="p-3">
-                                <label className="flex items-center gap-[10px] cursor-pointer">
-                                    <input type="checkbox" className="hidden"
-                                           onChange={() => toggleRow(item.id)}/>
-                                    <div className="relative">
-                                                            <span
-                                                                className={`${selectedRows.has(item.id) ? "opacity-100 z-20 scale-[1]" : "opacity-0 scale-[0.4] z-[-1]"} transition-all duration-200 absolute top-0 left-0`}>
-                                                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <g id="Group 335">
-                                                                <rect id="Rectangle 331" x="-0.00012207" y="6.10352e-05"
-                                                                      width="20"
-                                                                      height="20" rx="4" className="fill-[#3B9DF8]"
-                                                                      stroke="#3B9DF8"></rect>
-                                                                <path id="Vector"
-                                                                      d="M8.19594 15.4948C8.0646 15.4949 7.93453 15.4681 7.81319 15.4157C7.69186 15.3633 7.58167 15.2865 7.48894 15.1896L4.28874 11.8566C4.10298 11.6609 3.99914 11.3965 3.99988 11.1213C4.00063 10.8461 4.10591 10.5824 4.29272 10.3878C4.47953 10.1932 4.73269 10.0835 4.99689 10.0827C5.26109 10.0819 5.51485 10.1901 5.70274 10.3836L8.19591 12.9801L14.2887 6.6335C14.4767 6.4402 14.7304 6.3322 14.9945 6.33307C15.2586 6.33395 15.5116 6.44362 15.6983 6.63815C15.8851 6.83268 15.9903 7.09627 15.9912 7.37137C15.992 7.64647 15.8883 7.91073 15.7027 8.10648L8.90294 15.1896C8.8102 15.2865 8.7 15.3633 8.57867 15.4157C8.45734 15.4681 8.32727 15.4949 8.19594 15.4948Z"
-                                                                      fill="white"></path>
-                                                            </g>
-                                                        </svg>
-                                                    </span>
-
-                                        <span
-                                            className={`${!selectedRows.has(item.id) ? "opacity-100 z-20 scale-[1]" : "opacity-0 scale-[0.4] z-[-1]"} transition-all duration-200`}>
-                                                    <svg width="18" height="18" viewBox="0 0 21 21" fill="none"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                            <g id="Group 335">
-                                                                <rect id="Rectangle 331" x="-0.00012207" y="6.10352e-05"
-                                                                      width="20"
-                                                                      height="20" rx="4" className="fill-transparent"
-                                                                      stroke="#ccc"></rect>
-                                                            </g>
-                                                        </svg>
-                                                </span>
-                                    </div>
-                                </label>
-                            </td>
-                            {Object.entries(item).map(([key, value]) => (
-                                key !== "id" && (
-                                    <td key={key} className="p-3">
-                                        {value}
-                                    </td>
-                                )
-                            ))}
-                            <td className="p-3 relative">
-                                <BsThreeDotsVertical onClick={() => toggleActionMenu(item
-                                    .id)} className="action-btn action-btn text-gray-600 cursor-pointer"/>
-
-                                <div
-                                    className={`${openActionMenuId === item.id ? "opacity-100 scale-[1] z-30" : "opacity-0 scale-[0.8] z-[-1]"} zenui-table absolute top-[90%] right-[80%] p-1.5 rounded-md bg-white shadow-md min-w-[160px] transition-all duration-100`}>
-                                    <p className="flex items-center gap-[8px] text-[0.9rem] py-1.5 px-2 w-full rounded-md text-gray-700 cursor-pointer hover:bg-gray-50 transition-all duration-200">
-                                        <MdOutlineEdit/>
-                                        Edit
-                                    </p>
-                                    <p className="flex items-center gap-[8px] text-[0.9rem] py-1.5 px-2 w-full rounded-md text-gray-700 cursor-pointer hover:bg-gray-50 transition-all duration-200">
-                                        <MdDeleteOutline/>
-                                        Delete
-                                    </p>
-                                    <p className="flex items-center gap-[8px] text-[0.9rem] py-1.5 px-2 w-full rounded-md text-gray-700 cursor-pointer hover:bg-gray-50 transition-all duration-200">
-                                        <IoEyeOutline/>
-                                        View Details
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-
-                {
-                    !paginatedData?.length && (
-                        <p className="text-[0.9rem] text-gray-500 py-6 text-center w-full">No data
-                            found!
-                        </p>
-                    )
-                }
-            </div>
-
-            <div className="mt-4 flex items-center justify-between">
-                <div className="flex items-center gap-[5px]">
-                    <div className="text-sm text-gray-500">
-                        Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, sortedData.length)} of {sortedData.length} results
-                    </div>
-
-                    <div ref={selectRef} className="relative w-44">
-                        <button
-                            onClick={handleToggle}
-                            className="w-max px-2 py-0.5 text-left bg-white border border-gray-300 rounded shadow-sm flex items-center justify-between gap-[10px] hover:border-gray-400 focus:outline-none"
-                        >
-                            {pageSize}
-
-                            <IoIosArrowDown
-                                className={`${isOpen ? "rotate-[180deg]" : "rotate-0"} transition-all duration-200`}/>
-                        </button>
-                        {isOpen && (
-                            <div
-                                className="absolute w-max mt-1 bg-white border border-gray-300 rounded shadow-lg">
-                                <div
-                                    className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                                    onClick={() => handleOptionClick(5)}
-                                >
-                                    5
-                                </div>
-                                <div
-                                    className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                                    onClick={() => handleOptionClick(10)}
-                                >
-                                    10
-                                </div>
-                                <div
-                                    className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                                    onClick={() => handleOptionClick(20)}
-                                >
-                                    20
-                                </div>
-                                <div
-                                    className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                                    onClick={() => handleOptionClick(50)}
-                                >
-                                    50
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                    <button
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                        className="border border-gray-200 hover:bg-gray-50 cursor-pointer px-[10px] text-[0.9rem] py-[5px] rounded-md"
+                {/* Percentage Labels */}
+                {slices.map((slice, index) => (
+                    <text
+                        key={`label-${index}`}
+                        x={slice.labelX}
+                        y={slice.labelY}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        fill="#efefef"
+                        className="text-[0.6rem] sm:text-[0.9rem]"
                     >
-                        <BsChevronLeft/>
-                    </button>
+                        {`${slice.percentage.toFixed(1)}%`}
+                    </text>
+                ))}
+            </svg>
 
-                    {/* Page Numbers */}
-                    <div className="flex items-center gap-1">
-                        {Array.from({length: Math.min(5, totalPages)}, (_, i) => {
-                            let pageNum;
-                            if (totalPages <= 5) {
-                                pageNum = i + 1;
-                            } else if (currentPage <= 3) {
-                                pageNum = i + 1;
-                            } else if (currentPage >= totalPages - 2) {
-                                pageNum = totalPages - 4 + i;
-                            } else {
-                                pageNum = currentPage - 2 + i;
-                            }
-
-                            return (
-                                <button
-                                    key={pageNum}
-                                    onClick={() => handlePageChange(pageNum)}
-                                    className={`${pageNum === currentPage && "bg-black text-white"} border border-gray-200 px-[10px] text-[0.9rem] py-[1px] rounded-md`}
-                                >
-                                    {pageNum}
-                                </button>
-                            );
-                        })}
+            {/* Department Breakdown */}
+            <div
+                className="flex flex-wrap justify-center mt-4 sm:mt-0 gap-x-[20px] gap-y-[10px] px-[30px] items-center">
+                {slices.map((slice, index) => (
+                    <div key={`legend-${index}`} className="flex items-center">
+                        <div
+                            className="w-3 h-3 mr-2"
+                            style={{backgroundColor: slice.color}}
+                        />
+                        <span className="text-[0.7rem] sm:text-[0.9rem]">{slice.name}</span>
                     </div>
-
-                    <button
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                        className="border border-gray-200 px-[10px] cursor-pointer hover:bg-gray-50 text-[0.9rem] py-[5px] rounded-md"
-                    >
-                        <BsChevronRight/>
-                    </button>
-                </div>
+                ))}
             </div>
         </div>
     );
 };
 
-export default Table;
+export default PieChart;

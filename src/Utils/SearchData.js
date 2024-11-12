@@ -61,11 +61,15 @@ export const componentSearchData = [
     },
     {
         title: 'Resources',
-        url: '/getting-started/resources'
+        url: '/docs/resources'
     },
     {
         title: 'Custom Hooks',
-        url: '/getting-started/custom-hooks'
+        url: '/custom-hooks'
+    },
+    {
+        title: 'Pie Chart',
+        url: '/components/pie-chart'
     },
     {
         title: 'App Bar',
