@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // components
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
 import ContentHeader from "../../../../../Shared/ContentHeader";
+
+// contents for scrollspy
+import { textareaInputContents } from '../../../../../Utils/ContentsConfig/InputContents';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 
 // react helmet
 import { Helmet } from "react-helmet";
@@ -11,7 +15,9 @@ import { Helmet } from "react-helmet";
 import Showcode from "../../../../../Shared/ShowCode";
 
 const TextareaInput = () => {
-  const [contentActiveTab, setContentActiveTab] = useState(0);
+  // const [contentActiveTab, setContentActiveTab] = useState(0);
+  const sectionIds = textareaInputContents.map(item => item.href.slice(1));
+  const activeSection = useScrollSpy(sectionIds);
 
   // primary input
   const [primaryInputPreview, setPrimaryInputPreview] = useState(true);
@@ -289,33 +295,19 @@ export default Textarea;
             <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
               CONTENTS
             </h2>
-            <a
-                href="#required_textarea"
+            {
+            textareaInputContents.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
                 className={`${
-                    contentActiveTab === 1 && "!text-primary !border-primary"
+                  activeSection === item.href.slice(1) && "!text-primary !border-primary"
                 } text-[0.9rem] text-text border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(1)}
-            >
-              Required Textarea
-            </a>
-            <a
-                href="#background_textarea"
-                className={`${
-                    contentActiveTab === 2 && "!text-primary !border-primary"
-                } text-[0.9rem] text-text border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(2)}
-            >
-              Background Textarea
-            </a>
-            <a
-                href="#animate_label_textarea"
-                className={`${
-                    contentActiveTab === 3 && "!text-primary !border-primary"
-                } text-[0.9rem] text-text border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(3)}
-            >
-              Animate Label Textarea
-            </a>
+              >
+                {item.title}
+              </a>
+            ))
+          }
           </div>
         </aside>
         <Helmet>
