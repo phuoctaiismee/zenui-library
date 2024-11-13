@@ -7,8 +7,14 @@ import ContentHeader from "../../../../../Shared/ContentHeader";
 import { Helmet } from "react-helmet";
 import Showcode from "../../../../../Shared/ShowCode.jsx";
 
+// contents for crollspy
+import { animatedButtonContents } from '../../../../../Utils/ContentsConfig/ButtonsContents.js';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
+
 const AnimatedButton = () => {
-  const [contentActiveTab, setContentActiveTab] = useState(0);
+  const sectionIds = animatedButtonContents.map(item => item.href.slice(1));
+  const activeSection = useScrollSpy(sectionIds);
+  
 
   // click animated button
   const [clickAnimatedButtonPreview, setClickAnimatedButtonPreview] = useState(true);
@@ -767,87 +773,19 @@ after:-z-40 bg-secondary relative "> Animate 2
         <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
           CONTENTS
         </h2>
-        <a
-            href="#click_animation"
-            className={`${
-                contentActiveTab === 1 && "!text-primary !border-primary"
-            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-            onClick={() => setContentActiveTab(1)}
-        >
-          Click Animation
-        </a>
-        <a
-            href="#border_animated"
-            className={`${
-                contentActiveTab === 2 && "!text-primary !border-primary"
-            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-            onClick={() => setContentActiveTab(2)}
-        >
-          Border Animation
-        </a>
-        <a
-            href="#bg_hover_animation"
-            className={`${
-                contentActiveTab === 3 && "!text-primary !border-primary"
-            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-            onClick={() => setContentActiveTab(3)}
-        >
-          Bg hover animation
-        </a>
-        <a
-            href="#bg_slide_up_animation"
-            className={`${
-                contentActiveTab === 4 && "!text-primary !border-primary"
-            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-            onClick={() => setContentActiveTab(4)}
-        >
-          bg slide up animation
-        </a>
-        <a
-            href="#bg_slide_animation"
-            className={`${
-                contentActiveTab === 5 && "!text-primary !border-primary"
-            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-            onClick={() => setContentActiveTab(5)}
-        >
-          Bg slide animation
-        </a>
-        <a
-            href="#bg_bounce_up_animation"
-            className={`${
-                contentActiveTab === 6 && "!text-primary !border-primary"
-            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-            onClick={() => setContentActiveTab(6)}
-        >
-          bg bounce up animation
-        </a>
-        <a
-            href="#bottom_border_animation"
-            className={`${
-                contentActiveTab === 7 && "!text-primary !border-primary"
-            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-            onClick={() => setContentActiveTab(7)}
-        >
-          Bottom border animation
-        </a>
-        <a
-            href="#hover_bg_fill_animation"
-            className={`${
-                contentActiveTab === 8 && "!text-primary !border-primary"
-            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-            onClick={() => setContentActiveTab(8)}
-        >
-          hover bg fill animation
-        </a>
-        <a
-            href="#2_part_marge_animation"
-            className={`${
-                contentActiveTab === 9 && "!text-primary !border-primary"
-            } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-            onClick={() => setContentActiveTab(9)}
-        >
-          2 part marge animation
-        </a>
+        {
+            animatedButtonContents.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className={`${
+                  activeSection === item.href.slice(1) && "!text-primary !border-primary"
+                } text-[0.9rem] text-text border-l border-transparent pl-4`}
+              >
+                {item.title}
+              </a>
+            ))
+          }
       </div>
       <Helmet>
         <title>Buttons - Animated Button</title>

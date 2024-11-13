@@ -10,8 +10,13 @@ import {BiCopy, BiEdit} from "react-icons/bi";
 import {AiOutlineDelete, AiOutlineSchedule} from "react-icons/ai";
 import {LuSaveAll} from "react-icons/lu";
 
+// contents for scrollspy
+import { dropdownButtonContents } from '../../../../../Utils/ContentsConfig/ButtonsContents';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
+
 const DropdownButton = () => {
-    const [contentActiveTab, setContentActiveTab] = useState(0);
+    const sectionIds = dropdownButtonContents.map(item => item.href.slice(1));
+    const activeSection = useScrollSpy(sectionIds);
 
     // publish buttons
     const [publishPreview, setPublishPreview] = useState(true);
@@ -458,33 +463,19 @@ export default DropdownButton;
                 <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
                     CONTENTS
                 </h2>
-                <a
-                    href="#publish_button"
-                    className={`${
-                        contentActiveTab === 1 && "!text-primary !border-primary"
-                    } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                    onClick={() => setContentActiveTab(1)}
-                >
-                    Publish Button
-                </a>
-                <a
-                    href="#action_button"
-                    className={`${
-                        contentActiveTab === 2 && "!text-primary !border-primary"
-                    } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                    onClick={() => setContentActiveTab(2)}
-                >
-                    Action Button
-                </a>
-                <a
-                    href="#send_button_with_arrow"
-                    className={`${
-                        contentActiveTab === 3 && "!text-primary !border-primary"
-                    } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                    onClick={() => setContentActiveTab(3)}
-                >
-                    Send Button With Arrow
-                </a>
+                {
+            dropdownButtonContents.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className={`${
+                  activeSection === item.href.slice(1) && "!text-primary !border-primary"
+                } text-[0.9rem] text-text border-l border-transparent pl-4`}
+              >
+                {item.title}
+              </a>
+            ))
+          }
             </div>
             <Helmet>
                 <title>Buttons - Dropdown Button</title>

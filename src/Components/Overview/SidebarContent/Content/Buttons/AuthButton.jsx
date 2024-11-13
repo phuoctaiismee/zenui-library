@@ -7,8 +7,13 @@ import ContentHeader from "../../../../../Shared/ContentHeader";
 import { Helmet } from "react-helmet";
 import Showcode from "../../../../../Shared/ShowCode.jsx";
 
+// contents for scrollspy
+import { authButtonContents } from '../../../../../Utils/ContentsConfig/ButtonsContents.js';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
+
 const AuthButton = () => {
-    const [contentActiveTab, setContentActiveTab] = useState(0);
+    const sectionIds = authButtonContents.map(item => item.href.slice(1));
+    const activeSection = useScrollSpy(sectionIds);
 
     // login with google buttons
     const [googleLoginButtonPreview, setGoogleLoginButtonPreview] = useState(true);
@@ -511,7 +516,7 @@ const AuthButton = () => {
                 <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
                     CONTENTS
                 </h2>
-                <a
+                {/* <a
                     href="#login_with_google"
                     className={`${
                         contentActiveTab === 1 && "!text-primary !border-primary"
@@ -546,7 +551,20 @@ const AuthButton = () => {
                     onClick={() => setContentActiveTab(4)}
                 >
                     Social Login Bordered
-                </a>
+                </a> */}
+                {
+            authButtonContents.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className={`${
+                  activeSection === item.href.slice(1) && "!text-primary !border-primary"
+                } text-[0.9rem] text-text border-l border-transparent pl-4`}
+              >
+                {item.title}
+              </a>
+            ))
+          }
             </div>
             <Helmet>
                 <title>Buttons - Auth Button</title>

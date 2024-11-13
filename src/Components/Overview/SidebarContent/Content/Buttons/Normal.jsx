@@ -11,7 +11,7 @@ import {RxCross2} from "react-icons/rx";
 import {BiMessageDetail} from "react-icons/bi";
 import {AiOutlineDelete} from "react-icons/ai";
 import {IoCodeSlashOutline} from "react-icons/io5";
-import {normalButtonContents} from "../../../../../Utils/ContentsConfig/InputContents.js";
+import {normalButtonContents} from "../../../../../Utils/ContentsConfig/ButtonsContents.js";
 import {useScrollSpy} from "../../../../../CustomHooks/useScrollSpy.js";
 
 const Normal = () => {
