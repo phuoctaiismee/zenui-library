@@ -160,6 +160,22 @@ const Normal = () => {
                       className="px-6 py-2 border border-primary hover:bg-primary text-primary hover:text-secondary  transition duration-300 rounded ">
                     Button 2
                   </button>
+                  <button
+                      className="px-6 py-2 border border-[#3e3939] bg-[#000000] text-secondary hover:bg-secondary hover:text-[#000] transition duration-300 rounded ">
+                    Button 3
+                  </button>
+                  <button
+                      className="px-6 py-2 border border-[#3e3939] hover:bg-[#000000] text-[#000] hover:text-secondary  transition duration-300 rounded ">
+                    Button 4
+                  </button>
+                  <button
+                      className="px-6 py-2 border border-[#9d3533] bg-[#DE3B37] text-secondary hover:bg-secondary hover:text-[#000] transition duration-300 rounded ">
+                    Button 5
+                  </button>
+                  <button
+                      className="px-6 py-2 border border-[#9d3533] hover:bg-[#DE3B37] text-[#000] hover:text-secondary  transition duration-300 rounded ">
+                    Button 6
+                  </button>
                 </div>
             )}
 
@@ -175,6 +191,31 @@ text-[#ffffff] hover:bg-[#ffffff] hover:text-primary transition duration-300 rou
 <button className="px-6 py-2 border border-[#3B9DF8] hover:bg-[#3B9DF8] text-[#3B9DF8] 
 hover:text-[#ffffff]  transition duration-300 rounded "> Button
 </button>
+
+// button 3
+<button
+  className="px-6 py-2 border border-[#3e3939] bg-[#000000] text-secondary hover:bg-secondary hover:text-[#000] transition duration-300 rounded ">
+    Button 3
+</button>
+
+// button 4
+<button
+  className="px-6 py-2 border border-[#3e3939] hover:bg-[#000000] text-[#000] hover:text-secondary  transition duration-300 rounded ">
+    Button 4
+</button>
+
+// button 5
+<button
+  className="px-6 py-2 border border-[#9d3533] bg-[#DE3B37] text-secondary hover:bg-secondary hover:text-[#000] transition duration-300 rounded ">
+    Button 5
+</button>
+
+// button 6
+<button
+  className="px-6 py-2 border border-[#9d3533] hover:bg-[#DE3B37] text-[#000] hover:text-secondary  transition duration-300 rounded ">
+    Button 6
+</button>
+
 `}
                 />
             )}
