@@ -83,8 +83,18 @@ export const tooltipContents = [
   },
   {
     id: 3,
-    title: 'relative animation',
+    title: 'Relative Animation',
     href: '#relative_animation'
+  },
+  {
+    id: 4,
+    title: 'Profile Tooltip',
+    href: '#profile_tooltip'
+  },
+  {
+    id: 5,
+    title: 'Clicked Tooltip',
+    href: '#clicked_tooltip'
   }
 ];
 
