@@ -9,7 +9,7 @@ import ContentHeader from "../../../../../Shared/ContentHeader";
 import Showcode from "../../../../../Shared/ShowCode";
 
 // scrollspy
-import {pieChartContents} from "../../../../../Utils/ContentsConfig/InputContents.js";
+import {pieChartContents} from "../../../../../Utils/ContentsConfig/DataDisplayContents.js";
 import {useScrollSpy} from "../../../../../CustomHooks/useScrollSpy.js";
 import {useToggleCardView} from "../../../../../CustomHooks/ButtonToggle.js";
 
