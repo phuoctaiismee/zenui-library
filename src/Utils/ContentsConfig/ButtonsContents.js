@@ -71,12 +71,12 @@ export const authButtonContents = [
   {
     id: 3,
     title: 'Social Login Background',
-    href: '#Social_login_background',
+    href: '#social_login_background',
   },
   {
     id: 4,
     title: 'Social Login Bordered',
-    href: '#Social_login_bordered',
+    href: '#social_login_bordered',
   },
 ];
 
@@ -90,7 +90,7 @@ export const animatedButtonContents = [
   {
     id: 2,
     title: 'Border Animation',
-    href: '#border_animation',
+    href: '#border_animated',
   },
   {
     id: 3,
