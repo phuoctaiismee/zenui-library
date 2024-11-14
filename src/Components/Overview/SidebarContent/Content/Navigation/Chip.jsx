@@ -1,26 +1,32 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // components
-import OverviewFooter from "../../../../../Shared/OverviewFooter";
-import ContentHeader from "../../../../../Shared/ContentHeader";
+import OverviewFooter from '../../../../../Shared/OverviewFooter';
+import ContentHeader from '../../../../../Shared/ContentHeader';
+
+// contents for scrollspy
+// contents for scrollspy
+import { chipContents } from '../../../../../Utils/ContentsConfig/NavigationContents';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 
 // react helmet
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 // icons
-import { MdDone } from "react-icons/md";
-import { IoMdNotifications } from "react-icons/io";
-import { TbPointFilled } from "react-icons/tb";
-import { RxCross2 } from "react-icons/rx";
-import { BiError } from "react-icons/bi";
-import { IoTime } from "react-icons/io5";
-import { FaFire } from "react-icons/fa";
+import { MdDone } from 'react-icons/md';
+import { IoMdNotifications } from 'react-icons/io';
+import { TbPointFilled } from 'react-icons/tb';
+import { RxCross2 } from 'react-icons/rx';
+import { BiError } from 'react-icons/bi';
+import { IoTime } from 'react-icons/io5';
+import { FaFire } from 'react-icons/fa';
 
 // showing the code
-import Showcode from "../../../../../Shared/ShowCode";
+import Showcode from '../../../../../Shared/ShowCode';
 
 const Chip = () => {
-  const [contentActiveTab, setContentActiveTab] = useState(0);
+  const sectionIds = chipContents.map((item) => item.href.slice(1));
+  const activeSection = useScrollSpy(sectionIds);
 
   // primaryChip
   const [primaryChipPreview, setPrimaryChipPreview] = useState(true);
@@ -94,54 +100,60 @@ const Chip = () => {
 
   return (
     <>
-      <aside className="flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10">
+      <aside className='flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10'>
         <div>
-          <ContentHeader text={"Primary Chip"} id={"primary_chip"}/>
+          <ContentHeader text={'Primary Chip'} id={'primary_chip'} />
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a basic chip component. Use it to display concise information or tags in a compact form.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is a basic chip component. Use it to display concise
+            information or tags in a compact form.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${primaryChipPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  primaryChipPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[107px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      primaryChipPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handlePrimaryChipPreview}
+                className={`${
+                  primaryChipPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handlePrimaryChipPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      primaryChipCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handlePrimaryChipCode}
+                className={`${
+                  primaryChipCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handlePrimaryChipCode}
               >
                 Code
               </button>
             </div>
             {primaryChipPreview && (
-                <div className="p-8 mb-4 flex flex-wrap items-center gap-5 justify-center">
-                  <div className="px-4 py-1 bg-[#d1d1d180] rounded-full text-[0.9rem] font-[500]">
-                    ZenUI
-                  </div>
-
-                  <div className="px-4 py-1 bg-[#d1d1d180] rounded-full text-[1.3rem] font-[500]">
-                    ZenUI
-                  </div>
-
-                  <div className="px-4 py-1 bg-[#d1d1d180] rounded-full text-[1.6rem] font-[500]">
-                    ZenUI
-                  </div>
+              <div className='p-8 mb-4 flex flex-wrap items-center gap-5 justify-center'>
+                <div className='px-4 py-1 bg-[#d1d1d180] rounded-full text-[0.9rem] font-[500]'>
+                  ZenUI
                 </div>
+
+                <div className='px-4 py-1 bg-[#d1d1d180] rounded-full text-[1.3rem] font-[500]'>
+                  ZenUI
+                </div>
+
+                <div className='px-4 py-1 bg-[#d1d1d180] rounded-full text-[1.6rem] font-[500]'>
+                  ZenUI
+                </div>
+              </div>
             )}
 
             {primaryChipCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
        // small
       <div className="px-4 py-1 bg-[#d1d1d180] rounded-full text-[0.9rem] font-[500]">
           ZenUI
@@ -157,58 +169,62 @@ const Chip = () => {
         ZenUI
     </div>
                     '
-                />
+              />
             )}
           </div>
 
-          <div className="mt-8">
-            <ContentHeader text={"Chip variants"} id={"chip_variant"}/>
+          <div className='mt-8'>
+            <ContentHeader text={'Chip variants'} id={'chip_variant'} />
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a chip component with multiple variants like bordered and background
-            color options for versatile styling.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is a chip component with multiple variants like bordered and
+            background color options for versatile styling.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${chipVariantPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  chipVariantPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[107px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      chipVariantPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleChipVariantPreview}
+                className={`${
+                  chipVariantPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleChipVariantPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      chipVariantCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleChipVariantCode}
+                className={`${
+                  chipVariantCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleChipVariantCode}
               >
                 Code
               </button>
             </div>
             {chipVariantPreview && (
-                <div className="p-8 mb-4 flex flex-wrap items-start gap-5 justify-center">
-                  <div className="px-6 py-1 bg-[#3B9DF8] text-[#fff] rounded-full text-[0.9rem] font-[500]">
-                    ZenUI
-                  </div>
-                  <div
-                      className="px-6 py-1 border border-[#3B9DF8] text-[#3B9DF8] rounded-full text-[0.9rem] font-[500]">
-                    ZenUI
-                  </div>
-                  <div className="px-6 py-1 bg-[#e9e9e9] text-[#9c9c9c] rounded-full text-[0.9rem] font-[500]">
-                    ZenUI
-                  </div>
+              <div className='p-8 mb-4 flex flex-wrap items-start gap-5 justify-center'>
+                <div className='px-6 py-1 bg-[#3B9DF8] text-[#fff] rounded-full text-[0.9rem] font-[500]'>
+                  ZenUI
                 </div>
+                <div className='px-6 py-1 border border-[#3B9DF8] text-[#3B9DF8] rounded-full text-[0.9rem] font-[500]'>
+                  ZenUI
+                </div>
+                <div className='px-6 py-1 bg-[#e9e9e9] text-[#9c9c9c] rounded-full text-[0.9rem] font-[500]'>
+                  ZenUI
+                </div>
+              </div>
             )}
 
             {chipVariantCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 <div className="px-6 py-1 bg-[#3B9DF8] text-[#fff] rounded-full text-[0.9rem] font-[500]">
       ZenUI
 </div>
@@ -221,70 +237,72 @@ const Chip = () => {
     ZenUI
 </div>
                 '
-                />
+              />
             )}
           </div>
 
-          <div className="mt-8">
-            <ContentHeader text={"Icon Chip"} id={"icon_chip"}/>
+          <div className='mt-8'>
+            <ContentHeader text={'Icon Chip'} id={'icon_chip'} />
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a chip with icon component. Display concise information or tags enhanced with an icon for clarity.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is a chip with icon component. Display concise information or
+            tags enhanced with an icon for clarity.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${iconChipPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  iconChipPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[107px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      iconChipPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleIconChipPreview}
+                className={`${
+                  iconChipPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleIconChipPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      iconChipCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleIconChipCode}
+                className={`${
+                  iconChipCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleIconChipCode}
               >
                 Code
               </button>
             </div>
             {iconChipPreview && (
-                <div className="p-8 mb-4 flex flex-wrap items-start gap-5 justify-center">
-                  <div
-                      className="px-4 py-1.5 bg-[#ececec80] border border-[#d1d1d180] text-[#18c964] rounded-full text-[0.9rem] font-[500] flex items-center gap-2">
-                    <MdDone className="p-0.5 text-[1.1rem] rounded-full bg-[#18c964] text-[#fff]"/>
-                    ZenUI
-                  </div>
-
-                  <div
-                      className="px-4 py-1.5 bg-[#e4d4f4] text-[#7828c8] rounded-full text-[0.9rem] font-[500] flex items-center gap-2">
-                    <IoMdNotifications className="text-[1.3rem] text-[#7828c8]"/>
-                    ZenUI
-                  </div>
-
-                  <div
-                      className="px-4 py-1.5 border border-border text-text rounded-full text-[0.9rem] font-[500] flex items-center gap-2">
-                    <TbPointFilled className="text-[1.3rem] text-text"/>
-                    ZenUI
-                  </div>
-
-                  <div
-                      className="px-4 py-1.5 border border-border text-text rounded-full text-[0.9rem] font-[500] flex items-center gap-2">
-                    ZenUI
-                    <RxCross2 className="text-[1.1rem] text-[#fff] rounded-full p-0.5  bg-text "/>
-                  </div>
+              <div className='p-8 mb-4 flex flex-wrap items-start gap-5 justify-center'>
+                <div className='px-4 py-1.5 bg-[#ececec80] border border-[#d1d1d180] text-[#18c964] rounded-full text-[0.9rem] font-[500] flex items-center gap-2'>
+                  <MdDone className='p-0.5 text-[1.1rem] rounded-full bg-[#18c964] text-[#fff]' />
+                  ZenUI
                 </div>
+
+                <div className='px-4 py-1.5 bg-[#e4d4f4] text-[#7828c8] rounded-full text-[0.9rem] font-[500] flex items-center gap-2'>
+                  <IoMdNotifications className='text-[1.3rem] text-[#7828c8]' />
+                  ZenUI
+                </div>
+
+                <div className='px-4 py-1.5 border border-border text-text rounded-full text-[0.9rem] font-[500] flex items-center gap-2'>
+                  <TbPointFilled className='text-[1.3rem] text-text' />
+                  ZenUI
+                </div>
+
+                <div className='px-4 py-1.5 border border-border text-text rounded-full text-[0.9rem] font-[500] flex items-center gap-2'>
+                  ZenUI
+                  <RxCross2 className='text-[1.1rem] text-[#fff] rounded-full p-0.5  bg-text ' />
+                </div>
+              </div>
             )}
 
             {iconChipCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 // icons
 import { MdDone } from "react-icons/md";
 import { IoMdNotifications } from "react-icons/io";
@@ -319,76 +337,79 @@ const Chip = () => {
 
 export default Chip;
                 '
-                />
+              />
             )}
           </div>
 
-          <div className="mt-8">
-            <ContentHeader text={"avatar Chip"} id={"avatar_chip"}/>
+          <div className='mt-8'>
+            <ContentHeader text={'avatar Chip'} id={'avatar_chip'} />
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is an avatar chip component. Display user information with a compact avatar for a visual touch.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is an avatar chip component. Display user information with a
+            compact avatar for a visual touch.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${avatarChipPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  avatarChipPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[107px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      avatarChipPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleAvatarChipPreview}
+                className={`${
+                  avatarChipPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleAvatarChipPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      avatarChipCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleAvatarChipCode}
+                className={`${
+                  avatarChipCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleAvatarChipCode}
               >
                 Code
               </button>
             </div>
             {avatarChipPreview && (
-                <div className="p-8 mb-4 flex flex-wrap items-center gap-5 justify-center">
-                  <div
-                      className="pl-2 pr-4 py-1 bg-[#ececec80] border border-[#d1d1d180] text-[#18c964] rounded-full text-[0.9rem] font-[500] flex items-center gap-2">
-                    <img
-                        src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?t=st=1712077473~exp=1712081073~hmac=63310a81f493e9368aeb918070f9181f5f316124f4793e1499d65115fc45ef46&w=740"
-                        className="w-[25px] h-[25px] rounded-full"
-                        alt=""
-                    />
-                    ZenUI
-                  </div>
-
-                  <div
-                      className="pl-2 pr-4 py-1 bg-[#ececec80] border border-[#d1d1d180] text-[#18c964] rounded-full text-[0.9rem] font-[500] flex items-center gap-2">
-                    <img
-                        src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?t=st=1712077473~exp=1712081073~hmac=63310a81f493e9368aeb918070f9181f5f316124f4793e1499d65115fc45ef46&w=740"
-                        className="w-[35px] h-[35px] rounded-full"
-                        alt=""
-                    />
-                    ZenUI
-                  </div>
-
-                  <div
-                      className="pl-2 pr-4 py-1 bg-[#ececec80] border border-[#d1d1d180] text-[#18c964] rounded-full text-[0.9rem] font-[500] flex items-center gap-2">
-                    <img
-                        src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?t=st=1712077473~exp=1712081073~hmac=63310a81f493e9368aeb918070f9181f5f316124f4793e1499d65115fc45ef46&w=740"
-                        className="w-[45px] h-[45px] rounded-full"
-                        alt=""
-                    />
-                    ZenUI
-                  </div>
+              <div className='p-8 mb-4 flex flex-wrap items-center gap-5 justify-center'>
+                <div className='pl-2 pr-4 py-1 bg-[#ececec80] border border-[#d1d1d180] text-[#18c964] rounded-full text-[0.9rem] font-[500] flex items-center gap-2'>
+                  <img
+                    src='https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?t=st=1712077473~exp=1712081073~hmac=63310a81f493e9368aeb918070f9181f5f316124f4793e1499d65115fc45ef46&w=740'
+                    className='w-[25px] h-[25px] rounded-full'
+                    alt=''
+                  />
+                  ZenUI
                 </div>
+
+                <div className='pl-2 pr-4 py-1 bg-[#ececec80] border border-[#d1d1d180] text-[#18c964] rounded-full text-[0.9rem] font-[500] flex items-center gap-2'>
+                  <img
+                    src='https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?t=st=1712077473~exp=1712081073~hmac=63310a81f493e9368aeb918070f9181f5f316124f4793e1499d65115fc45ef46&w=740'
+                    className='w-[35px] h-[35px] rounded-full'
+                    alt=''
+                  />
+                  ZenUI
+                </div>
+
+                <div className='pl-2 pr-4 py-1 bg-[#ececec80] border border-[#d1d1d180] text-[#18c964] rounded-full text-[0.9rem] font-[500] flex items-center gap-2'>
+                  <img
+                    src='https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?t=st=1712077473~exp=1712081073~hmac=63310a81f493e9368aeb918070f9181f5f316124f4793e1499d65115fc45ef46&w=740'
+                    className='w-[45px] h-[45px] rounded-full'
+                    alt=''
+                  />
+                  ZenUI
+                </div>
+              </div>
             )}
 
             {avatarChipCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 const Chip = () => {
   return (
     <>
@@ -424,70 +445,71 @@ const Chip = () => {
 
 export default Chip;
                 '
-                />
+              />
             )}
           </div>
 
-
-          <div className="mt-8">
-            <ContentHeader text={"variant Chip"} id={"variant_chip"}/>
+          <div className='mt-8'>
+            <ContentHeader text={'variant Chip'} id={'variant_chip'} />
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is an avatar chip component. Display user information with a compact avatar for a visual touch.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is an avatar chip component. Display user information with a
+            compact avatar for a visual touch.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${variantChipPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  variantChipPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[107px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      variantChipPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleVariantChipPreview}
+                className={`${
+                  variantChipPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleVariantChipPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      variantChipCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleVariantChipCode}
+                className={`${
+                  variantChipCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleVariantChipCode}
               >
                 Code
               </button>
             </div>
             {variantChipPreview && (
-                <div className="p-8 mb-4 flex items-center flex-wrap gap-5 justify-center">
-                  <div
-                      className="px-4 py-1.5 bg-orange-50 text-orange-400 rounded-full text-[0.9rem] font-[500] flex items-center gap-1">
-                    <BiError className="text-[1.1rem] text-orange-400"/>
-                    Out of date
-                  </div>
-
-                  <div
-                      className="px-4 py-1.5 bg-blue-50 text-blue-800 rounded-full text-[0.9rem] font-[500] flex items-center gap-1">
-                    <IoTime className="text-[1.1rem] text-blue-800"/>
-                    Pending
-                  </div>
-
-                  <div
-                      className="px-4 py-1.5 bg-red-100 text-red-700 rounded-full text-[0.9rem] font-[500] flex items-center gap-1">
-                    HOT
-                    <FaFire className="text-[1rem] text-red-700"/>
-                  </div>
-
-                  <div
-                      className="px-4 py-1.5 bg-blue-500 text-white rounded-full text-[0.9rem] font-[500]">
-                    Trending
-                  </div>
+              <div className='p-8 mb-4 flex items-center flex-wrap gap-5 justify-center'>
+                <div className='px-4 py-1.5 bg-orange-50 text-orange-400 rounded-full text-[0.9rem] font-[500] flex items-center gap-1'>
+                  <BiError className='text-[1.1rem] text-orange-400' />
+                  Out of date
                 </div>
+
+                <div className='px-4 py-1.5 bg-blue-50 text-blue-800 rounded-full text-[0.9rem] font-[500] flex items-center gap-1'>
+                  <IoTime className='text-[1.1rem] text-blue-800' />
+                  Pending
+                </div>
+
+                <div className='px-4 py-1.5 bg-red-100 text-red-700 rounded-full text-[0.9rem] font-[500] flex items-center gap-1'>
+                  HOT
+                  <FaFire className='text-[1rem] text-red-700' />
+                </div>
+
+                <div className='px-4 py-1.5 bg-blue-500 text-white rounded-full text-[0.9rem] font-[500]'>
+                  Trending
+                </div>
+              </div>
             )}
 
             {variantChipCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 import React from "react";
 
 // react icons
@@ -527,62 +549,34 @@ const Chip = () => {
 
 export default Chip;
                 '
-                />
+              />
             )}
           </div>
 
-          <OverviewFooter backUrl='/components/progress-bar' backName='progress bar' forwardName='breadcrumb' forwardUrl='/components/breadcrumb'/>
+          <OverviewFooter
+            backUrl='/components/progress-bar'
+            backName='progress bar'
+            forwardName='breadcrumb'
+            forwardUrl='/components/breadcrumb'
+          />
         </div>
 
-        <div className="1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]">
-          <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
+        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
+          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
             CONTENTS
           </h2>
-          <a
-              href="#primary_chip"
+          {chipContents.map((item) => (
+            <a
+              key={item.id}
+              href={item.href}
               className={`${
-                  contentActiveTab === 1 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(1)}
-          >
-            Primary Chip
-          </a>
-          <a
-              href="#chip_variant"
-              className={`${
-                  contentActiveTab === 2 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(2)}
-          >
-            Chip Variant
-          </a>
-          <a
-              href="#icon_chip"
-              className={`${
-                  contentActiveTab === 3 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(3)}
-          >
-            Icon Chip
-          </a>
-          <a
-              href="#avatar_chip"
-              className={`${
-                  contentActiveTab === 4 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(4)}
-          >
-            Avatar Chip
-          </a>
-          <a
-              href="#variant_chip"
-              className={`${
-                  contentActiveTab === 5 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(5)}
-          >
-            Variant Chip
-          </a>
+                activeSection === item.href.slice(1) &&
+                '!text-primary !border-primary'
+              } text-[0.9rem] text-text border-l border-transparent pl-4`}
+            >
+              {item.title}
+            </a>
+          ))}
         </div>
       </aside>
       <Helmet>
