@@ -3,27 +3,27 @@ export const dragAndDropContents = [
   {
     id: 1,
     title: 'Drag & Drop with Indicator',
-    href: '#drag_and_drop_with_indicator',
+    href: '#drag-&-drop-with-indicator',
   },
   {
     id: 2,
     title: 'Upload Multiple Files with Drag & Drop',
-    href: '#upload_multiple_files_with_drag_and_drop',
+    href: '#upload-multiple-files-with-drag-&-drop',
   },
   {
     id: 3,
     title: 'Upload Image with Drag & Drop',
-    href: '#upload_image_with_drag_and_drop',
+    href: '#upload-image-with-drag-&-drop',
   },
   {
     id: 4,
     title: 'List Drag & Drop',
-    href: '#list_drag_and_drop',
+    href: '#list-drag-&-drop',
   },
   {
     id: 5,
     title: 'Todo App with Drag & Drop',
-    href: '#todo_app_with_drag_and_drop',
+    href: '#todo-app-with-drag-&-drop',
   },
 ];
 
