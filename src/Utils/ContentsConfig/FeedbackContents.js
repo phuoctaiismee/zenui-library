@@ -154,12 +154,43 @@ export const skeletonContents = [
 
 // Testimonial contents
 export const testimonialContents = [
-    {
-        id: 1,
-        title: 'Testimonial',
-        href: '#testimonial',
-    },
+  {
+    id: 1,
+    title: 'Testimonial 1',
+    href: '#testimonial_1',
+  },
+  {
+    id: 2,
+    title: 'Testimonial 2',
+    href: '#testimonial_2',
+  },
+  {
+    id: 3,
+    title: 'Testimonial 3',
+    href: '#testimonial_3',
+  },
+  {
+    id: 4,
+    title: 'Testimonial 4',
+    href: '#testimonial_4',
+  },
+  {
+    id: 5,
+    title: 'Testimonial 5',
+    href: '#testimonial_5',
+  },
+  {
+    id: 6,
+    title: 'Testimonial 6',
+    href: '#testimonial_6',
+  },
+  {
+    id: 7,
+    title: 'Testimonial 7',
+    href: '#testimonial_7',
+  },
 ];
+
 
 // Tree Dropdown contents
 export const treeDropdownContents = [
