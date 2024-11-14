@@ -157,27 +157,27 @@ export const modalContents = [
   {
     id: 3,
     title: 'Info Modal',
-    href: '#info_modal',
+    href: '#Info_modal',
   },
   {
     id: 4,
     title: 'Permission Modal',
-    href: '#permission_modal',
+    href: '#Permission_modal',
   },
   {
     id: 5,
     title: 'Form Modal',
-    href: '#form_modal',
+    href: '#Form_modal',
   },
   {
     id: 6,
     title: 'Cookie Modal',
-    href: '#cookie_modal',
+    href: '#Cookie_modal',
   },
   {
     id: 7,
     title: 'FullScreen Modal',
-    href: '#fullscreen_modal',
+    href: '#full_screen_modal',
   },
   {
     id: 8,
