@@ -51,57 +51,57 @@ export const animatedCardsContents = [
   {
     id: 1,
     title: 'Hover Animated Card 1',
-    href: '#hover_animated_card_1',
+    href: '#hover-animated-card-1',
   },
   {
     id: 2,
     title: 'Hover Animated Card 2',
-    href: '#hover_animated_card_2',
+    href: '#hover-animated-card-2',
   },
   {
     id: 3,
     title: 'Hover Animated Card 3',
-    href: '#hover_animated_card_3',
+    href: '#hover-animated-card-3',
   },
   {
     id: 4,
     title: 'Hover Animated Card 4',
-    href: '#hover_animated_card_4',
+    href: '#hover-animated-card-4',
   },
   {
     id: 5,
     title: 'Hover Animated Card 5',
-    href: '#hover_animated_card_5',
+    href: '#hover-animated-card-5',
   },
   {
     id: 6,
     title: 'Hover Animated Card 6',
-    href: '#hover_animated_card_6',
+    href: '#hover-animated-card-6',
   },
   {
     id: 7,
     title: 'Hover Animated Card 7',
-    href: '#hover_animated_card_7',
+    href: '#hover-animated-card-7',
   },
   {
     id: 8,
     title: 'Hover Animated Card 8',
-    href: '#hover_animated_card_8',
+    href: '#hover-animated-card-8',
   },
   {
     id: 9,
     title: 'Hover Animated Card 9',
-    href: '#hover_animated_card_9',
+    href: '#hover-animated-card-9',
   },
   {
     id: 10,
     title: 'Hover Animated Card 10',
-    href: '#hover_animated_card_10',
+    href: '#hover-animated-card-10',
   },
   {
     id: 11,
     title: 'Hover Animated Card 11',
-    href: '#hover_animated_card_11',
+    href: '#hover-animated-card-11',
   },
 ];
 
