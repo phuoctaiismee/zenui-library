@@ -110,7 +110,7 @@ export const appbarContents = [
   {
     id: 1,
     title: 'App Bar with Menu & Profile',
-    href: '#app_bar_with_manu_&_profile',
+    href: '#app_bar_with_manu_&__profile',
   },
   {
     id: 2,
