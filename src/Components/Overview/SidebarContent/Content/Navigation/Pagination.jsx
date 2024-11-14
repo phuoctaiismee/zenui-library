@@ -605,13 +605,7 @@ export default pagination;
               />
             )}
           </div>
-
-          <OverviewFooter
-            backUrl='/components/image-gallery'
-            backName='image gallery'
-            forwardName='progress bar'
-            forwardUrl='/components/progress-bar'
-          />
+          <OverviewFooter backUrl='/components/carousel' backName='Carousel' forwardName='progress bar' forwardUrl='/components/progress-bar'/>
         </div>
 
         <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>

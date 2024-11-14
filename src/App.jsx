@@ -104,6 +104,7 @@ import ContextMenuPage from "./Pages/Components/Feedback/ContextMenuPage.jsx";
 import ReactCustomHooksPage from "./Pages/ReactCustomHooksPage.jsx";
 import TablePage from "./Pages/Components/Data Display/TablePage.jsx";
 import PieChartPage from "./Pages/Components/Data Display/PieChartPage.jsx";
+import CarouselPage from "./Pages/Components/Surfaces/CarouselPage.jsx";
 
 
 const App = () => {
@@ -248,6 +249,7 @@ const App = () => {
                     path="/components/image-gallery"
                     element={<ImageGalleryPage/>}
                 />
+                <Route path="/components/carousel" element={<CarouselPage />}/>
                 <Route path="/components/according" element={<AccordingPage/>}/>
                 <Route path="/components/appbar" element={<AppbarPage/>}/>
                 <Route path="/components/resizable-layout" element={<ResizableLayoutPage/>}/>

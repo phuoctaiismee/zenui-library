@@ -372,6 +372,17 @@ const index = ({ startContent, setStartContent }) => {
                 Image Gallery
               </Link>
 
+              <Link
+                  to={"/components/carousel"}
+                  className={`${
+                      startContent === 55 &&
+                      "border-l  rounded-tr rounded-br border-primary bg-[#3B9DF8] text-secondary font-[500]"
+                  }   border-l border-[#9caebc]`}
+                  onClick={() => setStartContent(55)}
+              >
+                Carousel
+              </Link>
+
               {/* navigation */}
               <Link
                   to={""}
