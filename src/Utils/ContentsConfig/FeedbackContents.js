@@ -163,9 +163,25 @@ export const testimonialContents = [
 
 // Tree Dropdown contents
 export const treeDropdownContents = [
-    {
-        id: 1,
-        title: 'Tree Dropdown',
-        href: '#tree_dropdown',
-    },
+  {
+    id: 1,
+    title: 'Data Tree',
+    href: '#data_tree',
+  },
+  {
+    id: 2,
+    title: 'Tree With Line',
+    href: '#tree_with_line',
+  },
+  {
+    id: 3,
+    title: 'Directory Tree',
+    href: '#directory_tree',
+  },
+  {
+    id: 4,
+    title: 'Controlled Tree',
+    href: '#controlled_tree',
+  },
 ];
+
