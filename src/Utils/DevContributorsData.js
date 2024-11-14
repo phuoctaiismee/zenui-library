@@ -6,7 +6,8 @@ export const DevContributorsData = [
         linkedinLink: '',
         twitterLink: '',
         githubLink: 'https://github.com/Tuhin35',
-        website: 'https://portfolio-final-gamma-six.vercel.app/'
+        website: 'https://portfolio-final-gamma-six.vercel.app/',
+        zenuiHero: false,
     },
     {
         name: 'Rahamtullah sheikh',
@@ -15,7 +16,8 @@ export const DevContributorsData = [
         linkedinLink: 'https://www.linkedin.com/in/rahamtullah-sheikh-792497205/',
         twitterLink: 'https://x.com/Rahamtullah123',
         githubLink: 'https://github.com/rhm856591',
-        website: 'https://rahamtullah-sheikh.netlify.app/'
+        website: 'https://rahamtullah-sheikh.netlify.app/',
+        zenuiHero: false,
     },
     {
         name: 'Danish Kamal',
@@ -24,6 +26,17 @@ export const DevContributorsData = [
         linkedinLink: 'https://www.linkedin.com/in/danishzayan/',
         twitterLink: '',
         githubLink: 'https://github.com/danishzayan',
-        website: ''
+        website: '',
+        zenuiHero: true,
+    },
+    {
+        name: 'Eshwar S Devaramane',
+        title: 'Software Engineer',
+        image: 'https://i.ibb.co.com/WfP5nhm/1712361854052.jpg',
+        linkedinLink: 'https://www.linkedin.com/in/eshwar-sdev/',
+        twitterLink: '',
+        githubLink: 'https://github.com/eshward95/',
+        website: 'https://bento.me/e-sdev',
+        zenuiHero: false,
     },
 ]
