@@ -943,7 +943,7 @@ export default ImageGallery;
             )}
           </div>
 
-          <OverviewFooter backUrl='/components/appbar' backName='app bar' forwardName='pagination' forwardUrl='/components/pagination'/>
+          <OverviewFooter backUrl='/components/appbar' backName='app bar' forwardName='Carousel' forwardUrl='/components/carousel'/>
         </div>
 
         <div className="1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]">
