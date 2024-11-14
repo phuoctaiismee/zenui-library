@@ -111,7 +111,7 @@ const index = ({ startContent, setStartContent }) => {
                   }   border-l border-[#9caebc] `}
                   onClick={() => setStartContent(2)}
               >
-                All
+                All Components
               </Link>
 
               {/* inputs */}
