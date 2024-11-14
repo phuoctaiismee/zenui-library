@@ -8,12 +8,17 @@ import ContentHeader from "../../../../../Shared/ContentHeader";
 import Showcode from "../../../../../Shared/ShowCode";
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
 
+// contents for scrollspy
+import { loaderContents } from '../../../../../Utils/ContentsConfig/FeedbackContents';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
+
 // icons
 import { FiLoader } from "react-icons/fi";
 import { TbLoader3 } from "react-icons/tb";
 
 const Loader = () => {
-  const [contentActiveTab, setContentActiveTab] = useState(0);
+  const sectionIds = loaderContents.map(item => item.href.slice(1));
+  const activeSection = useScrollSpy(sectionIds);
 
   // circle loader
   const [circleLoaderPreview, setCircleLoaderPreview] = useState(true);
@@ -885,78 +890,19 @@ export default Loader;
           <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
             CONTENTS
           </h2>
-          <a
-              href="#circle_loader"
-              className={`${
-                  contentActiveTab === 1 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(1)}
-          >
-            Circle Loader
-          </a>
-          <a
-              href="#dashed_loader"
-              className={`${
-                  contentActiveTab === 2 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(2)}
-          >
-            Dashed Loader
-          </a>
-          <a
-              href="#opacity_loader"
-              className={`${
-                  contentActiveTab === 3 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(3)}
-          >
-            Opacity Loader
-          </a>
-          <a
-              href="#wave_loader"
-              className={`${
-                  contentActiveTab === 4 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(4)}
-          >
-            Wave Loader
-          </a>
-          <a
-              href="#chase_loader"
-              className={`${
-                  contentActiveTab === 5 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(5)}
-          >
-            Chase Loader
-          </a>
-          <a
-              href="#dot_loader"
-              className={`${
-                  contentActiveTab === 6 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(6)}
-          >
-            Dot Loader
-          </a>
-          <a
-              href="#shape_loader"
-              className={`${
-                  contentActiveTab === 7 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(7)}
-          >
-            Shape Loader
-          </a>
-          <a
-              href="#flip_loader"
-              className={`${
-                  contentActiveTab === 8 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(8)}
-          >
-            Flip Loader
-          </a>
+          {
+            loaderContents.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className={`${
+                  activeSection === item.href.slice(1) && "!text-primary !border-primary"
+                } text-[0.9rem] text-text border-l border-transparent pl-4`}
+              >
+                {item.title}
+              </a>
+            ))
+          }
         </div>
       </aside>
       <Helmet>
