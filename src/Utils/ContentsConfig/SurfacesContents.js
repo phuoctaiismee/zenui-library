@@ -37,12 +37,12 @@ export const accordionContents = [
   {
     id: 2,
     title: 'Border Accordion',
-    href: '#border_accordion',
+    href: '#border_according',
   },
   {
     id: 3,
     title: 'Background Accordion',
-    href: '#background_accordion',
+    href: '#background_according',
   },
 ];
 
