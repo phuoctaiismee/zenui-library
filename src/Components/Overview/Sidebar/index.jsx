@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // icons
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -17,9 +17,23 @@ const index = ({ startContent, setStartContent }) => {
   const [start, setStart] = useState(true);
   const [components, setComponents] = useState(true);
   const [blocks, setBlocks] = useState(true);
+  const sidebarRef = useRef(null);
+  // Automatically scrolls the active sidebar element into view when startContent changes
 
+  useEffect(() => {
+    if (sidebarRef.current) {
+      const activeElement = sidebarRef.current.querySelector('.border-primary');
+      if (activeElement) {
+        activeElement.scrollIntoView({ 
+          behavior: 'instant',
+          block: 'center'
+        });
+      }
+    }
+  }, [startContent]);
   return (
       <aside
+          ref={sidebarRef}
           className="py-6 px-10 border-r h-[89vh] border-border flex-col gap-4 overflow-y-scroll sticky top-18 left-0 w-[320px] bg-secondary z-20 1024px:flex hidden">
 
         {/*  get starts  */}
