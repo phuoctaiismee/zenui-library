@@ -128,17 +128,17 @@ export const stepsContents = [
   {
     id: 1,
     title: 'Number Step',
-    href: '#number_step',
+    href: '#number_stepper',
   },
   {
     id: 2,
     title: 'No Text Step',
-    href: '#no_text_step',
+    href: '#no_text_stepper',
   },
   {
     id: 3,
     title: 'Vertical Step',
-    href: '#vertical_step',
+    href: '#vertical_stepper',
   },
 ];
 
