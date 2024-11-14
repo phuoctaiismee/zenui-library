@@ -26,4 +26,13 @@ export const DevContributorsData = [
         githubLink: 'https://github.com/danishzayan',
         website: ''
     },
+    {
+        name: 'Eshwar S Devaramane',
+        title: 'Software Engineer',
+        image: 'https://i.ibb.co.com/WfP5nhm/1712361854052.jpg',
+        linkedinLink: 'https://www.linkedin.com/in/eshwar-sdev/',
+        twitterLink: '',
+        githubLink: 'https://github.com/eshward95/',
+        website: 'https://bento.me/e-sdev'
+    },
 ]

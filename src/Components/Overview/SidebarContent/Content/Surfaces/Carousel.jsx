@@ -135,7 +135,6 @@ const Carousel = () => {
             {carouselCode && (
               <Showcode
                 code={`
-// First carousel code (same as previous carousel code, but for carousel 1)
 import React, { useState, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
@@ -236,7 +235,6 @@ export default CarouselComponent1;
             {carouselCode && (
               <Showcode
                 code={`
-// Second carousel code (similar to the first carousel code, but for carousel 2)
 import React, { useState, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
