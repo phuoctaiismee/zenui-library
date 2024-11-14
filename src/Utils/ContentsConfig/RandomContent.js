@@ -20,7 +20,7 @@ export const snippetContents = [
     {
         id: 3,
         title: 'Border Snippet',
-        href: '#border_snippet',
+        href: '#bordered_snippet',
     },
     {
         id: 4,

@@ -98,13 +98,13 @@ export const notificationContents = [
     },
     {
         id: 2,
-        title: 'Icon Notification',
-        href: '#icon_notification',
+        title: 'Cross Icon Notification',
+        href: '#cross_icon_notification',
     },
     {
         id: 3,
-        title: 'Custom Position Notification',
-        href: '#custom_position_notification',
+        title: 'Customize Positioning Notification',
+        href: '#customize_positioning_notification',
     },
     {
         id: 4,
@@ -113,8 +113,8 @@ export const notificationContents = [
     },
     {
         id: 5,
-        title: 'Progress Notification',
-        href: '#progress_notification',
+        title: 'Progressive Notification',
+        href: '#progressive_notification',
     },
 ];
 
@@ -154,18 +154,65 @@ export const skeletonContents = [
 
 // Testimonial contents
 export const testimonialContents = [
-    {
-        id: 1,
-        title: 'Testimonial',
-        href: '#testimonial',
-    },
+  {
+    id: 1,
+    title: 'Testimonial 1',
+    href: '#testimonial_1',
+  },
+  {
+    id: 2,
+    title: 'Testimonial 2',
+    href: '#testimonial_2',
+  },
+  {
+    id: 3,
+    title: 'Testimonial 3',
+    href: '#testimonial_3',
+  },
+  {
+    id: 4,
+    title: 'Testimonial 4',
+    href: '#testimonial_4',
+  },
+  {
+    id: 5,
+    title: 'Testimonial 5',
+    href: '#testimonial_5',
+  },
+  {
+    id: 6,
+    title: 'Testimonial 6',
+    href: '#testimonial_6',
+  },
+  {
+    id: 7,
+    title: 'Testimonial 7',
+    href: '#testimonial_7',
+  },
 ];
+
 
 // Tree Dropdown contents
 export const treeDropdownContents = [
-    {
-        id: 1,
-        title: 'Tree Dropdown',
-        href: '#tree_dropdown',
-    },
+  {
+    id: 1,
+    title: 'Data Tree',
+    href: '#data_tree',
+  },
+  {
+    id: 2,
+    title: 'Tree With Line',
+    href: '#tree_with_line',
+  },
+  {
+    id: 3,
+    title: 'Directory Tree',
+    href: '#directory_tree',
+  },
+  {
+    id: 4,
+    title: 'Controlled Tree',
+    href: '#controlled_tree',
+  },
 ];
+
