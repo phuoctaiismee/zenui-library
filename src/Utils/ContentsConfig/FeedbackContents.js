@@ -98,13 +98,13 @@ export const notificationContents = [
     },
     {
         id: 2,
-        title: 'Icon Notification',
-        href: '#icon_notification',
+        title: 'Cross Icon Notification',
+        href: '#cross_icon_notification',
     },
     {
         id: 3,
-        title: 'Custom Position Notification',
-        href: '#custom_position_notification',
+        title: 'Customize Positioning Notification',
+        href: '#customize_positioning_notification',
     },
     {
         id: 4,
@@ -113,8 +113,8 @@ export const notificationContents = [
     },
     {
         id: 5,
-        title: 'Progress Notification',
-        href: '#progress_notification',
+        title: 'Progressive Notification',
+        href: '#progressive_notification',
     },
 ];
 
