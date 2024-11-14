@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // components
-import OverviewFooter from "../../../../../Shared/OverviewFooter";
-import ContentHeader from "../../../../../Shared/ContentHeader";
+import OverviewFooter from '../../../../../Shared/OverviewFooter';
+import ContentHeader from '../../../../../Shared/ContentHeader';
+
+// contents for scrollspy
+import { snippetContents } from '../../../../../Utils/ContentsConfig/RandomContent';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
 
 // react helmet
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 // icons
-import { MdOutlineDone } from "react-icons/md";
-import { GoCopy } from "react-icons/go";
+import { MdOutlineDone } from 'react-icons/md';
+import { GoCopy } from 'react-icons/go';
 
 // showing the code
-import Showcode from "../../../../../Shared/ShowCode";
+import Showcode from '../../../../../Shared/ShowCode';
 
 const Snippet = () => {
-  const [contentActiveTab, setContentActiveTab] = useState(0);
+  const sectionIds = snippetContents.map((item) => item.href.slice(1));
+  const activeSection = useScrollSpy(sectionIds);
 
   // Primary Snippet
   const [primarySnippetPreview, setPrimarySnippetPreview] = useState(true);
@@ -90,58 +95,63 @@ const Snippet = () => {
 
   return (
     <>
-      <aside className="flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10">
+      <aside className='flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10'>
         <div>
-          <ContentHeader text={"primary Snippet"} id={"primary_snippet"} />
+          <ContentHeader text={'primary Snippet'} id={'primary_snippet'} />
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a primary code snippet component with a copy button for easy code duplication.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is a primary code snippet component with a copy button for easy
+            code duplication.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${primarySnippetPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  primarySnippetPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[107px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      primarySnippetPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handlePrimarySnippetPreview}
+                className={`${
+                  primarySnippetPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handlePrimarySnippetPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      primarySnippetCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handlePrimarySnippetCode}
+                className={`${
+                  primarySnippetCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handlePrimarySnippetCode}
               >
                 Code
               </button>
             </div>
             {primarySnippetPreview && (
-                <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
-                  <div
-                      className="bg-[#d1d1d180] text-[#000000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
-                    $ npm i @zenui
-                    <GoCopy
-                        onClick={() => handlePrimaryCopy("npm i @zenui", setIsCopy)}
-                        className={`${
-                            isCopy ? " opacity-0 hidden" : " opacity-100 flex"
-                        } transition-all duration-300 cursor-pointer`}
-                    />
-                    <MdOutlineDone
-                        className={`${
-                            isCopy ? " opacity-100 flex" : " opacity-0 hidden"
-                        } transition-all duration-300 cursor-pointer`}
-                    />
-                  </div>
+              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                <div className='bg-[#d1d1d180] text-[#000000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                  $ npm i @zenui
+                  <GoCopy
+                    onClick={() => handlePrimaryCopy('npm i @zenui', setIsCopy)}
+                    className={`${
+                      isCopy ? ' opacity-0 hidden' : ' opacity-100 flex'
+                    } transition-all duration-300 cursor-pointer`}
+                  />
+                  <MdOutlineDone
+                    className={`${
+                      isCopy ? ' opacity-100 flex' : ' opacity-0 hidden'
+                    } transition-all duration-300 cursor-pointer`}
+                  />
                 </div>
+              </div>
             )}
 
             {primarySnippetCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 // icons
 import { MdOutlineDone } from "react-icons/md";
 import { GoCopy } from "react-icons/go";
@@ -176,71 +186,76 @@ const Snippet = () => {
 
 export default Snippet;
                 '
-                />
+              />
             )}
           </div>
 
-          <div class="mt-8">
+          <div class='mt-8'>
             <ContentHeader
-                text={"background Snippet"}
-                id={"background_snippet"}
+              text={'background Snippet'}
+              id={'background_snippet'}
             />
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a primary code snippet with background color and a copy button for convenient code sharing.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is a primary code snippet with background color and a copy
+            button for convenient code sharing.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${backgroundSnippetPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  backgroundSnippetPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[107px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      backgroundSnippetPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleBackgroundSnippetPreview}
+                className={`${
+                  backgroundSnippetPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleBackgroundSnippetPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      backgroundSnippetCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleBackgroundSnippetCode}
+                className={`${
+                  backgroundSnippetCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleBackgroundSnippetCode}
               >
                 Code
               </button>
             </div>
             {backgroundSnippetPreview && (
-                <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
-                  <div
-                      className="bg-primary text-[#fff] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
-                    $ npm i @zenui
-                    <GoCopy
-                        onClick={() =>
-                            handlePrimaryCopy("npm i @zenui", setBackgroundSnippet)
-                        }
-                        className={`${
-                            backgroundSnippet
-                                ? " opacity-0 hidden"
-                                : " opacity-100 flex"
-                        } transition-all duration-300 cursor-pointer`}
-                    />
-                    <MdOutlineDone
-                        className={`${
-                            backgroundSnippet
-                                ? " opacity-100 flex"
-                                : " opacity-0 hidden"
-                        } transition-all duration-300 cursor-pointer`}
-                    />
-                  </div>
+              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                <div className='bg-primary text-[#fff] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                  $ npm i @zenui
+                  <GoCopy
+                    onClick={() =>
+                      handlePrimaryCopy('npm i @zenui', setBackgroundSnippet)
+                    }
+                    className={`${
+                      backgroundSnippet
+                        ? ' opacity-0 hidden'
+                        : ' opacity-100 flex'
+                    } transition-all duration-300 cursor-pointer`}
+                  />
+                  <MdOutlineDone
+                    className={`${
+                      backgroundSnippet
+                        ? ' opacity-100 flex'
+                        : ' opacity-0 hidden'
+                    } transition-all duration-300 cursor-pointer`}
+                  />
                 </div>
+              </div>
             )}
 
             {backgroundSnippetCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 // icons
 import { MdOutlineDone } from "react-icons/md";
 import { GoCopy } from "react-icons/go";
@@ -275,82 +290,86 @@ const Snippet = () => {
 
 export default Snippet;
                 '
-                />
+              />
             )}
           </div>
 
-          <div class="mt-8">
-            <ContentHeader text={"Bordered Snippet"} id={"bordered_snippet"}/>
+          <div class='mt-8'>
+            <ContentHeader text={'Bordered Snippet'} id={'bordered_snippet'} />
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a primary code snippet with border color and a copy button for efficient code sharing and reuse.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is a primary code snippet with border color and a copy button
+            for efficient code sharing and reuse.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${borderSnippetPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  borderSnippetPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[107px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      borderSnippetPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleBorderSnippetPreview}
+                className={`${
+                  borderSnippetPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleBorderSnippetPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      borderSnippetCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleBorderSnippetCode}
+                className={`${
+                  borderSnippetCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleBorderSnippetCode}
               >
                 Code
               </button>
             </div>
             {borderSnippetPreview && (
-                <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
-                  <div
-                      className="border border-primary text-primary rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
-                    $ npm i @zenui
-                    <GoCopy
-                        onClick={() =>
-                            handlePrimaryCopy("npm i @zenui", setBorder1)
-                        }
-                        className={`${
-                            border1 ? " opacity-0 hidden" : " opacity-100 flex"
-                        } transition-all duration-300 cursor-pointer`}
-                    />
-                    <MdOutlineDone
-                        className={`${
-                            border1 ? " opacity-100 flex" : " opacity-0 hidden"
-                        } transition-all duration-300 cursor-pointer`}
-                    />
-                  </div>
-
-                  <div
-                      className="border border-border text-text rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
-                    $ npm i @zenui
-                    <GoCopy
-                        onClick={() =>
-                            handlePrimaryCopy("npm i @zenui", setBorder2)
-                        }
-                        className={`${
-                            border2 ? " opacity-0 hidden" : " opacity-100 flex"
-                        } transition-all duration-300 cursor-pointer`}
-                    />
-                    <MdOutlineDone
-                        className={`${
-                            border2 ? " opacity-100 flex" : " opacity-0 hidden"
-                        } transition-all duration-300 cursor-pointer`}
-                    />
-                  </div>
+              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                <div className='border border-primary text-primary rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                  $ npm i @zenui
+                  <GoCopy
+                    onClick={() =>
+                      handlePrimaryCopy('npm i @zenui', setBorder1)
+                    }
+                    className={`${
+                      border1 ? ' opacity-0 hidden' : ' opacity-100 flex'
+                    } transition-all duration-300 cursor-pointer`}
+                  />
+                  <MdOutlineDone
+                    className={`${
+                      border1 ? ' opacity-100 flex' : ' opacity-0 hidden'
+                    } transition-all duration-300 cursor-pointer`}
+                  />
                 </div>
+
+                <div className='border border-border text-text rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                  $ npm i @zenui
+                  <GoCopy
+                    onClick={() =>
+                      handlePrimaryCopy('npm i @zenui', setBorder2)
+                    }
+                    className={`${
+                      border2 ? ' opacity-0 hidden' : ' opacity-100 flex'
+                    } transition-all duration-300 cursor-pointer`}
+                  />
+                  <MdOutlineDone
+                    className={`${
+                      border2 ? ' opacity-100 flex' : ' opacity-0 hidden'
+                    } transition-all duration-300 cursor-pointer`}
+                  />
+                </div>
+              </div>
             )}
 
             {borderSnippetCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 // icons
 import { MdOutlineDone } from "react-icons/md";
 import { GoCopy } from "react-icons/go";
@@ -403,105 +422,91 @@ const Snippet = () => {
 
 export default Snippet;
                 '
-                />
+              />
             )}
           </div>
 
-          <div class="mt-8">
+          <div class='mt-8'>
             <ContentHeader
-                text={"without icon Snippet"}
-                id={"without_icon_snippet"}
+              text={'without icon Snippet'}
+              id={'without_icon_snippet'}
             />
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a primary code snippet with a gray background for clear code display without a copy button.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is a primary code snippet with a gray background for clear code
+            display without a copy button.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${withoutIconSnippetPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[107px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  withoutIconSnippetPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[107px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      withoutIconSnippetPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleWithoutIconSnippetPreview}
+                className={`${
+                  withoutIconSnippetPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleWithoutIconSnippetPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      withoutIconSnippetCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleWithoutIconSnippetCode}
+                className={`${
+                  withoutIconSnippetCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleWithoutIconSnippetCode}
               >
                 Code
               </button>
             </div>
             {withoutIconSnippetPreview && (
-                <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
-                  <div
-                      className="bg-[#d1d1d180] text-[#000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
-                    $ npm i @zenui
-                  </div>
+              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                <div className='bg-[#d1d1d180] text-[#000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4'>
+                  $ npm i @zenui
                 </div>
+              </div>
             )}
 
             {withoutIconSnippetCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 <div className="bg-[#d1d1d180] text-[#000] rounded-md py-1 px-4 tracking-wider font-mono font-[500] flex items-center justify-between gap-4">
    $ npm i @zenui
 </div>
                 '
-                />
+              />
             )}
           </div>
 
-          <OverviewFooter backUrl='/components/code' backName='code' forwardName='all blocks' forwardUrl='/blocks/all-blocks'/>
+          <OverviewFooter
+            backUrl='/components/code'
+            backName='code'
+            forwardName='all blocks'
+            forwardUrl='/blocks/all-blocks'
+          />
         </div>
 
-        <div className="1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]">
-          <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
+        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[40%]'>
+          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
             CONTENTS
           </h2>
-          <a
-              href="#primary_snippet"
+          {snippetContents.map((item) => (
+            <a
+              key={item.id}
+              href={item.href}
               className={`${
-                  contentActiveTab === 1 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(1)}
-          >
-            Primary Snippet
-          </a>
-          <a
-              href="#background_snippet"
-              className={`${
-                  contentActiveTab === 2 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(2)}
-          >
-            Background Snippet
-          </a>
-          <a
-              href="#bordered_snippet"
-              className={`${
-                  contentActiveTab === 3 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(3)}
-          >
-            Bordered Snippet
-          </a>
-          <a
-              href="#without_icon_snippet"
-              className={`${
-                  contentActiveTab === 4 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(4)}
-          >
-            Without Icon Snippet
-          </a>
+                activeSection === item.href.slice(1) &&
+                '!text-primary !border-primary'
+              } text-[0.9rem] text-text border-l border-transparent pl-4`}
+            >
+              {item.title}
+            </a>
+          ))}
         </div>
       </aside>
       <Helmet>

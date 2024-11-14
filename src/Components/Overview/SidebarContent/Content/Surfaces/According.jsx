@@ -8,6 +8,10 @@ import ContentHeader from "../../../../../Shared/ContentHeader";
 import Showcode from "../../../../../Shared/ShowCode";
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
 
+// contents for scrollspy
+import { accordionContents } from '../../../../../Utils/ContentsConfig/SurfacesContents';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
+
 // icons
 import { FaChevronDown, FaPlus } from "react-icons/fa6";
 
@@ -15,7 +19,9 @@ const According = () => {
   // defaultAccording
   const [defaultAccordingPreview, setDefaultAccordingPreview] = useState(true);
   const [defaultAccordingCode, setDefaultAccordingCode] = useState(false);
-  const [contentActiveTab, setContentActiveTab] = useState(0);
+
+  const sectionIds = accordionContents.map(item => item.href.slice(1));
+  const activeSection = useScrollSpy(sectionIds);
 
   const handleDefaultAccordingPreview = () => {
     setDefaultAccordingPreview(true);
@@ -100,79 +106,85 @@ const According = () => {
 
   return (
     <>
-      <aside className="flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10">
-        <div className="w-full 425px:w-[80%]">
-          <ContentHeader id="default_open" text={"default open"} />
+      <aside className='flex items-start justify-between gap-6 w-full 640px:pl-[2.5rem] px-6 640px:px-10'>
+        <div className='w-full 425px:w-[80%]'>
+          <ContentHeader id='default_open' text={'default open'} />
 
-          <p className=" text-text text-[1rem]">
-            This is a default opened accordion component. Explore content with immediate visibility upon access.
+          <p className=' text-text text-[1rem]'>
+            This is a default opened accordion component. Explore content with
+            immediate visibility upon access.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${defaultAccordingPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  defaultAccordingPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[106px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      defaultAccordingPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleDefaultAccordingPreview}
+                className={`${
+                  defaultAccordingPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleDefaultAccordingPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      defaultAccordingCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleDefaultAccordingCode}
+                className={`${
+                  defaultAccordingCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleDefaultAccordingCode}
               >
                 Code
               </button>
             </div>
             {defaultAccordingPreview && (
-                <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
-                  <div className="flex gap-3 flex-col w-full">
-                    {accordingData?.map((according, index) => (
-                        <article
-                            key={index}
-                            className="border-b border-border rounded py-3"
-                        >
-                          <div
-                              className="flex gap-2 cursor-pointer items-center justify-between w-full"
-                              onClick={() => handleClick(index)}
-                          >
-                            <h2 className="text-primary font-[600] text-[1.2rem]">
-                              {according.title}
-                            </h2>
-                            <p>
-                              <FaChevronDown
-                                  className={`text-[1.2rem] text-text transition-all duration-300 ${
-                                      isAccordingOpen === index &&
-                                      "rotate-[180deg] !text-primary"
-                                  }`}
-                              />
-                            </p>
-                          </div>
-                          <div
-                              className={`grid transition-all duration-300 overflow-hidden ease-in-out ${
-                                  isAccordingOpen === index
-                                      ? "grid-rows-[1fr] opacity-100 mt-4"
-                                      : "grid-rows-[0fr] opacity-0"
-                              }`}
-                          >
-                            <p className="text-text text-[0.9rem] overflow-hidden">
-                              {according.description}
-                            </p>
-                          </div>
-                        </article>
-                    ))}
-                  </div>
+              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                <div className='flex gap-3 flex-col w-full'>
+                  {accordingData?.map((according, index) => (
+                    <article
+                      key={index}
+                      className='border-b border-border rounded py-3'
+                    >
+                      <div
+                        className='flex gap-2 cursor-pointer items-center justify-between w-full'
+                        onClick={() => handleClick(index)}
+                      >
+                        <h2 className='text-primary font-[600] text-[1.2rem]'>
+                          {according.title}
+                        </h2>
+                        <p>
+                          <FaChevronDown
+                            className={`text-[1.2rem] text-text transition-all duration-300 ${
+                              isAccordingOpen === index &&
+                              'rotate-[180deg] !text-primary'
+                            }`}
+                          />
+                        </p>
+                      </div>
+                      <div
+                        className={`grid transition-all duration-300 overflow-hidden ease-in-out ${
+                          isAccordingOpen === index
+                            ? 'grid-rows-[1fr] opacity-100 mt-4'
+                            : 'grid-rows-[0fr] opacity-0'
+                        }`}
+                      >
+                        <p className='text-text text-[0.9rem] overflow-hidden'>
+                          {according.description}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
                 </div>
+              </div>
             )}
 
             {defaultAccordingCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 import React from "react";
 
 // icons
@@ -248,83 +260,89 @@ const BorderAccording = () => {
 
 export default BorderAccording;
               '
-                />
+              />
             )}
           </div>
 
-          <div className="mt-8">
-            <ContentHeader id="border_according" text={"Border Accordion"}/>
+          <div className='mt-8'>
+            <ContentHeader id='border_according' text={'Border Accordion'} />
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a border accordion with toggle component. Expand and collapse sections with distinct border styling for clarity.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is a border accordion with toggle component. Expand and
+            collapse sections with distinct border styling for clarity.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${borderAccordingPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  borderAccordingPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[106px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      borderAccordingPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleBorderAccordingPreview}
+                className={`${
+                  borderAccordingPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleBorderAccordingPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      borderAccordingCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleBorderAccordingCode}
+                className={`${
+                  borderAccordingCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleBorderAccordingCode}
               >
                 Code
               </button>
             </div>
             {borderAccordingPreview && (
-                <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
-                  <div className="flex gap-3 flex-col w-full">
-                    {accordingData?.map((according, index) => (
-                        <article
-                            key={index}
-                            className="border border-border rounded p-3"
-                        >
-                          <div
-                              className="flex gap-2 cursor-pointer items-center justify-between w-full"
-                              onClick={() => handleBorderClick(index)}
-                          >
-                            <h2 className="text-primary font-[600] text-[1.2rem]">
-                              {according.title}
-                            </h2>
-                            <p>
-                              <FaPlus
-                                  className={`text-[1.3rem] text-text transition-all duration-300 ${
-                                      isPlusAccording === index &&
-                                      "rotate-[45deg] !text-primary"
-                                  }`}
-                              />
-                            </p>
-                          </div>
-                          <div
-                              className={`grid transition-all duration-300 overflow-hidden ease-in-out ${
-                                  isPlusAccording === index
-                                      ? "grid-rows-[1fr] opacity-100 mt-4"
-                                      : "grid-rows-[0fr] opacity-0"
-                              }`}
-                          >
-                            <p className="text-text text-[0.9rem] overflow-hidden">
-                              {according.description}
-                            </p>
-                          </div>
-                        </article>
-                    ))}
-                  </div>
+              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                <div className='flex gap-3 flex-col w-full'>
+                  {accordingData?.map((according, index) => (
+                    <article
+                      key={index}
+                      className='border border-border rounded p-3'
+                    >
+                      <div
+                        className='flex gap-2 cursor-pointer items-center justify-between w-full'
+                        onClick={() => handleBorderClick(index)}
+                      >
+                        <h2 className='text-primary font-[600] text-[1.2rem]'>
+                          {according.title}
+                        </h2>
+                        <p>
+                          <FaPlus
+                            className={`text-[1.3rem] text-text transition-all duration-300 ${
+                              isPlusAccording === index &&
+                              'rotate-[45deg] !text-primary'
+                            }`}
+                          />
+                        </p>
+                      </div>
+                      <div
+                        className={`grid transition-all duration-300 overflow-hidden ease-in-out ${
+                          isPlusAccording === index
+                            ? 'grid-rows-[1fr] opacity-100 mt-4'
+                            : 'grid-rows-[0fr] opacity-0'
+                        }`}
+                      >
+                        <p className='text-text text-[0.9rem] overflow-hidden'>
+                          {according.description}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
                 </div>
+              </div>
             )}
 
             {borderAccordingCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 import React from "react";
 
 // icons
@@ -403,102 +421,109 @@ const BorderAccording = () => {
 
 export default BorderAccording;
               '
-                />
+              />
             )}
           </div>
 
-          <div className="mt-8">
+          <div className='mt-8'>
             <ContentHeader
-                id="background_according"
-                text={"background Accordion"}
+              id='background_according'
+              text={'background Accordion'}
             />
           </div>
 
-          <p className="w-full 425px:w-[80%] text-text text-[1rem]">
-            This is a background color accordion with toggle component. Expand and collapse sections with distinct background colors for visual differentiation.
+          <p className='w-full 425px:w-[80%] text-text text-[1rem]'>
+            This is a background color accordion with toggle component. Expand
+            and collapse sections with distinct background colors for visual
+            differentiation.
           </p>
 
-          <div className="w-full 425px:w-[80%] border border-border rounded mt-8">
-            <div className="relative">
+          <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
+            <div className='relative'>
               <div
-                  className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${bgAccordingPreview ? 'translate-x-[0px] !w-[100px]' : 'translate-x-[106px] rounded-br'}`}></div>
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
+                  bgAccordingPreview
+                    ? 'translate-x-[0px] !w-[100px]'
+                    : 'translate-x-[106px] rounded-br'
+                }`}
+              ></div>
               <button
-                  className={`${
-                      bgAccordingPreview && "text-tabTextColor"
-                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                  onClick={handleBgAccordingPreview}
+                className={`${
+                  bgAccordingPreview && 'text-tabTextColor'
+                } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleBgAccordingPreview}
               >
                 Preview
               </button>
               <button
-                  className={`${
-                      bgAccordingCode && "text-tabTextColor"
-                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                  onClick={handleBgAccordingCode}
+                className={`${
+                  bgAccordingCode && 'text-tabTextColor'
+                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleBgAccordingCode}
               >
                 Code
               </button>
             </div>
             {bgAccordingPreview && (
-                <div className="p-8 mb-4 flex items-center flex-col gap-5 justify-center">
-                  <div className="flex gap-3 flex-col w-full">
-                    {accordingData?.map((according, index) => (
-                        <article key={index} className="bg-border rounded">
-                          <div
-                              className="flex gap-2 cursor-pointer items-center justify-between w-full bg-gray-700 p-3 rounded"
-                              onClick={() => handleBgAccording(index)}
-                          >
-                            <h2
-                                className={` text-secondary font-[600] text-[1.2rem]`}
-                            >
-                              {according.title}
-                            </h2>
-                            <svg
-                                className="fill-[#ffffff] shrink-0 ml-8"
-                                width="16"
-                                height="16"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <rect
-                                  y="7"
-                                  width="16"
-                                  height="2"
-                                  rx="1"
-                                  className={`transform origin-center transition duration-200 ease-out ${
-                                      bgAccording === index && "!rotate-180"
-                                  }`}
-                              />
-                              <rect
-                                  y="7"
-                                  width="16"
-                                  height="2"
-                                  rx="1"
-                                  className={`transform origin-center rotate-90 transition duration-200 ease-out ${
-                                      bgAccording === index && "!rotate-180"
-                                  }`}
-                              />
-                            </svg>
-                          </div>
-                          <div
-                              className={`grid transition-all duration-300 overflow-hidden ease-in-out bg-gray-100 ${
-                                  bgAccording === index
-                                      ? "grid-rows-[1fr] opacity-100 p-3"
-                                      : "grid-rows-[0fr] opacity-0"
-                              }`}
-                          >
-                            <div className="text-text text-[0.9rem] overflow-hidden">
-                              {according.description}
-                            </div>
-                          </div>
-                        </article>
-                    ))}
-                  </div>
+              <div className='p-8 mb-4 flex items-center flex-col gap-5 justify-center'>
+                <div className='flex gap-3 flex-col w-full'>
+                  {accordingData?.map((according, index) => (
+                    <article key={index} className='bg-border rounded'>
+                      <div
+                        className='flex gap-2 cursor-pointer items-center justify-between w-full bg-gray-700 p-3 rounded'
+                        onClick={() => handleBgAccording(index)}
+                      >
+                        <h2
+                          className={` text-secondary font-[600] text-[1.2rem]`}
+                        >
+                          {according.title}
+                        </h2>
+                        <svg
+                          className='fill-[#ffffff] shrink-0 ml-8'
+                          width='16'
+                          height='16'
+                          xmlns='http://www.w3.org/2000/svg'
+                        >
+                          <rect
+                            y='7'
+                            width='16'
+                            height='2'
+                            rx='1'
+                            className={`transform origin-center transition duration-200 ease-out ${
+                              bgAccording === index && '!rotate-180'
+                            }`}
+                          />
+                          <rect
+                            y='7'
+                            width='16'
+                            height='2'
+                            rx='1'
+                            className={`transform origin-center rotate-90 transition duration-200 ease-out ${
+                              bgAccording === index && '!rotate-180'
+                            }`}
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        className={`grid transition-all duration-300 overflow-hidden ease-in-out bg-gray-100 ${
+                          bgAccording === index
+                            ? 'grid-rows-[1fr] opacity-100 p-3'
+                            : 'grid-rows-[0fr] opacity-0'
+                        }`}
+                      >
+                        <div className='text-text text-[0.9rem] overflow-hidden'>
+                          {according.description}
+                        </div>
+                      </div>
+                    </article>
+                  ))}
                 </div>
+              </div>
             )}
 
             {bgAccordingCode && (
-                <Showcode
-                    code='
+              <Showcode
+                code='
 import React from "react";
 
 const BackgroundAccording = () => {
@@ -588,44 +613,34 @@ const BackgroundAccording = () => {
 
 export default BackgroundAccording;
               '
-                />
+              />
             )}
           </div>
 
-          <OverviewFooter backUrl='/components/animated-cards' backName='animated cards' forwardName='app bar' forwardUrl='/components/appbar'/>
+          <OverviewFooter
+            backUrl='/components/animated-cards'
+            backName='animated cards'
+            forwardName='app bar'
+            forwardUrl='/components/appbar'
+          />
         </div>
 
-        <div className="1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[35%]">
-          <h2 className="text-[0.9rem] font-[600] text-text tracking-widest">
+        <div className='1024px:flex hidden flex-col gap-4 sticky top-4 right-0 w-[35%]'>
+          <h2 className='text-[0.9rem] font-[600] text-text tracking-widest'>
             CONTENTS
           </h2>
-          <a
-              href="#default_open"
+          {accordionContents.map((item) => (
+            <a
+              key={item.id}
+              href={item.href}
               className={`${
-                  contentActiveTab === 1 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(1)}
-          >
-            Default Open
-          </a>
-          <a
-              href="#border_according"
-              className={`${
-                  contentActiveTab === 2 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(2)}
-          >
-            Border Accordion
-          </a>
-          <a
-              href="#background_according"
-              className={`${
-                  contentActiveTab === 3 && "!text-primary !border-primary"
-              } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-              onClick={() => setContentActiveTab(3)}
-          >
-            Background Accordion
-          </a>
+                activeSection === item.href.slice(1) &&
+                '!text-primary !border-primary'
+              } text-[0.9rem] text-text border-l border-transparent pl-4`}
+            >
+              {item.title}
+            </a>
+          ))}
         </div>
       </aside>
       <Helmet>

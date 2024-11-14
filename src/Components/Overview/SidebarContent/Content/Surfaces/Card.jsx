@@ -5,6 +5,10 @@ import Showcode from "../../../../../Shared/ShowCode";
 import OverviewFooter from "../../../../../Shared/OverviewFooter";
 import ContentHeader from "../../../../../Shared/ContentHeader";
 
+// contents for scrollspy
+import { cardContents } from '../../../../../Utils/ContentsConfig/SurfacesContents.js';
+import { useScrollSpy } from '../../../../../CustomHooks/useScrollSpy';
+
 // react helmet
 import { Helmet } from "react-helmet";
 
@@ -33,7 +37,9 @@ const Card = () => {
   // blog card
   const [blogCardPreview, setBlogCardPreview] = useState(true);
   const [blogCardCode, setBlogCardCode] = useState(false);
-  const [contentActiveTab, setContentActiveTab] = useState(null);
+  
+  const sectionIds = cardContents.map(item => item.href.slice(1));
+  const activeSection = useScrollSpy(sectionIds);
 
   const handleBlogCardPreview = () => {
     setBlogCardPreview(true);
@@ -3240,212 +3246,18 @@ export default Card;
           </h2>
           <div className="flex flex-col gap-4 overflow-y-auto h-[90vh] pb-[120px] w-[40%]"
                style={{scrollbarWidth: 'none'}}>
+            {cardContents.map((item) => (
             <a
-                href="#ticket_card"
-                className={`${
-                    contentActiveTab === 0 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(0)}
+              key={item.id}
+              href={item.href}
+              className={`${
+                activeSection === item.href.slice(1) &&
+                '!text-primary !border-primary'
+              } text-[0.9rem] text-text border-l border-transparent pl-4`}
             >
-              Ticket Card
+              {item.title}
             </a>
-            <a
-                href="#Blog_Card"
-                className={`${
-                    contentActiveTab === 1 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(1)}
-            >
-              Blog Card
-            </a>
-            <a
-                href="#product_card"
-                className={`${
-                    contentActiveTab === 2 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(2)}
-            >
-              Product Card
-            </a>
-            <a
-                href="#music_card"
-                className={`${
-                    contentActiveTab === 3 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(3)}
-            >
-              Music Card
-            </a>
-            <a
-                href="#profile_card_2"
-                className={`${
-                    contentActiveTab === 4 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(4)}
-            >
-              Profile Card 2
-            </a>
-            <a
-                href="#Team_card"
-                className={`${
-                    contentActiveTab === 5 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(5)}
-            >
-              Team Card
-            </a>
-
-            <a
-                href="#Pricing_card_1"
-                className={`${
-                    contentActiveTab === 6 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(6)}
-            >
-              Pricing Card 1
-            </a>
-
-            <a
-                href="#Pricing_card_2"
-                className={`${
-                    contentActiveTab === 7 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(7)}
-            >
-              Pricing Card 2
-            </a>
-
-            <a
-                href="#random_card_1"
-                className={`${
-                    contentActiveTab === 8 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(8)}
-            >
-              Random Card 1
-            </a>
-
-            <a
-                href="#random_card_2"
-                className={`${
-                    contentActiveTab === 9 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(9)}
-            >
-              Random Card 2
-            </a>
-
-            <a
-                href="#random_card_3"
-                className={`${
-                    contentActiveTab === 10 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(10)}
-            >
-              Random Card 3
-            </a>
-
-            <a
-                href="#random_card_4"
-                className={`${
-                    contentActiveTab === 11 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(11)}
-            >
-              Random Card 4
-            </a>
-
-            <a
-                href="#random_card_5"
-                className={`${
-                    contentActiveTab === 12 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(12)}
-            >
-              Random Card 5
-            </a>
-
-            <a
-                href="#random_card_6"
-                className={`${
-                    contentActiveTab === 13 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(13)}
-            >
-              Random Card 6
-            </a>
-            <a
-                href="#random_card_7"
-                className={`${
-                    contentActiveTab === 14 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(14)}
-            >
-              Random Card 7
-            </a>
-            <a
-                href="#random_card_8"
-                className={`${
-                    contentActiveTab === 15 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(15)}
-            >
-              Random Card 8
-            </a>
-            <a
-                href="#random_card_9"
-                className={`${
-                    contentActiveTab === 16 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(16)}
-            >
-              Random Card 9
-            </a>
-            <a
-                href="#random_card_10"
-                className={`${
-                    contentActiveTab === 17 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(17)}
-            >
-              Random Card 10
-            </a>
-            <a
-                href="#random_card_11"
-                className={`${
-                    contentActiveTab === 18 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(18)}
-            >
-              Random Card 11
-            </a>
-            <a
-                href="#random_card_12"
-                className={`${
-                    contentActiveTab === 19 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(19)}
-            >
-              Random Card 12
-            </a>
-            <a
-                href="#random_card_13"
-                className={`${
-                    contentActiveTab === 20 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(20)}
-            >
-              Random Card 13
-            </a>
-            <a
-                href="#random_card_14"
-                className={`${
-                    contentActiveTab === 21 && "!text-primary !border-primary"
-                } text-[0.9rem] text-[#5c5c5c] border-l border-transparent pl-4`}
-                onClick={() => setContentActiveTab(21)}
-            >
-              Random Card 14
-            </a>
+          ))}
           </div>
         </div>
       </aside>
