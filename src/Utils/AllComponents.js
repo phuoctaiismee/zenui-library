@@ -209,4 +209,10 @@ export const allComponents = [
     url: "/components/image-gallery",
     groupName: "surface",
   },
+  {
+    title: "Carousel",
+    image: "https://i.ibb.co.com/RCnzWb4/drag-drop.png",
+    url: "/components/carousel",
+    groupName: "surface",
+  },
 ];
