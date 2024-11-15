@@ -9,12 +9,14 @@ import Feedback from "../Components/Home/feedback.jsx";
 import TemplatesSlider from "../Components/Home/TemplatesSlider.jsx";
 import Sponsor from "../Components/Home/Sponsor.jsx";
 import Faq from "../Components/Home/Faq.jsx";
+import NewsBoard from "../Components/Home/NewsBoard.jsx";
 
 
 const HomePage = () => {
 
     return (
         <>
+            <NewsBoard/>
             <Navbar/>
             <div className='overflow-x-hidden'>
                 <MobileNavbar/>
