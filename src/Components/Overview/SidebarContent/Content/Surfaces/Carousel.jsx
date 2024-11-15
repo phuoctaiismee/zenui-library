@@ -19,9 +19,6 @@ const Carousel = () => {
   const sectionIds = carouselContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
 
-  const [carouselPreview, setCarouselPreview] = useState(true);
-  const [carouselCode, setCarouselCode] = useState(false);
-
   // Carousel state for first carousel
   const [currentSlide1, setCurrentSlide1] = useState(0);
   const slides1 = [
@@ -49,14 +46,32 @@ const Carousel = () => {
     };
   }, [slides1.length, slides2.length]);
 
-  const handleCarouselPreview = () => {
-    setCarouselPreview(true);
-    setCarouselCode(false);
+  // first carousel slide
+  const [carouselPreview1, setCarouselPreview1] = useState(true);
+  const [carouselCode1, setCarouselCode1] = useState(false);
+
+  const handleCarouselPreview1 = () => {
+    setCarouselPreview1(true);
+    setCarouselCode1(false);
   };
 
-  const handleCarouselCode = () => {
-    setCarouselCode(true);
-    setCarouselPreview(false);
+  const handleCarouselCode1 = () => {
+    setCarouselCode1(true);
+    setCarouselPreview1(false);
+  };
+
+  // second carousel slide
+  const [carouselPreview2, setCarouselPreview2] = useState(true);
+  const [carouselCode2, setCarouselCode2] = useState(false);
+
+  const handleCarouselPreview2 = () => {
+    setCarouselPreview2(true);
+    setCarouselCode2(false);
+  };
+
+  const handleCarouselCode2 = () => {
+    setCarouselCode2(true);
+    setCarouselPreview2(false);
   };
 
   const nextSlide1 = () => {
@@ -90,28 +105,28 @@ const Carousel = () => {
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview1
                   ? 'translate-x-[0px] !w-[100px]'
                   : 'translate-x-[106px] rounded-br'
                   }`}
               ></div>
               <button
-                className={`${carouselPreview && 'text-tabTextColor'
+                className={`${carouselPreview1 && 'text-tabTextColor'
                   } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCarouselPreview}
+                onClick={handleCarouselPreview1}
               >
                 Preview
               </button>
               <button
-                className={`${carouselCode && 'text-tabTextColor'
+                className={`${carouselCode1 && 'text-tabTextColor'
                   } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCarouselCode}
+                onClick={handleCarouselCode1}
               >
                 Code
               </button>
             </div>
 
-            {carouselPreview && (
+            {carouselPreview1 && (
               <div className='p-8 mb-4 flex flex-col items-center gap-5  h-[400px] justify-center'>
                 <div className='relative flex items-center border-black justify-center w-full h-[200px] rounded-lg'>
                   <FiChevronLeft
@@ -138,7 +153,7 @@ const Carousel = () => {
               </div>
             )}
 
-            {carouselCode && (
+            {carouselCode1 && (
               <Showcode
                 code={`
 import React, { useState, useEffect } from "react";
@@ -202,28 +217,28 @@ export default CarouselComponent1;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview2
                   ? 'translate-x-[0px] !w-[100px]'
                   : 'translate-x-[106px] rounded-br'
                   }`}
               ></div>
               <button
-                className={`${carouselPreview && 'text-tabTextColor'
+                className={`${carouselPreview2 && 'text-tabTextColor'
                   } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCarouselPreview}
+                onClick={handleCarouselPreview2}
               >
                 Preview
               </button>
               <button
-                className={`${carouselCode && 'text-tabTextColor'
+                className={`${carouselCode2 && 'text-tabTextColor'
                   } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCarouselCode}
+                onClick={handleCarouselCode2}
               >
                 Code
               </button>
             </div>
 
-            {carouselPreview && (
+            {carouselPreview2 && (
               <div className='p-8 mb-4 flex flex-col items-center gap-5 h-[400px] justify-center'>
                 <div className='relative flex items-center justify-center w-full h-[200px] rounded-lg'>
                   <FiChevronLeft
@@ -247,7 +262,7 @@ export default CarouselComponent1;
               </div>
             )}
 
-            {carouselCode && (
+            {carouselCode2 && (
               <Showcode
                 code={`
 import React, { useState, useEffect } from "react";
