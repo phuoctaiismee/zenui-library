@@ -91,8 +91,8 @@ const Carousel = () => {
             <div className='relative'>
               <div
                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
+                  ? 'translate-x-[0px] !w-[100px]'
+                  : 'translate-x-[106px] rounded-br'
                   }`}
               ></div>
               <button
@@ -125,8 +125,8 @@ const Carousel = () => {
                     {/* Display the image */}
                     <img
                       src={slides1[currentSlide1].imgSrc}
-                      alt={slides1[currentSlide1].content}
-                      className="w-full object-cover text-black"
+                      alt={`Slide ${currentSlide1 + 1}`}
+                      className="w-full object-cover mb-2"
                     />
                   </div>
 
@@ -203,8 +203,8 @@ export default CarouselComponent1;
             <div className='relative'>
               <div
                 className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
+                  ? 'translate-x-[0px] !w-[100px]'
+                  : 'translate-x-[106px] rounded-br'
                   }`}
               ></div>
               <button
@@ -236,7 +236,7 @@ export default CarouselComponent1;
                     <img
                       src={slides2[currentSlide2].imgSrc}
                       alt={`Slide ${currentSlide2 + 1}`}
-                      className="w-full object-cover"
+                      className="w-full object-cover mb-2"
                     />
                   </div>
                   <FiChevronRight
