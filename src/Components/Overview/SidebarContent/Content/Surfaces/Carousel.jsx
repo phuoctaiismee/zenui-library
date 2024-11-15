@@ -225,7 +225,7 @@ export default CarouselComponent1;
 
             {carouselPreview && (
               <div className='p-8 mb-4 flex flex-col items-center gap-5 h-[400px] justify-center'>
-                <div className='relative flex items-center justify-center w-full h-[200px] bg-primary rounded-lg'>
+                <div className='relative flex items-center justify-center w-full h-[200px] rounded-lg'>
                   <FiChevronLeft
                     className='absolute left-5 text-secondary text-[1.8rem] cursor-pointer'
                     onClick={prevSlide2}
