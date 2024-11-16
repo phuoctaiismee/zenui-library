@@ -101,8 +101,8 @@ const Installation = () => {
             </div>
 
             <div className='w-full 1024px:w-[80%]'>
-                <BlocksFooter backUrl='/getting-started/overview' backName='overview'
-                              forwardUrl='/getting-started/resources' forwardName='resources'/>
+                <BlocksFooter backUrl='/docs/overview' backName='overview'
+                              forwardUrl='/docs/resources' forwardName='resources'/>
             </div>
 
             <Helmet>

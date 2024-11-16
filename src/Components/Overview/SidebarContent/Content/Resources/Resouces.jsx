@@ -164,8 +164,8 @@ const Resources = () => {
                 )
             }
 
-            <BlocksFooter backUrl='/getting-started/installation' backName='installation' forwardName='Custom hooks'
-                          forwardUrl='/getting-started/custom-hooks'/>
+            <BlocksFooter backUrl='/docs/installation' backName='installation' forwardName='Custom hooks'
+                          forwardUrl='/custom-hooks'/>
 
             <Helmet>
                 <title>Get-Started - Resources</title>
