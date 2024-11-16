@@ -22,17 +22,17 @@ const Carousel = () => {
   // Carousel state for first carousel
   const [currentSlide1, setCurrentSlide1] = useState(0);
   const slides1 = [
-    { id: 1, content: 'Carousel 1 - Slide 1 Content', imgSrc: "/caorusel_image/carousel.jpg" },
-    { id: 2, content: 'Carousel 1 - Slide 2 Content', imgSrc: "/caorusel_image/carousel-2.jpg" },
-    { id: 3, content: 'Carousel 1 - Slide 3 Content', imgSrc: "/caorusel_image/carousel-3.jpg" },
+    { id: 1, content: 'Carousel 1 - Slide 1 Content', imgSrc: "https://picsum.photos/id/11/600/400" },
+    { id: 2, content: 'Carousel 1 - Slide 2 Content', imgSrc: "https://picsum.photos/id/13/600/400" },
+    { id: 3, content: 'Carousel 1 - Slide 3 Content', imgSrc: "https://picsum.photos/id/29/600/400" },
   ];
 
   // Carousel state for second carousel
   const [currentSlide2, setCurrentSlide2] = useState(0);
   const slides2 = [
-    { id: 1, content: 'Carousel 2 - Slide 1 Content', imgSrc: "/caorusel_image/carousel.jpg" },
-    { id: 2, content: 'Carousel 2 - Slide 2 Content', imgSrc: "/caorusel_image/carousel-2.jpg" },
-    { id: 3, content: 'Carousel 2 - Slide 3 Content', imgSrc: "/caorusel_image/carousel-3.jpg" },
+    { id: 1, content: 'Carousel 2 - Slide 1 Content', imgSrc: "https://picsum.photos/id/57/600/400" },
+    { id: 2, content: 'Carousel 2 - Slide 2 Content', imgSrc: "https://picsum.photos/id/58/600/400" },
+    { id: 3, content: 'Carousel 2 - Slide 3 Content', imgSrc: "https://picsum.photos/id/49/600/400" },
   ];
 
   // Auto-advance carousel every 3 seconds for both carousels
