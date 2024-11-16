@@ -19,44 +19,59 @@ const Carousel = () => {
   const sectionIds = carouselContents.map((item) => item.href.slice(1));
   const activeSection = useScrollSpy(sectionIds);
 
-  const [carouselPreview, setCarouselPreview] = useState(true);
-  const [carouselCode, setCarouselCode] = useState(false);
-
   // Carousel state for first carousel
   const [currentSlide1, setCurrentSlide1] = useState(0);
   const slides1 = [
-    { id: 1, content: 'Carousel 1 - Slide 1 Content' },
-    { id: 2, content: 'Carousel 1 - Slide 2 Content' },
-    { id: 3, content: 'Carousel 1 - Slide 3 Content' },
+    { id: 1, content: 'Carousel 1 - Slide 1 Content', imgSrc: "https://picsum.photos/id/11/600/400" },
+    { id: 2, content: 'Carousel 1 - Slide 2 Content', imgSrc: "https://picsum.photos/id/13/600/400" },
+    { id: 3, content: 'Carousel 1 - Slide 3 Content', imgSrc: "https://picsum.photos/id/29/600/400" },
   ];
 
   // Carousel state for second carousel
   const [currentSlide2, setCurrentSlide2] = useState(0);
   const slides2 = [
-    { id: 1, content: 'Carousel 2 - Slide 1 Content' },
-    { id: 2, content: 'Carousel 2 - Slide 2 Content' },
-    { id: 3, content: 'Carousel 2 - Slide 3 Content' },
+    { id: 1, content: 'Carousel 2 - Slide 1 Content', imgSrc: "https://picsum.photos/id/57/600/400" },
+    { id: 2, content: 'Carousel 2 - Slide 2 Content', imgSrc: "https://picsum.photos/id/58/600/400" },
+    { id: 3, content: 'Carousel 2 - Slide 3 Content', imgSrc: "https://picsum.photos/id/49/600/400" },
   ];
 
   // Auto-advance carousel every 3 seconds for both carousels
   useEffect(() => {
     const autoSlide2 = setInterval(() => {
       setCurrentSlide2((prev) => (prev + 1) % slides2.length);
-    }, 1000);
+    }, 1500);
 
     return () => {
       clearInterval(autoSlide2);
     };
   }, [slides1.length, slides2.length]);
 
-  const handleCarouselPreview = () => {
-    setCarouselPreview(true);
-    setCarouselCode(false);
+  // first carousel slide
+  const [carouselPreview1, setCarouselPreview1] = useState(true);
+  const [carouselCode1, setCarouselCode1] = useState(false);
+
+  const handleCarouselPreview1 = () => {
+    setCarouselPreview1(true);
+    setCarouselCode1(false);
   };
 
-  const handleCarouselCode = () => {
-    setCarouselCode(true);
-    setCarouselPreview(false);
+  const handleCarouselCode1 = () => {
+    setCarouselCode1(true);
+    setCarouselPreview1(false);
+  };
+
+  // second carousel slide
+  const [carouselPreview2, setCarouselPreview2] = useState(true);
+  const [carouselCode2, setCarouselCode2] = useState(false);
+
+  const handleCarouselPreview2 = () => {
+    setCarouselPreview2(true);
+    setCarouselCode2(false);
+  };
+
+  const handleCarouselCode2 = () => {
+    setCarouselCode2(true);
+    setCarouselPreview2(false);
   };
 
   const nextSlide1 = () => {
@@ -90,40 +105,46 @@ const Carousel = () => {
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  carouselPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
-                }`}
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview1
+                  ? 'translate-x-[0px] !w-[100px]'
+                  : 'translate-x-[106px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  carouselPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCarouselPreview}
+                className={`${carouselPreview1 && 'text-tabTextColor'
+                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleCarouselPreview1}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  carouselCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCarouselCode}
+                className={`${carouselCode1 && 'text-tabTextColor'
+                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleCarouselCode1}
               >
                 Code
               </button>
             </div>
 
-            {carouselPreview && (
-              <div className='p-8 mb-4 flex flex-col items-center gap-5 justify-center'>
-                <div className='relative flex items-center justify-center w-full h-[200px] bg-primary rounded-lg'>
+            {carouselPreview1 && (
+              <div className='p-8 mb-4 flex flex-col items-center gap-5  h-[400px] justify-center'>
+                <div className='relative flex items-center border-black justify-center w-full h-[200px] rounded-lg'>
                   <FiChevronLeft
                     className='absolute left-5 text-secondary text-[1.8rem] cursor-pointer'
                     onClick={prevSlide1}
                   />
-                  <div className='text-[1.3rem] text-secondary font-[600]'>
-                    {slides1[currentSlide1].content}
+                  <div className='text-[1.3rem] text-secondary font-[600] flex flex-col items-center'>
+                    {/* Display the content text */}
+                    {/* <p className='mb-2'>{slides1[currentSlide1].content}</p> */}
+
+                    {/* Display the image */}
+                    <img
+                      src={slides1[currentSlide1].imgSrc}
+                      alt={`Slide ${currentSlide1 + 1}`}
+                      className="w-full object-cover mb-2"
+                    />
                   </div>
+
                   <FiChevronRight
                     className='absolute right-5 text-secondary text-[1.8rem] cursor-pointer'
                     onClick={nextSlide1}
@@ -132,7 +153,7 @@ const Carousel = () => {
               </div>
             )}
 
-            {carouselCode && (
+            {carouselCode1 && (
               <Showcode
                 code={`
 import React, { useState, useEffect } from "react";
@@ -142,9 +163,9 @@ const CarouselComponent1 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    { id: 1, content: "Carousel 1 - Slide 1 Content" },
-    { id: 2, content: "Carousel 1 - Slide 2 Content" },
-    { id: 3, content: "Carousel 1 - Slide 3 Content" },
+    { id: 1, content: 'Carousel 1 - Slide 1 Content', imgSrc: "/caorusel_image/carousel.jpg" },
+    { id: 2, content: 'Carousel 1 - Slide 2 Content', imgSrc: "/caorusel_image/carousel-2.jpg" },
+    { id: 3, content: 'Carousel 1 - Slide 3 Content', imgSrc: "/caorusel_image/carousel-3.jpg" },
   ];
 
   const nextSlide = () => {
@@ -156,13 +177,19 @@ const CarouselComponent1 = () => {
   };
 
   return (
-    <div className="relative flex items-center justify-center w-full h-[200px] bg-primary rounded-lg">
+    <div className="relative flex items-center justify-center w-full h-[200px] rounded-lg">
       <FiChevronLeft
           className="absolute left-5 text-secondary text-[1.8rem] cursor-pointer"
           onClick={prevSlide}
       />
       <div className="text-[1.3rem] text-secondary font-[600]">
-        {slides[currentSlide].content}
+        {
+          <img
+            src={slides1[currentSlide1].imgSrc}
+            alt={slides1[currentSlide1].content}
+            className="w-full object-cover text-black"
+          />
+        }
       </div>
       <FiChevronRight
           className="absolute right-5 text-secondary text-[1.8rem] cursor-pointer"
@@ -190,39 +217,42 @@ export default CarouselComponent1;
           <div className='w-full 425px:w-[80%] border border-border rounded mt-8'>
             <div className='relative'>
               <div
-                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${
-                  carouselPreview
-                    ? 'translate-x-[0px] !w-[100px]'
-                    : 'translate-x-[106px] rounded-br'
-                }`}
+                className={`absolute top-0 left-0 w-[90px] h-[40px] z-[1] bg-border transition-all duration-500 ${carouselPreview2
+                  ? 'translate-x-[0px] !w-[100px]'
+                  : 'translate-x-[106px] rounded-br'
+                  }`}
               ></div>
               <button
-                className={`${
-                  carouselPreview && 'text-tabTextColor'
-                } px-6 py-2 border-b z-[2] relative text-text border-border`}
-                onClick={handleCarouselPreview}
+                className={`${carouselPreview2 && 'text-tabTextColor'
+                  } px-6 py-2 border-b z-[2] relative text-text border-border`}
+                onClick={handleCarouselPreview2}
               >
                 Preview
               </button>
               <button
-                className={`${
-                  carouselCode && 'text-tabTextColor'
-                } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
-                onClick={handleCarouselCode}
+                className={`${carouselCode2 && 'text-tabTextColor'
+                  } px-6 py-2 border-r z-[2] relative text-text border-b rounded-br border-border`}
+                onClick={handleCarouselCode2}
               >
                 Code
               </button>
             </div>
 
-            {carouselPreview && (
-              <div className='p-8 mb-4 flex flex-col items-center gap-5 justify-center'>
-                <div className='relative flex items-center justify-center w-full h-[200px] bg-primary rounded-lg'>
+            {carouselPreview2 && (
+              <div className='p-8 mb-4 flex flex-col items-center gap-5 h-[400px] justify-center'>
+                <div className='relative flex items-center justify-center w-full h-[200px] rounded-lg'>
                   <FiChevronLeft
                     className='absolute left-5 text-secondary text-[1.8rem] cursor-pointer'
                     onClick={prevSlide2}
                   />
                   <div className='text-[1.3rem] text-secondary font-[600]'>
-                    {slides2[currentSlide2].content}
+                    {/* {slides2[currentSlide2].content} */}
+                    {/* Display the image */}
+                    <img
+                      src={slides2[currentSlide2].imgSrc}
+                      alt={`Slide ${currentSlide2 + 1}`}
+                      className="w-full object-cover mb-2"
+                    />
                   </div>
                   <FiChevronRight
                     className='absolute right-5 text-secondary text-[1.8rem] cursor-pointer'
@@ -232,7 +262,7 @@ export default CarouselComponent1;
               </div>
             )}
 
-            {carouselCode && (
+            {carouselCode2 && (
               <Showcode
                 code={`
 import React, { useState, useEffect } from "react";
@@ -242,15 +272,15 @@ const CarouselComponent2 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    { id: 1, content: "Carousel 2 - Slide 1 Content" },
-    { id: 2, content: "Carousel 2 - Slide 2 Content" },
-    { id: 3, content: "Carousel 2 - Slide 3 Content" },
+    { id: 1, content: 'Carousel 2 - Slide 1 Content', imgSrc: "/caorusel_image/carousel.jpg" },
+    { id: 2, content: 'Carousel 2 - Slide 2 Content', imgSrc: "/caorusel_image/carousel-2.jpg" },
+    { id: 3, content: 'Carousel 2 - Slide 3 Content', imgSrc: "/caorusel_image/carousel-3.jpg" },
   ];
 
   useEffect(() => {
     const autoSlide = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 3000);
+    }, 1500);
 
     return () => clearInterval(autoSlide);
   }, [slides.length]);
@@ -264,13 +294,19 @@ const CarouselComponent2 = () => {
   };
 
   return (
-    <div className="relative flex items-center justify-center w-full h-[200px] bg-primary rounded-lg">
+    <div className="relative flex items-center justify-center w-full h-[200px] rounded-lg">
       <FiChevronLeft
           className="absolute left-5 text-secondary text-[1.8rem] cursor-pointer"
           onClick={prevSlide}
       />
       <div className="text-[1.3rem] text-secondary font-[600]">
-        {slides[currentSlide].content}
+        {
+          <img
+            src={slides1[currentSlide1].imgSrc}
+            alt={slides1[currentSlide1].content}
+            className="w-full object-cover text-black"
+          />
+        }
       </div>
       <FiChevronRight
           className="absolute right-5 text-secondary text-[1.8rem] cursor-pointer"
@@ -302,10 +338,9 @@ export default CarouselComponent2;
             <a
               key={item.id}
               href={item.href}
-              className={`${
-                activeSection === item.href.slice(1) &&
+              className={`${activeSection === item.href.slice(1) &&
                 '!text-primary !border-primary'
-              } text-[0.9rem] text-text border-l border-transparent pl-4`}
+                } text-[0.9rem] text-text border-l border-transparent pl-4`}
             >
               {item.title}
             </a>
