@@ -103,8 +103,8 @@ const ReactCustomHooks = () => {
                 )
             }
 
-            <BlocksFooter backUrl='/getting-started/resources' backName='resources' forwardName='templates'
-                          forwardUrl='/getting-started/templates'/>
+            <BlocksFooter backUrl='/docs/resources' backName='resources' forwardName='templates'
+                          forwardUrl='/templates'/>
 
             <Helmet>
                 <title>Get-Started - Custom Hooks</title>

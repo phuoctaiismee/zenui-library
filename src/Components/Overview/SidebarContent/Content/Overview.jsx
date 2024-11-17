@@ -98,7 +98,7 @@ const Overview = () => {
               </ul>
           </div>
 
-          <BlocksFooter isBackButton={false} forwardName='templates' forwardUrl='/getting-started/templates'/>
+          <BlocksFooter isBackButton={false} forwardName='Installation' forwardUrl='/docs/installation'/>
 
           <Helmet>
               <title>Get-Started - Overview</title>
